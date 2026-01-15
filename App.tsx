@@ -9,6 +9,7 @@ import { WhyDebtProSection } from './WhyDebtProSection';
 import { WorkflowSection } from './WorkflowSection';
 import { InteractiveFlowSection } from './InteractiveFlowSection';
 import { ShowcaseSection } from './ShowcaseSection';
+import { ReviewsSection } from './ReviewsSection';
 import { ContactSection } from './ContactSection';
 import { FAQSection } from './FAQSection';
 import { Footer } from './Footer';
@@ -62,7 +63,8 @@ const App: React.FC = () => {
             <div id="why"><WhyDebtProSection lang={lang} theme={themeMode} /></div>
             <div id="solutions"><WorkflowSection lang={lang} theme={themeMode} /></div>
             <div id="product"><InteractiveFlowSection lang={lang} theme={themeMode} /></div>
-            <div id="customers"><ShowcaseSection lang={lang} theme={themeMode} /></div>
+            <ShowcaseSection lang={lang} theme={themeMode} />
+            <div id="customers"><ReviewsSection lang={lang} theme={themeMode} /></div>
             <div id="contact"><ContactSection lang={lang} theme={themeMode} /></div>
             <div id="faq"><FAQSection lang={lang} theme={themeMode} /></div>
           </Content>

@@ -71,6 +71,34 @@ export const i18n = {
         }
       }
     },
+    reviews: {
+      tag: 'ХАРИЛЦАГЧИЙН СЭТГЭГДЭЛ',
+      title: 'Салбарын тэргүүлэгчдийн сонголт',
+      subtitle: 'Монгол улсын ТОП банк, ББСБ-ууд DebtPro-г өдөр тутмын үйл ажиллагаандаа ашиглаж байна.',
+      items: [
+        {
+          name: 'Б. Тулга',
+          position: 'Эрсдэлийн удирдлагын газар',
+          org: 'ТОП Банк',
+          text: 'DebtPro-д шилжсэнээр манай зээлийн багцын чанар 24%-иар сайжирсан. Polaris-тай шууд холбогддог нь маш том давуу тал.',
+          rating: 5
+        },
+        {
+          name: 'Г. Саруул',
+          position: 'Гүйцэтгэх захирал',
+          org: 'Финтек ББСБ',
+          text: 'CallPro интеграц болон автомат МСЖ нь манай төлүүлэлтийн багийн бүтээмжийг 2 дахин нэмэгдүүлсэн. Систем маш ойлгомжтой.',
+          rating: 5
+        },
+        {
+          name: 'Д. Энхбаяр',
+          position: 'Ахлах хуульч',
+          org: 'Кредит ХЗХ',
+          text: 'Шүүхийн процесс болон мэдэгдэх хуудас автоматаар үүсдэг нь бичиг хэргийн ажлыг 80% хөнгөвчилж өгсөн.',
+          rating: 5
+        }
+      ]
+    },
     flow: {
       tag: 'SYSTEM FLOW',
       title: 'Өгөгдлөөс Үр дүн хүртэл',
@@ -275,6 +303,34 @@ export const i18n = {
         }
       }
     },
+    reviews: {
+      tag: 'TRUSTED BY LEADERS',
+      title: 'Industry Testimonials',
+      subtitle: 'See how leading financial institutions in Mongolia leverage DebtPro OS.',
+      items: [
+        {
+          name: 'Tulga B.',
+          position: 'Head of Risk',
+          org: 'Major Commercial Bank',
+          text: 'Since switching to DebtPro, our portfolio recovery rate increased by 24%. The direct Polaris integration is a game-changer.',
+          rating: 5
+        },
+        {
+          name: 'Saruul G.',
+          position: 'CEO',
+          org: 'Fintech NBFI',
+          text: 'CallPro integration and mass SMS automation doubled our collection team\'s productivity. Extremely intuitive UI.',
+          rating: 5
+        },
+        {
+          name: 'Enkhbayar D.',
+          position: 'Senior Counsel',
+          org: 'Credit Cooperative',
+          text: 'Automated court documents and notices reduced our paperwork burden by 80%. Highly compliant and secure.',
+          rating: 5
+        }
+      ]
+    },
     flow: {
       tag: 'SYSTEM FLOW',
       title: 'From Data to Results',
@@ -478,6 +534,34 @@ export const i18n = {
           desc: 'SMS 트리거 및 CallPro를 활용한 마이크로 대출의 전 과정 자동화로 운영 비용을 최대 40% 절감.'
         }
       }
+    },
+    reviews: {
+      tag: '고객사 성공 사례',
+      title: '전문가들이 신뢰하는 시스템',
+      subtitle: '몽골 유수의 금융기관들이 DebtPro OS를 통해 혁신을 경험하고 있습니다.',
+      items: [
+        {
+          name: 'Tulga B.',
+          position: '리스크 관리 총괄',
+          org: '주요 상업 은행',
+          text: 'DebtPro 도입 후 포트폴리오 회수율이 24% 증가했습니다. Polaris와 직접 연동되는 기능은 정말 획기적입니다.',
+          rating: 5
+        },
+        {
+          name: 'Saruul G.',
+          position: '대표이사',
+          org: '핀테크 NBFI',
+          text: 'CallPro 통합과 대량 SMS 자동화 덕분에 채권 추심 팀의 생산성이 두 배로 늘었습니다. UI가 매우 직관적입니다.',
+          rating: 5
+        },
+        {
+          name: 'Enkhbayar D.',
+          position: '수석 법률 고문',
+          org: '신용 협동조합',
+          text: '자동화된 법원 서류와 통지서 덕분에 서류 작업 부담이 80% 줄었습니다. 보안성과 규정 준수가 뛰어납니다.',
+          rating: 5
+        }
+      ]
     },
     flow: {
       tag: '시스템 흐름',
