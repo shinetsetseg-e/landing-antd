@@ -79,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
               {t.nav.product} <DownOutlined style={{ fontSize: 10 }} />
             </Button>
           </Dropdown>
-          {['solutions', 'why', 'customers', 'faq'].map((key) => (
+          {['solutions', 'why', 'pricing', 'customers', 'faq'].map((key) => (
             <Button 
               key={key} 
               type="text" 

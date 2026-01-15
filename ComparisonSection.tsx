@@ -34,7 +34,17 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({ lang, them
   }));
 
   const columns = [
-    { title: 'Feature', dataIndex: 'feature', key: 'feature', className: 'uppercase text-[10px] font-black' },
+    { 
+      title: 'Feature', 
+      dataIndex: 'feature', 
+      key: 'feature', 
+      className: 'uppercase text-[10px] font-black',
+      render: (val: string) => (
+        <Text strong className={`uppercase text-[11px] tracking-tight ${isDark ? 'text-slate-300' : 'text-slate-950'}`}>
+          {val}
+        </Text>
+      )
+    },
     { 
       title: 'Legacy Excel', 
       dataIndex: 'excel', 

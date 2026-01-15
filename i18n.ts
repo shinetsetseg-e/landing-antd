@@ -13,6 +13,40 @@ export const i18n = {
       faq: 'FAQ',
       demo: 'Демо авах',
     },
+    pricing: {
+      tag: 'ҮНИЙН САНАЛ',
+      title: 'Төлөвлөгөөгөө сонгоно уу',
+      subtitle: 'Таны бизнесийн цар хүрээнд тохирох уян хатан нөхцөлүүд.',
+      free: {
+        name: 'Үнэгүй (Starter)',
+        price: '0₮',
+        period: 'насан туршдаа',
+        desc: 'Жижиг баг болон гарааны ББСБ-уудад зориулагдсан.',
+        features: [
+          'Зээлийн үндсэн бүртгэл',
+          'Гараар дата оруулах (Excel)',
+          'Хязгаарлагдмал ажилтны тоо (3 хүртэл)',
+          'Стандарт тайлангууд',
+          'Дата аюулгүй байдал'
+        ],
+        cta: 'Одоо эхлэх'
+      },
+      pro: {
+        name: 'Мэргэжлийн (Pro)',
+        price: 'Тохиролцоно',
+        period: 'байгууллагын хэрэгцээнд',
+        desc: 'Томоохон Банк, ББСБ-ын үйл ажиллагаанд зориулагдсан цогц систем.',
+        features: [
+          'Polaris Core системтэй шууд холбогдох',
+          'CallPro: Автомат дуудлага, МСЖ',
+          'Smart Auto-Allocation алгоритм',
+          'Хууль, Шүүхийн автоматжуулалт',
+          'Дэлгэрэнгүй аналитик (Migration report)',
+          'Ажилтны тоо хязгааргүй'
+        ],
+        cta: 'Демо захиалах'
+      }
+    },
     megaMenu: {
       automation: { title: 'Автоматжуулалт', desc: 'Зээлийн авто хуваарилалт (Auto-Allocation)' },
       analytics: { title: 'Аналитик', desc: 'Зээлийн ангилал, шилжилтийн тайлан' },
@@ -245,6 +279,40 @@ export const i18n = {
       faq: 'FAQ',
       demo: 'Book a Demo',
     },
+    pricing: {
+      tag: 'PRICING PLANS',
+      title: 'Choose your plan',
+      subtitle: 'Flexible options designed to scale with your financial operations.',
+      free: {
+        name: 'Free (Starter)',
+        price: '$0',
+        period: 'forever',
+        desc: 'Ideal for small teams and startup cooperatives.',
+        features: [
+          'Basic Loan Tracking',
+          'Manual Data Import (Excel)',
+          'Up to 3 Agents',
+          'Standard Reporting',
+          'Data Security Compliance'
+        ],
+        cta: 'Get Started'
+      },
+      pro: {
+        name: 'Professional (Pro)',
+        price: 'Custom',
+        period: 'enterprise scale',
+        desc: 'Comprehensive OS for medium to large Banks & NBFIs.',
+        features: [
+          'Direct Polaris Core Integration',
+          'CallPro: Voice & SMS Automation',
+          'Smart Auto-Allocation Algorithm',
+          'End-to-end Legal Automation',
+          'Advanced Migration Analytics',
+          'Unlimited Agents & Portfolios'
+        ],
+        cta: 'Request Demo'
+      }
+    },
     megaMenu: {
       automation: { title: 'Automation', desc: 'Auto-Allocation by balance or count' },
       analytics: { title: 'Analytics', desc: 'Migration analysis and quality reports' },
@@ -476,6 +544,40 @@ export const i18n = {
       resources: '자료실',
       faq: 'FAQ',
       demo: '데모 신청',
+    },
+    pricing: {
+      tag: '요금 플랜',
+      title: '플랜 선택하기',
+      subtitle: '귀하의 금융 운영 규모에 맞게 설계된 유연한 옵션입니다.',
+      free: {
+        name: '무료 (스타터)',
+        price: '₩0',
+        period: '영구 무료',
+        desc: '소규모 팀 및 스타트업 협동조합에 적합합니다.',
+        features: [
+          '기본 대출 추적',
+          '수동 데이터 가져오기 (Excel)',
+          '최대 3명의 상담원',
+          '표준 보고서',
+          '데이터 보안 준수'
+        ],
+        cta: '시작하기'
+      },
+      pro: {
+        name: '전문가용 (Pro)',
+        price: '별도 문의',
+        period: '엔터프라이즈 규모',
+        desc: '중대형 은행 및 비은행 금융기관을 위한 종합 OS입니다.',
+        features: [
+          'Polaris 코어 시스템 직접 연동',
+          'CallPro: 음성 및 SMS 자동화',
+          '스마트 자동 배정 알고리즘',
+          '종단간 법적 자동화',
+          '고급 이동 분석',
+          '상담원 및 포트폴리오 무제한'
+        ],
+        cta: '데모 요청'
+      }
     },
     megaMenu: {
       automation: { title: '자동화', desc: '잔액 또는 수량에 따른 자동 배정' },
