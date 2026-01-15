@@ -12,6 +12,7 @@ import { ShowcaseSection } from './ShowcaseSection';
 import { ContactSection } from './ContactSection';
 import { FAQSection } from './FAQSection';
 import { Footer } from './Footer';
+import { ChatBot } from './ChatBot';
 
 const { Content } = Layout;
 
@@ -66,6 +67,7 @@ const App: React.FC = () => {
             <div id="faq"><FAQSection lang={lang} theme={themeMode} /></div>
           </Content>
           <Footer lang={lang} theme={themeMode} />
+          <ChatBot lang={lang} theme={themeMode} />
         </Layout>
       </AntdApp>
     </ConfigProvider>

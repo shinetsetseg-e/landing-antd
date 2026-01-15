@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ShieldCheck, Zap, Globe, AlertTriangle, CheckCircle2, XCircle, Layout, Code, Server } from 'lucide-react';
+import { ShieldCheck, Zap, Globe, AlertTriangle, CheckCircle2, XCircle, Layout, Building2, Landmark, ArrowRight } from 'lucide-react';
 import { i18n, Language } from './i18n';
 import { Reveal } from './CommonUI';
 
@@ -80,7 +80,7 @@ export const WhyDebtProSection: React.FC<WhyDebtProSectionProps> = ({ lang, them
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-24 md:mb-32">
           {t.whyDebtPro.benefits.map((benefit, idx) => (
             <Reveal key={idx} delay={idx * 150} direction="up">
               <div className={`p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border h-full transition-all hover:scale-[1.03] duration-500 
@@ -99,6 +99,66 @@ export const WhyDebtProSection: React.FC<WhyDebtProSectionProps> = ({ lang, them
               </div>
             </Reveal>
           ))}
+        </div>
+
+        {/* Use Cases Section */}
+        <div className="relative">
+          <Reveal>
+            <div className="mb-12 md:mb-16">
+              <h3 className={`text-2xl md:text-3xl font-black tracking-tight mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                {t.whyDebtPro.useCases.title}
+              </h3>
+              <div className="w-20 h-1.5 bg-blue-600 rounded-full"></div>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+            {/* Bank Case */}
+            <Reveal direction="right" delay={100}>
+              <div className={`group p-8 md:p-10 rounded-[3rem] border transition-all duration-500 ${isDark ? 'bg-slate-900/20 border-slate-800 hover:border-blue-500/40' : 'bg-slate-50 border-slate-100 hover:border-blue-200 shadow-sm'}`}>
+                <div className="flex items-start justify-between mb-8">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${isDark ? 'bg-blue-500/10 text-blue-400' : 'bg-blue-100 text-blue-600'}`}>
+                    <Landmark size={28} />
+                  </div>
+                  <div className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${isDark ? 'border-slate-800 text-slate-500' : 'border-slate-200 text-slate-400'}`}>
+                    Enterprise
+                  </div>
+                </div>
+                <h4 className={`text-xl font-black mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                  {t.whyDebtPro.useCases.bank.title}
+                </h4>
+                <p className={`text-sm md:text-base font-medium leading-relaxed mb-8 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                  {t.whyDebtPro.useCases.bank.desc}
+                </p>
+                <div className={`flex items-center gap-2 text-xs font-black uppercase tracking-widest text-blue-500 group-hover:gap-4 transition-all cursor-pointer`}>
+                  Learn More <ArrowRight size={14} />
+                </div>
+              </div>
+            </Reveal>
+
+            {/* NBFI Case */}
+            <Reveal direction="left" delay={200}>
+              <div className={`group p-8 md:p-10 rounded-[3rem] border transition-all duration-500 ${isDark ? 'bg-slate-900/20 border-slate-800 hover:border-blue-500/40' : 'bg-slate-50 border-slate-100 hover:border-blue-200 shadow-sm'}`}>
+                <div className="flex items-start justify-between mb-8">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${isDark ? 'bg-emerald-500/10 text-emerald-400' : 'bg-emerald-100 text-emerald-600'}`}>
+                    <Building2 size={28} />
+                  </div>
+                  <div className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${isDark ? 'border-slate-800 text-slate-500' : 'border-slate-200 text-slate-400'}`}>
+                    SaaS
+                  </div>
+                </div>
+                <h4 className={`text-xl font-black mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                  {t.whyDebtPro.useCases.nbfi.title}
+                </h4>
+                <p className={`text-sm md:text-base font-medium leading-relaxed mb-8 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                  {t.whyDebtPro.useCases.nbfi.desc}
+                </p>
+                <div className={`flex items-center gap-2 text-xs font-black uppercase tracking-widest text-blue-500 group-hover:gap-4 transition-all cursor-pointer`}>
+                  Learn More <ArrowRight size={14} />
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

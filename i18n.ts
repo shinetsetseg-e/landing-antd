@@ -58,7 +58,18 @@ export const i18n = {
         { title: 'Локал Интеграц', desc: 'CallPro болон дотоодын банкны системүүдтэй шууд холбогдоно.' },
         { title: 'Хуулийн нийцэл', desc: 'Монгол улсын банк санхүүгийн хууль тогтоомжид бүрэн нийцсэн.' },
         { title: 'Автоматжуулалт', desc: 'Зээлдэгчийн зан төлөвт суурилсан төлүүлэлтийн дараалал.' }
-      ]
+      ],
+      useCases: {
+        title: 'Салбарын шийдлүүд',
+        bank: {
+          title: 'Арилжааны Банк',
+          desc: 'Томоохон багц зээлийн ангилал, шилжилтийн тайланг Polaris-аас автоматаар бодож, эрсдэлийн санг оновчтой тогтооно.'
+        },
+        nbfi: {
+          title: 'ББСБ ба ХЗХ',
+          desc: 'Микро зээлийн төлүүлэлтийг CallPro болон масс МСЖ-ээр бүрэн автоматжуулж, үйл ажиллагааны зардлыг 40% хүртэл бууруулна.'
+        }
+      }
     },
     flow: {
       tag: 'SYSTEM FLOW',
@@ -251,7 +262,18 @@ export const i18n = {
         { title: 'Local Integration', desc: 'Seamlessly connects with CallPro and local banking cores.' },
         { title: 'Full Compliance', desc: 'Strict adherence to Mongolian financial regulations.' },
         { title: 'Automation', desc: 'Prioritize collections based on automated rules.' }
-      ]
+      ],
+      useCases: {
+        title: 'Industry Solutions',
+        bank: {
+          title: 'Commercial Banks',
+          desc: 'Automated migration reporting and risk fund provisioning for large retail portfolios integrated with Polaris data.'
+        },
+        nbfi: {
+          title: 'NBFIs & Cooperatives',
+          desc: 'End-to-end automation for micro-loans using SMS triggers and CallPro, reducing operational overhead by up to 40%.'
+        }
+      }
     },
     flow: {
       tag: 'SYSTEM FLOW',
@@ -444,7 +466,18 @@ export const i18n = {
         { title: '현지 시스템 통합', desc: 'CallPro 및 현지 은행 코어 시스템과 원활하게 연결됩니다.' },
         { title: '규정 준수', desc: '금융 규제 및 법적 요구 사항을 엄격히 준수합니다.' },
         { title: '자동화', desc: '자동화된 규칙에 따라 회수 우선순위를 지정합니다.' }
-      ]
+      ],
+      useCases: {
+        title: '산업별 솔루션',
+        bank: {
+          title: '상업 은행',
+          desc: 'Polaris 데이터와 통합된 대규모 리테일 포트폴리오를 위한 자동 이동 보고 및 리스크 펀드 설정.'
+        },
+        nbfi: {
+          title: '비은행 금융기관 및 협동조합',
+          desc: 'SMS 트리거 및 CallPro를 활용한 마이크로 대출의 전 과정 자동화로 운영 비용을 최대 40% 절감.'
+        }
+      }
     },
     flow: {
       tag: '시스템 흐름',
