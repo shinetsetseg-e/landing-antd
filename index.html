@@ -1,9 +1,9 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <title>TND DebtPro - Advanced Loan Recovery Cockpit</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,11 +13,23 @@
       :root {
         --primary: #2563eb;
         --base-dark: #020617;
-        --base-light: #f8fafc;
+        --base-light: #fdfdfe;
       }
       
       html {
         scroll-behavior: smooth;
+        /* Scroll snap only on larger desktop screens for accessibility */
+        scroll-snap-type: none;
+      }
+
+      @media (min-width: 1280px) {
+        html {
+          scroll-snap-type: y proximity;
+        }
+        section {
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
+        }
       }
 
       body {
@@ -26,6 +38,7 @@
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        font-size: 16px;
       }
 
       body.dark {
@@ -39,59 +52,49 @@
       }
 
       .font-sans {
-        letter-spacing: -0.01em;
-        line-height: 1.6;
+        letter-spacing: -0.015em;
+        line-height: 1.5;
       }
 
       .gradient-text-hero {
-        background: linear-gradient(to bottom, #fff 30%, #475569 100%);
+        background: linear-gradient(to bottom, #ffffff 20%, #94a3b8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       
       .light .gradient-text-hero {
-        background: linear-gradient(to bottom, #0f172a 30%, #64748b 100%);
+        background: linear-gradient(to bottom, #0f172a 20%, #64748b 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
       .glass-card-pro {
-        backdrop-filter: blur(40px) !important;
-        transition: transform 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
-        will-change: transform, opacity;
+        backdrop-filter: blur(24px) !important;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .dark .glass-card-pro {
-        background: rgba(255, 255, 255, 0.02) !important;
+        background: rgba(255, 255, 255, 0.03) !important;
         border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
       }
 
       .light .glass-card-pro {
-        background: rgba(255, 255, 255, 0.85) !important;
-        border: 1px solid rgba(37, 99, 235, 0.12) !important;
-        box-shadow: 
-          0 10px 15px -3px rgba(0, 0, 0, 0.02),
-          0 4px 6px -4px rgba(0, 0, 0, 0.02),
-          0 30px 60px -12px rgba(37, 99, 235, 0.08) !important;
-      }
-
-      .navbar-island {
-        border-radius: 24px;
-        border: 1px solid transparent;
-        backdrop-filter: blur(20px);
-        will-change: transform, scale;
+        background: rgba(255, 255, 255, 0.8) !important;
+        border: 1px solid rgba(37, 99, 235, 0.1) !important;
       }
 
       .grid-bg-complex {
-        background-size: 80px 80px;
-        mask-image: radial-gradient(ellipse at center, black 10%, transparent 80%);
+        background-size: 40px 40px;
+        mask-image: radial-gradient(ellipse at center, black 10%, transparent 90%);
+      }
+      @media (min-width: 768px) {
+        .grid-bg-complex { background-size: 80px 80px; }
       }
 
       .dark .grid-bg-complex {
         background-image: 
-          linear-gradient(rgba(37, 99, 235, 0.07) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(37, 99, 235, 0.07) 1px, transparent 1px);
+          linear-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
       }
 
       .light .grid-bg-complex {
@@ -100,55 +103,35 @@
           linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
       }
 
+      .section-fullscreen {
+        min-height: 100dvh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      @media (min-width: 768px) {
+        .section-fullscreen { padding: 100px 40px; }
+      }
+      
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
       @keyframes scroll-spark {
         0% { transform: translateY(-100%); }
-        100% { transform: translateY(220%); }
+        100% { transform: translateY(200%); }
       }
       .animate-scroll-spark {
         animation: scroll-spark 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
       }
 
-      @keyframes content-entrance {
-        from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
-        to { opacity: 1; transform: translateY(0); filter: blur(0); }
-      }
-      .animate-content-entrance {
-        animation: content-entrance 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-
-      @keyframes beam {
-        0% { transform: translateY(-100%); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateY(100%); opacity: 0; }
-      }
-      .animate-beam {
-        animation: beam 4s linear infinite;
-      }
-
-      .no-scrollbar::-webkit-scrollbar { display: none; }
-      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-      .ant-btn-primary {
-        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4) !important;
-        height: 52px !important;
-        padding: 0 32px !important;
-        border-radius: 14px !important;
-        font-weight: 800 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.1em !important;
-        font-size: 11px !important;
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-      }
-
-      .section-fullscreen {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 180px 0; 
+      /* Fix for Recharts on small screens */
+      .recharts-responsive-container {
+        min-height: 200px;
       }
     </style>
     <script type="importmap">

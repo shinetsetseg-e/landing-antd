@@ -14,7 +14,7 @@ export const DocumentAutomationSection: React.FC<SectionProps> = ({ lang, theme 
   const isDark = theme === 'dark';
 
   return (
-    <section id="docs" className={`py-32 md:py-48 transition-colors ${isDark ? 'bg-slate-950' : 'bg-[#fcfdfe]'}`}>
+    <section id="docs" className={`py-44 md:py-64 transition-colors ${isDark ? 'bg-slate-950' : 'bg-[#fcfdfe]'}`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <Reveal direction="right" className="lg:order-2">

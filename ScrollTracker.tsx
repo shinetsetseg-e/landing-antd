@@ -61,10 +61,10 @@ export const ScrollTracker: React.FC<ScrollTrackerProps> = ({ lang, theme }) => 
   };
 
   return (
-    <div className="fixed left-6 md:left-8 top-1/2 -translate-y-1/2 z-[100] hidden sm:flex flex-col items-center">
-      <div className={`w-[1px] h-12 bg-gradient-to-b from-transparent ${isDark ? 'via-white/10' : 'via-slate-200'} to-blue-500/20 opacity-40 mb-4`}></div>
+    <div className="fixed left-4 lg:left-8 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col items-center pointer-events-none">
+      <div className={`w-[1px] h-8 bg-gradient-to-b from-transparent ${isDark ? 'via-white/10' : 'via-slate-200'} to-blue-500/20 opacity-40 mb-4`}></div>
       
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-4 pointer-events-auto">
         {sections.map((section) => (
           <Tooltip 
             key={section.id} 
@@ -77,33 +77,21 @@ export const ScrollTracker: React.FC<ScrollTrackerProps> = ({ lang, theme }) => 
               onClick={() => scrollTo(section.id)}
               className="group relative flex items-center justify-center w-6 h-6 outline-none transition-all"
             >
-              <div className={`
-                absolute w-[1px] h-5 top-full left-1/2 -translate-x-1/2
-                ${isDark ? 'bg-white/5' : 'bg-slate-200'}
-                group-last:hidden
-              `}></div>
-
               <div 
                 className={`
                   rounded-full transition-all duration-500 z-10
                   ${activeSection === section.id 
                     ? 'w-2.5 h-2.5 bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.8)]' 
-                    : `w-1.5 h-1.5 ${isDark ? 'bg-white/20 group-hover:bg-blue-400 group-hover:w-2 group-hover:h-2' : 'bg-slate-300 group-hover:bg-blue-400 group-hover:w-2 group-hover:h-2'}`
+                    : `w-1.5 h-1.5 ${isDark ? 'bg-white/20 group-hover:bg-blue-400 group-hover:w-2' : 'bg-slate-300 group-hover:bg-blue-400 group-hover:w-2'}`
                   }
                 `}
               />
-              
-              {activeSection === section.id && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-5 h-5 border border-blue-500/30 rounded-full animate-pulse"></div>
-                </div>
-              )}
             </button>
           </Tooltip>
         ))}
       </div>
 
-      <div className={`w-[1px] h-12 bg-gradient-to-t from-transparent ${isDark ? 'via-white/10' : 'via-slate-200'} to-blue-500/20 opacity-40 mt-4`}></div>
+      <div className={`w-[1px] h-8 bg-gradient-to-t from-transparent ${isDark ? 'via-white/10' : 'via-slate-200'} to-blue-500/20 opacity-40 mt-4`}></div>
     </div>
   );
 };

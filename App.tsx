@@ -10,6 +10,8 @@ import { ComparisonSection } from './ComparisonSection';
 import { WhyDebtProSection } from './WhyDebtProSection';
 import { WorkflowSection } from './WorkflowSection';
 import { InteractiveFlowSection } from './InteractiveFlowSection';
+import { SMSAutomationSection } from './features/home/SMSAutomationSection';
+import { DocumentAutomationSection } from './features/home/DocumentAutomationSection';
 import { ShowcaseSection } from './ShowcaseSection';
 import { PricingSection } from './PricingSection';
 import { ReviewsSection } from './ReviewsSection';
@@ -35,7 +37,7 @@ const App: React.FC = () => {
   return (
     <ConfigProvider theme={themeConfig}>
       <AntdApp>
-        <Layout className={`min-h-screen transition-colors duration-700 ${themeMode === 'dark' ? 'bg-slate-950' : 'bg-[#f8fafc]'}`}>
+        <Layout className={`min-h-screen transition-colors duration-700 ${themeMode === 'dark' ? 'bg-slate-950' : 'bg-[#fdfdfe]'}`}>
           <Navbar 
             lang={lang} 
             setLang={setLang} 
@@ -44,7 +46,7 @@ const App: React.FC = () => {
           />
           <ScrollTracker lang={lang} theme={themeMode} />
           
-          <Content>
+          <Content className="relative">
             <div id="home"><HeroSection lang={lang} theme={themeMode} /></div>
             <PartnerMarquee lang={lang} theme={themeMode} />
             
@@ -52,6 +54,8 @@ const App: React.FC = () => {
             <div id="why"><WhyDebtProSection lang={lang} theme={themeMode} /></div>
             <div id="solutions"><WorkflowSection lang={lang} theme={themeMode} /></div>
             <div id="product"><InteractiveFlowSection lang={lang} theme={themeMode} /></div>
+            <div id="sms"><SMSAutomationSection lang={lang} theme={themeMode} /></div>
+            <div id="docs"><DocumentAutomationSection lang={lang} theme={themeMode} /></div>
             <div id="showcase"><ShowcaseSection lang={lang} theme={themeMode} /></div>
             <div id="pricing"><PricingSection lang={lang} theme={themeMode} /></div>
             <div id="customers"><ReviewsSection lang={lang} theme={themeMode} /></div>

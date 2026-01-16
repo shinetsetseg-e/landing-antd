@@ -36,8 +36,8 @@ export const PartnerMarquee: React.FC<PartnerMarqueeProps> = ({ lang, theme }) =
   const marqueeItems = [...partners, ...partners];
 
   return (
-    <div className={`py-20 overflow-hidden relative border-y ${isDark ? 'bg-slate-950/50 border-white/5' : 'bg-slate-50/50 border-slate-100'}`}>
-      <div className="max-w-7xl mx-auto px-6 mb-12 flex items-center justify-between">
+    <div className={`py-32 overflow-hidden relative border-y ${isDark ? 'bg-slate-950/50 border-white/5' : 'bg-slate-50/50 border-slate-100'}`}>
+      <div className="max-w-7xl mx-auto px-6 mb-16 flex items-center justify-between">
          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
          <span className={`px-8 text-[10px] font-black uppercase tracking-[0.4em] ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>
            {lang === 'mn' ? 'ИТГЭЛТЭЙ ХАРИЛЦАГЧИД' : 'TRUSTED BY LEADERS'}

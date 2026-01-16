@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
-import { Typography, Badge } from 'antd';
+import React from 'react';
+import { Typography } from 'antd';
 import { MessageSquare, Zap, ShieldCheck, PhoneCall } from 'lucide-react';
 import { SectionProps } from '../../shared/types';
 import { i18n } from '../../shared/i18n';
@@ -14,7 +14,7 @@ export const SMSAutomationSection: React.FC<SectionProps> = ({ lang, theme }) =>
   const isDark = theme === 'dark';
 
   return (
-    <section id="sms" className={`py-32 md:py-48 transition-colors ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
+    <section id="sms" className={`py-44 md:py-64 transition-colors ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <Reveal direction="right">

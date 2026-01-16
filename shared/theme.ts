@@ -6,12 +6,13 @@ export const getThemeConfig = (mode: ThemeMode) => ({
   algorithm: mode === 'dark' ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
   token: {
     colorPrimary: '#2563eb',
-    borderRadius: 14,
+    borderRadius: 16,
     fontFamily: 'Inter, Plus Jakarta Sans, sans-serif',
     colorBgContainer: mode === 'dark' ? '#0f172a' : '#ffffff',
     colorText: mode === 'dark' ? '#f8fafc' : '#0f172a',
-    colorBgLayout: mode === 'dark' ? '#020617' : '#f8fafc',
-    colorBorder: mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(37, 99, 235, 0.08)',
+    colorBgLayout: mode === 'dark' ? '#020617' : '#fdfdfe',
+    colorBorder: mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(37, 99, 235, 0.1)',
+    colorTextDescription: mode === 'dark' ? '#94a3b8' : '#475569',
   },
   components: {
     Button: {
@@ -26,7 +27,11 @@ export const getThemeConfig = (mode: ThemeMode) => ({
     Segmented: {
       borderRadius: 12,
       fontWeightStrong: 900,
-      colorBgLayout: mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : '#ffffff',
+      colorBgLayout: mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : '#f1f5f9',
     },
+    Input: {
+      borderRadius: 14,
+      colorBgContainer: mode === 'dark' ? 'rgba(255, 255, 255, 0.03)' : '#f8fafc',
+    }
   }
 });
