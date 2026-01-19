@@ -98,11 +98,12 @@ export const i18n = {
     },
     pricing: {
       tag: 'PRICING ENGINE',
-      title: 'Уян хатан үнийн нөхцөл',
-      subtitle: 'Байгууллагын цар хүрээ, багцын хэмжээнд тохирох мэргэжлийн шийдлүүд.',
+      title: 'Үнийн санал',
+      subtitle: 'Байгууллагын цар хүрээнд тохирсон мэргэжлийн шийдэл, уян хатан үнийн санал.',
       starter: {
         name: 'StarterPro',
-        price: 'Тохиролцоно',
+        price: '0 MNT',
+        subPrice: '2026 он',
         period: 'monthly',
         desc: 'Дунд болон жижиг ББСБ-уудад зориулагдсан.',
         features: [
@@ -128,12 +129,11 @@ export const i18n = {
           'Тайлан, дашбоард - Хүссэн өгөгдөл, загвараар',
           'Ажилтнуудын гүйцэтгэл, үнэлгээ - Хүссэн өгөгдөл',
           'Бичиг баримтын автомат удирдлага',
-          'CallPro Омничаннел интеграц',
           'Нарийвчилсан Аудит лог',
           'Зээл төлөлтийн зан төлөвийн шинжилгээ',
           'Судалгаа, Гомдол шийдвэрлэлт, Workflow тохиргоо'
         ],
-        cta: 'Демо Захиалах'
+        cta: 'Худалдан авах'
       }
     },
     megaMenu: {
@@ -145,7 +145,7 @@ export const i18n = {
       tag: 'THE NEXT-GEN RECOVERY ENGINE',
       title: 'Зээл төлүүлэлтийн нэгдсэн удирдлагын Cockpit',
       subtitle: 'Банк болон ББСБ-ийн зээлийн эргэн төлөлтийг удирдах, хянах, автоматжуулж ажилтнуудын бүтээмжийг нэмэгдүүлэх, гүйцэтгэлийг бодит үнэлэх зорилготой цогц систем.',
-      cta: 'Демо Захиалах',
+      cta: 'Худалдан авах',
       secondary: 'Шууд Үзэх',
       carousel: {
         dashboard: 'Удирдлагын Төв',
@@ -209,8 +209,8 @@ export const i18n = {
     },
     flow: {
       tag: 'SYSTEM ARCHITECTURE',
-      title: 'Өгөгдлөөс Үр дүн хүртэл',
-      subtitle: 'Зээл төлүүлэлтийн бүх процессыг DebtPro хэрхэн автоматжуулдаг vэ?',
+      title: 'Танд санал болгож буй шийдлүүд',
+      subtitle: 'Зээл төлүүлэлтийн бүх процессыг DebtPro хэрхэн автоматжуулдаг вэ?',
       steps: [
         { title: 'Технологийн архитект', desc: 'Polaris болон банкны системүүдтэй шууд холбогдох найдвартай дэд бүтэц.' },
         { title: 'Зээлийн мөчлөгийн удирдлага', desc: 'CallPro интеграц ашиглан дуудлага, МСЖ болон хуваарилалтыг автоматжуулах.' },
@@ -264,7 +264,7 @@ export const i18n = {
     },
     contactSection: {
       title: 'Хамтран ажиллах хүсэлт илгээх',
-      subtitle: 'Бидэнтэй нэгдэж, төлүүлэлтийн процессоо дараагийн шатанд гаргахад бэлэн үү?',
+      subtitle: 'Бидэнтэй нэгдэж, эргэн төлүүлэлтийн процессоо дараагийн шатанд гаргахад бэлэн үү?',
       name: 'Таны нэр',
       org: 'Байгууллагын нэр',
       email: 'И-мэйл хаяг',
@@ -292,14 +292,14 @@ export const i18n = {
     faq: {
       title: 'Түгээмэл асуултууд',
       items: [
-        { q: 'Polaris системтэй хэрхэн холбогддог vэ?', a: 'DebtPro нь Polaris-аас экспортолсон файлыг шууд уншиж, зээлийн ангиллыг автоматаар боддог.' },
-        { q: 'CallPro интеграц ямар давуу талтай vэ?', a: 'Ажилтнууд системээс шууд залгах боломжтой бөгөөд ярианы түүх нь харилцагчийн картад бүртгэгддэг.' }
+        { q: 'Polaris системтэй хэрхэн холбогддог вэ?', a: 'DebtPro нь Polaris-аас экспортолсон файлыг шууд уншиж, зээлийн ангиллыг автоматаар боддог.' },
+        { q: 'CallPro интеграц ямар давуу талтай вэ?', a: 'Ажилтнууд системээс шууд залгах боломжтой бөгөөд ярианы түүх нь харилцагчийн картад бүртгэгддэг.' }
       ]
     },
     finalCta: {
       title: 'Эрсдэлээ орлого болго.',
       subtitle: 'Эрсдэлийг гартаа ав. Зээлийн багцаа эрүүлжүүлж, капиталын эргэлтээ сайжруул. Бид танд тусална.',
-      cta: 'Демо Захиалах'
+      cta: 'Худалдан авах'
     }
   },
   en: {
@@ -311,7 +311,7 @@ export const i18n = {
       pricing: 'Pricing',
       resources: 'Resources',
       faq: 'FAQ',
-      demo: 'Book a Demo',
+      demo: 'Buy Now',
       sms: 'SMS',
       docs: 'Documents'
     },
@@ -400,11 +400,12 @@ export const i18n = {
     },
     pricing: {
       tag: 'PRICING ENGINE',
-      title: 'Flexible pricing models',
-      subtitle: 'Scalable options designed for high-performance financial operations.',
+      title: 'Pricing Plans',
+      subtitle: 'Scalable professional solutions and flexible pricing.',
       starter: {
         name: 'StarterPro',
-        price: 'Custom',
+        price: '0 MNT',
+        subPrice: 'Special 2026',
         period: 'monthly',
         desc: 'Designed for small and medium-sized NBFIs.',
         features: [
@@ -430,12 +431,11 @@ export const i18n = {
           'Custom reports & tailored dashboards',
           'Advanced performance analytics',
           'Full document automation engine',
-          'CallPro Omnichannel integration',
           'Advanced Audit Logs',
           'Behavioral repayment analysis',
           'Surveys & customer complaints'
         ],
-        cta: 'Request Demo'
+        cta: 'Buy Now'
       }
     },
     megaMenu: {
@@ -447,7 +447,7 @@ export const i18n = {
       tag: 'THE NEXT-GEN RECOVERY ENGINE',
       title: 'The Unified Command Cockpit for Loan Recovery',
       subtitle: 'An intelligent system designed to manage, monitor, and automate loan repayments for Banks and NBFIs while increasing team productivity.',
-      cta: 'Book a Demo',
+      cta: 'Buy Now',
       secondary: 'Live Preview',
       carousel: {
         dashboard: 'Command Center',
@@ -511,7 +511,7 @@ export const i18n = {
     },
     flow: {
       tag: 'SYSTEM ARCHITECTURE',
-      title: 'From Data to Results',
+      title: 'Suggested Solutions',
       subtitle: 'How DebtPro automates every step of the loan recovery process.',
       steps: [
         { title: 'Technology Architecture', desc: 'Robust infrastructure with direct links to Polaris and core banking.' },
@@ -566,7 +566,7 @@ export const i18n = {
     },
     contactSection: {
       title: 'Modernize Your Recovery',
-      subtitle: 'Ready to turn bad debt into recovered revenue? Fill out the form below.',
+      subtitle: 'Ready to transform your repayment process? Join us today.',
       name: 'Your Name',
       org: 'Organization Name',
       email: 'Email Address',
@@ -601,7 +601,7 @@ export const i18n = {
     finalCta: {
       title: 'Turn risk into income.',
       subtitle: 'Take risk in your hands. Deploy DebtPro and recover capital with precision.',
-      cta: 'Book a Demo'
+      cta: 'Buy Now'
     }
   },
   ko: {
@@ -613,7 +613,7 @@ export const i18n = {
       pricing: '가격',
       resources: '자료실',
       faq: 'FAQ',
-      demo: '데모 신청',
+      demo: '지금 구매하기',
       sms: 'SMS',
       docs: '문서'
     },
@@ -702,11 +702,12 @@ export const i18n = {
     },
     pricing: {
       tag: 'PRICING ENGINE',
-      title: '유연한 요금제',
-      subtitle: '비즈니스 규모에 맞는 최적화된 플랜을 선택하세요.',
+      title: '요금제',
+      subtitle: '기업 규모에 맞춘 전문적인 솔루션과 유연한 가격 제안.',
       starter: {
         name: 'StarterPro',
-        price: '별도 문의',
+        price: '0원',
+        subPrice: '특별 2026년',
         period: 'monthly',
         desc: '중소형 금융기관을 위한 최적의 시작.',
         features: [
@@ -732,12 +733,11 @@ export const i18n = {
           '맞춤형 보고서 및 대시보드',
           '고급 성과 분석 엔진',
           '문서 자동화 엔진',
-          'CallPro 옴니채널 통합',
           '상세 감사 로그',
           '상환 행동 패턴 분석',
           '설문 및 불만 관리'
         ],
-        cta: '데모 신청'
+        cta: '지금 구매하기'
       }
     },
     megaMenu: {
@@ -813,7 +813,7 @@ export const i18n = {
     },
     flow: {
       tag: 'SYSTEM ARCHITECTURE',
-      title: '데이터에서 결과까지',
+      title: '제안된 솔루션',
       subtitle: 'DebtPro가 채권 회수의 모든 단계를 자동화하는 방법.',
       steps: [
         { title: '기술 아키텍처', desc: 'Polaris 및 뱅킹 코어와의 직접적인 연결을 지원하는 견고한 인프라.' },
@@ -868,7 +868,7 @@ export const i18n = {
     },
     contactSection: {
       title: '회수 프로세스의 현대화',
-      subtitle: '부실 채권을 회수 수익으로 바꿀 준비가 되셨나요?',
+      subtitle: '효율적인 상환 관리를 위한 새로운 시작, 지금 바로 합류하세요.',
       name: '이름',
       org: '조직명',
       email: '이메일 주소',
@@ -903,7 +903,7 @@ export const i18n = {
     finalCta: {
       title: '리스크를 수익으로.',
       subtitle: '리스크를 장악하세요. 스프레드시트 관리는 멈추고 DebtPro로 정밀하게 자본을 회수하세요.',
-      cta: '데모 신청'
+      cta: '지금 구매하기'
     }
   }
 };
