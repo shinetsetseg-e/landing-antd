@@ -104,7 +104,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
             shape="circle" 
             size="large" 
             icon={<MessageFilled style={{ fontSize: 24 }} />}
-            className="w-16 h-16 shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
+            className="!w-16 !h-16 shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
             onClick={() => setIsOpen(true)}
           />
         </Badge>
