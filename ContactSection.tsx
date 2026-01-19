@@ -141,6 +141,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
                           className={`h-12 ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'}`}
                         />
                       </Form.Item>
+
+                                            
+                      <Form.Item 
+                        label={<Text className={`text-[9px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>Phone number</Text>}
+                        name="phone" 
+                        rules={[{ required: true }]}
+                      >
+                        <Input 
+                          prefix={<PhoneOutlined className="opacity-50" />} 
+                          placeholder={ct.placeholders.phone}
+                          className={`h-12 ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'}`}
+                        />
+                      </Form.Item>
                       
                       <Form.Item 
                         label={<Text className={`text-[9px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>Contact Details</Text>}

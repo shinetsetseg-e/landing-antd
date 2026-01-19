@@ -1,3 +1,4 @@
+
 export type Language = 'mn' | 'en' | 'ko';
 export const i18n = {
   mn: {
@@ -272,7 +273,8 @@ export const i18n = {
       placeholders: {
         name: 'Овог нэр',
         org: 'Банк, ББСБ-ын нэр',
-        email: 'name@company.mn'
+        email: 'name@company.mn',
+        phone: '77012277'
       },
       companyInfo: {
         name: 'KCH Solution LLC',
@@ -574,7 +576,8 @@ export const i18n = {
       placeholders: {
         name: 'Full Name',
         org: 'Bank or NBFI Name',
-        email: 'name@company.com'
+        email: 'name@company.com',
+        phone: '77012277',
       },
       companyInfo: {
         name: 'KCH Solution LLC',
@@ -876,7 +879,8 @@ export const i18n = {
       placeholders: {
         name: '성함',
         org: '은행 또는 금융기관명',
-        email: 'name@company.com'
+        email: 'name@company.com',
+        phone: '77012277'
       },
       companyInfo: {
         name: 'KCH Solution LLC',

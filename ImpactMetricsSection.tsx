@@ -63,8 +63,8 @@ export const ImpactMetricsSection: React.FC<SectionProps> = ({ lang, theme }) =>
           </span>
         </div> */}
 
-        <span className={`text-xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
-          {item.prefix || ''}{item.value}              <span className="text-blue-500 font-black text-xl uppercase">{item.suffix}</span>
+        <span className={`text-2xl mb-4 font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
+          {item.prefix || ''}{item.value}<span className="text-blue-500 font-black text-xl uppercase">{item.suffix}</span>
 
         </span>
 

@@ -215,8 +215,6 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
                    <div className="flex items-center gap-8 flex-1">
                       <MenuUnfoldOutlined className="text-slate-400 cursor-pointer hover:text-blue-500 text-xl" />
                       <div className="hidden md:flex items-center gap-2 text-[11px] font-medium text-slate-400">
-                         <span className="hover:text-blue-500 cursor-pointer">Мэдээлэл</span>
-                         <span className="text-slate-300">/</span>
                          <span className="text-blue-500 font-bold">{currentView?.label}</span>
                       </div>
                    </div>
