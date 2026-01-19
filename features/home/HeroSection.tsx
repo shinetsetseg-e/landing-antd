@@ -1,5 +1,6 @@
 
 import {
+  ArrowRightOutlined,
   BarChartOutlined,
   BellOutlined,
   DatabaseOutlined,
@@ -7,6 +8,7 @@ import {
   MenuUnfoldOutlined,
   MessageOutlined,
   MoreOutlined,
+  PlayCircleFilled,
   QuestionCircleOutlined,
   RightOutlined,
   SearchOutlined,
@@ -17,12 +19,6 @@ import {
 import { Avatar, Badge, Input, Typography } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
 import { GlowOrb } from '../../components/ui/GlowOrb';
-import {
-  PreviewBorrower360,
-  PreviewCommandCenter,
-  PreviewLegalPipeline,
-  PreviewSMSDashboard
-} from '../../DashboardPreviews';
 import { i18n } from '../../shared/i18n';
 import { SectionProps } from '../../shared/types';
 
@@ -55,7 +51,7 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
   const mockupTranslateY = isMobile ? 0 : (1 - scrollProgress) * 150;
   const mockupOpacity = isMobile ? 1 : 0.4 + (scrollProgress * 0.6);
 
-  // Exact labels from the provided system screenshots
+  // Exact labels and images from the provided system screenshots
   const sidebarItems = [
     { 
       key: 'info', 
@@ -66,41 +62,42 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
         { label: lang === 'mn' ? 'Зээл' : 'Loans' },
         { label: lang === 'mn' ? 'Ажилтан' : 'Employees' }
       ],
-      component: <PreviewBorrower360 lang={lang} theme="light"/> 
+      image: '/images/zeel.png' // Borrower List
     },
     { 
       key: 'action', 
       icon: <ThunderboltOutlined />, 
       label: lang === 'mn' ? 'Ажиллагаа' : 'Activities',
-      component: <PreviewLegalPipeline lang={lang} theme="light"/> 
+      image: '/images/ajillagaa.png' // Activity List
     },
     { 
       key: 'files', 
       icon: <UploadOutlined />, 
       label: lang === 'mn' ? 'Файл оруулах' : 'File Upload',
-      component: <PreviewCommandCenter lang={lang} theme="light"/>
+      image: '/images/file.png' // Repayment Report/File List
     },
     { 
       key: 'reports', 
       icon: <BarChartOutlined />, 
       label: lang === 'mn' ? 'Тайлан хяналт' : 'Reporting',
-      component: <PreviewCommandCenter lang={lang} theme="light"/> 
+      image: '/images/report.png' // visual Reports
     },
     { 
       key: 'messages', 
       icon: <MessageOutlined />, 
       label: lang === 'mn' ? 'Мессеж' : 'Messages',
-      component: <PreviewSMSDashboard lang={lang} theme="light"/> 
+      image: '/images/message.png' // SMS Templates
     },
   ];
 
   const bottomItems = [
-    { key: 'help', icon: <QuestionCircleOutlined />, label: lang === 'mn' ? 'Тусламж' : 'Help' },
-    { key: 'audit', icon: <HistoryOutlined />, label: lang === 'mn' ? 'Аудит лог' : 'Audit Log' },
-    { key: 'settings', icon: <SettingOutlined />, label: lang === 'mn' ? 'Тохиргоо' : 'Settings' },
+    { key: 'help', icon: <QuestionCircleOutlined />, label: lang === 'mn' ? 'Тусламж' : 'Help', image: '/images/help.png' },
+    { key: 'audit', icon: <HistoryOutlined />, label: lang === 'mn' ? 'Аудит лог' : 'Audit Log', image: '/images/audit.png' },
+    { key: 'settings', icon: <SettingOutlined />, label: lang === 'mn' ? 'Тохиргоо' : 'Settings', image: '/images/settings.png' },
   ];
 
-  const currentView = sidebarItems.find(m => m.key === activeKey) || sidebarItems[0];
+  const allItems = [...sidebarItems, ...bottomItems];
+  const currentView = allItems.find(m => m.key === activeKey) || sidebarItems[0];
 
   return (
     <header className="relative min-h-[110dvh] md:min-h-[180vh] flex flex-col items-center">
@@ -111,7 +108,7 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
 
       {/* Landing Page Content (Hero Text) */}
       <div 
-        className="w-full min-h-[70dvh] md:h-screen flex flex-col items-center justify-center md:sticky top-10 z-20 pointer-events-none px-6 py-12 will-change-transform"
+        className="w-full min-h-[70dvh] md:h-screen flex flex-col items-center justify-center md:sticky top-0 z-20 pointer-events-none px-6 py-12 will-change-transform"
         style={{ 
           transform: isMobile ? 'none' : `scale(${titleScale}) translateY(${titleTranslateY}px)`,
           opacity: isMobile ? 1 : Math.max(0, titleOpacity),
@@ -119,6 +116,10 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
         }}
       >
         <div className="flex flex-col items-center w-full max-w-7xl pointer-events-auto text-center">
+          <div className={`inline-flex items-center gap-2 md:gap-3 px-5 py-2 rounded-full border mb-8 animate-content-entrance ${isDark ? 'border-blue-500/20 bg-blue-500/10' : 'border-blue-100 bg-blue-50'}`}>
+            <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+            <Text className={`text-[10px] md:text-[11px] font-black tracking-[0.3em] uppercase ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>THE NEXT-GEN RECOVERY COCKPIT</Text>
+          </div>
           
           <h1 className="text-5xl sm:text-7xl md:text-[9rem] font-black mb-8 leading-[0.9] tracking-tighter gradient-text-hero animate-content-entrance" style={{ animationDelay: '100ms' }}>
             {lang === 'mn' ? (
@@ -131,10 +132,26 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
           <p className={`text-base md:text-xl lg:text-2xl max-w-[320px] sm:max-w-lg md:max-w-3xl mb-12 font-medium leading-relaxed animate-content-entrance ${isDark ? 'text-slate-400' : 'text-slate-600'}`} style={{ animationDelay: '200ms' }}>
             {t.hero.subtitle}
           </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-5 animate-content-entrance w-full px-4" style={{ animationDelay: '300ms' }}>
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="h-16 md:h-20 w-full sm:w-[280px] md:w-[320px] rounded-2xl bg-blue-600 text-white text-[12px] md:text-[13px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-4 shadow-2xl shadow-blue-600/40 hover:bg-blue-500 transition-all active:scale-95"
+            >
+              {t.hero.cta}
+              <ArrowRightOutlined className="text-xl" />
+            </button>
+            <button 
+              className={`h-16 md:h-20 w-full sm:w-[280px] md:w-[320px] rounded-2xl text-[12px] md:text-[13px] font-black uppercase tracking-[0.2em] border flex items-center justify-center gap-4 transition-all active:scale-95 ${isDark ? 'bg-white/5 border-white/10 text-white hover:bg-white/10' : 'bg-slate-50 border-slate-200 text-slate-900 hover:bg-slate-100'}`}
+            >
+              <PlayCircleFilled className="text-blue-500 text-3xl" />
+              {t.hero.secondary}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Realistic System Mockup - Mimicking screenshots 1-5 */}
+      {/* Realistic System Mockup with Real Screenshots */}
       <div 
         className="w-full max-w-[90vw] xl:max-w-[1420px] mx-auto px-2 md:px-6 mt-16 md:mt-[60vh] pb-32 relative z-10 transition-all duration-300 ease-out will-change-transform"
         style={{ 
@@ -143,10 +160,10 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
         }}
       >
         <div className="relative group">
-          {/* Main Container mimicking Screenshot layout */}
+          {/* Main Container */}
           <div className={`relative z-10 glass-card-pro rounded-[2rem] md:rounded-[4rem] overflow-hidden border flex flex-col md:flex-row h-auto md:h-[920px] shadow-[0_50px_100px_rgba(0,0,0,0.2)] ${isDark ? 'border-white/5 bg-[#0b0f1a]/95' : 'border-slate-200 bg-white'}`}>
              
-             {/* Sidebar - Perfectly matching screenshots 1 & 2 */}
+             {/* Sidebar - Mimicking screenshots */}
              <aside className={`w-full md:w-64 flex flex-row md:flex-col border-b md:border-b-0 md:border-r transition-colors p-4 md:p-0 overflow-x-auto no-scrollbar ${isDark ? 'bg-[#0b0f1a] border-white/5' : 'bg-[#fcfdfe] border-slate-100'}`}>
                 <div className="p-6 lg:p-10 hidden md:flex items-center gap-4 border-b border-white/5 md:mb-4">
                    <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white shadow-lg text-xl">D</div>
@@ -175,7 +192,6 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
                         {item.subItems && <RightOutlined className={`text-[9px] transition-transform ${activeKey === item.key ? 'rotate-90' : ''}`} />}
                       </button>
                       
-                      {/* Sub-menu logic mimicking Screenshot 1 expanded state */}
                       {activeKey === item.key && item.subItems && (
                         <div className="hidden md:flex flex-col pl-10 pr-4 mt-1 space-y-1 animate-slide-up">
                           {item.subItems.map((sub, si) => (
@@ -193,7 +209,9 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
                   {bottomItems.map((item) => (
                     <button
                       key={item.key}
-                      className="hidden md:flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 hover:text-blue-500 transition-colors w-full"
+                      onClick={() => setActiveKey(item.key)}
+                      className={`hidden md:flex items-center gap-4 px-4 py-3 rounded-xl transition-colors w-full
+                        ${activeKey === item.key ? 'bg-blue-600/10 text-blue-500' : 'text-slate-500 hover:text-blue-500'}`}
                     >
                       <span className="text-base">{item.icon}</span>
                       <span className="text-[11px] font-bold">{item.label}</span>
@@ -213,7 +231,7 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
                 </div>
              </aside>
 
-             {/* Main Content Area - mimicking Breadcrumbs and Header of Screenshot 1, 3, 4, 5 */}
+             {/* Main Content Area */}
              <main className={`flex-1 flex flex-col overflow-hidden ${isDark ? 'bg-[#080b12]' : 'bg-[#f0f2f5]'}`}>
                 {/* System Header */}
                 <header className={`h-16 md:h-20 border-b flex items-center justify-between px-6 md:px-10 ${isDark ? 'bg-[#0b0f1a] border-white/5' : 'bg-white border-slate-200'}`}>
@@ -239,16 +257,23 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
                    </div>
                 </header>
 
-                {/* Dashboard Canvas Area - Using white base to ensure screenshots pop */}
-                <div className="flex-1 overflow-y-auto p-4 md:p-8 no-scrollbar relative">                   
-                   <div key={activeKey} className="animate-content-entrance w-full h-full min-h-[600px] rounded-2xl overflow-hidden border border-slate-200/50 bg-[#ffffff]">
-                      {/* Actual Component / UI Simulation rendered on neutral white for clarity */}
-                      <div className="p-2 h-full">
-                        {currentView.component}
-                      </div>
+                {/* Dashboard Canvas Area */}
+                <div className="flex-1 overflow-y-auto p-4 md:p-8 no-scrollbar relative flex items-center justify-center">
+                   
+                   {/* Screenshot Display Container */}
+                   <div key={activeKey} className="animate-content-entrance w-full h-full flex items-center justify-center rounded-2xl overflow-hidden border border-slate-200/50 bg-[#ffffff]">
+                      {currentView.image ? (
+                        <img 
+                          src={currentView.image} 
+                          alt={currentView.label}
+                          className="w-full h-full object-cover object-top"
+                        />
+                      ) : (
+                        <div className="text-slate-400 font-black uppercase tracking-widest text-[10px]">View Unavailable</div>
+                      )}
                    </div>
 
-                   {/* Subtle shadow overlay to blend interface */}
+                   {/* Subtle shadow overlay */}
                    <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.03)]"></div>
                 </div>
              </main>
