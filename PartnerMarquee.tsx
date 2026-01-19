@@ -1,16 +1,16 @@
 
-import React from 'react';
-import { 
-  Landmark, 
-  CircleDollarSign, 
-  Cpu, 
-  Zap, 
-  Activity, 
-  Globe, 
-  Building2, 
-  ShieldCheck 
+import {
+  Activity,
+  Building2,
+  CircleDollarSign,
+  Cpu,
+  Globe,
+  Landmark,
+  ShieldCheck,
+  Zap
 } from 'lucide-react';
-import { i18n, Language } from './i18n';
+import React from 'react';
+import { i18n, Language } from './shared/i18n';
 
 interface PartnerMarqueeProps {
   lang: Language;

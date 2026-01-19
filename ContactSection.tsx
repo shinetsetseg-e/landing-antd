@@ -1,17 +1,17 @@
 
-import React from 'react';
-import { Form, Input, Button, Typography, Space, Row, Col, App } from 'antd';
-import { 
-  UserOutlined, 
-  BankOutlined, 
-  MailOutlined, 
-  PhoneOutlined, 
-  SendOutlined,
-  CheckCircleFilled,
-  EnvironmentOutlined
+import {
+    BankOutlined,
+    CheckCircleFilled,
+    EnvironmentOutlined,
+    MailOutlined,
+    PhoneOutlined,
+    SendOutlined,
+    UserOutlined
 } from '@ant-design/icons';
-import { i18n, Language } from './i18n';
+import { App, Button, Col, Form, Input, Row, Typography } from 'antd';
+import React from 'react';
 import { Reveal } from './CommonUI';
+import { i18n, Language } from './shared/i18n';
 
 const { Text } = Typography;
 

@@ -1,19 +1,22 @@
 
 import React, { useState } from 'react';
 import { 
-  FileUp, 
-  Workflow, 
-  MessageSquare, 
+  Cpu, 
+  RefreshCcw, 
   FileText, 
-  BarChart3
+  Activity, 
+  ShieldCheck
 } from 'lucide-react';
-import { i18n, Language } from './i18n';
+// Fix: Language is not exported from shared/i18n, so we import it from shared/types
+import { Language } from './shared/types';
+import { i18n } from './shared/i18n';
 import { Reveal } from './CommonUI';
 import { 
   PreviewCommandCenter, 
   PreviewBorrower360, 
   PreviewLegalPipeline, 
-  PreviewPerformance 
+  PreviewSMSTemplate,
+  PreviewDocAutomation
 } from './DashboardPreviews';
 
 interface InteractiveFlowSectionProps {
@@ -27,38 +30,19 @@ export const InteractiveFlowSection: React.FC<InteractiveFlowSectionProps> = ({ 
   const [activeStep, setActiveStep] = useState(0);
 
   const flowIcons = [
-    <FileUp size={24} />,
-    <Workflow size={24} />,
-    <MessageSquare size={24} />,
+    <Cpu size={24} />,
+    <RefreshCcw size={24} />,
     <FileText size={24} />,
-    <BarChart3 size={24} />
+    <Activity size={24} />,
+    <ShieldCheck size={24} />
   ];
 
   const flowPreviews = [
     <PreviewCommandCenter lang={lang} theme={theme} />,
-    <div className="flex flex-col items-center justify-center h-full p-4 md:p-8">
-      <div className={`w-full max-w-sm p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'} shadow-2xl`}>
-        <div className="flex items-center gap-4 mb-4 md:mb-8">
-          <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center text-white"><Workflow size={20}/></div>
-          <h4 className="font-black uppercase tracking-widest text-[9px] md:text-xs">Allocation Engine</h4>
-        </div>
-        <div className="space-y-3 md:space-y-6">
-          {[
-            { n: 'Agent Bayaraa', l: 124 },
-            { n: 'Agent Sarnai', l: 92 },
-            { n: 'Agent Enkh', l: 110 }
-          ].map((a, i) => (
-            <div key={i} className={`flex justify-between items-center pb-2 md:pb-4 border-b ${isDark ? 'border-slate-800' : 'border-slate-100'} last:border-0`}>
-               <span className="text-[11px] font-bold">{a.n}</span>
-               <span className="text-[9px] font-black text-blue-500">{a.l} L</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>,
+    <PreviewSMSTemplate lang={lang} theme={theme} />,
+    <PreviewDocAutomation lang={lang} theme={theme} />,
     <PreviewBorrower360 lang={lang} theme={theme} />,
-    <PreviewLegalPipeline lang={lang} theme={theme} />,
-    <PreviewPerformance lang={lang} theme={theme} />
+    <PreviewLegalPipeline lang={lang} theme={theme} />
   ];
 
   return (
@@ -72,6 +56,9 @@ export const InteractiveFlowSection: React.FC<InteractiveFlowSectionProps> = ({ 
             <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black mb-4 tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
               {t.flow.title}
             </h2>
+            <p className={`text-sm md:text-base font-medium max-w-2xl mx-auto ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
+              {t.flow.subtitle}
+            </p>
           </div>
         </Reveal>
 
@@ -90,7 +77,7 @@ export const InteractiveFlowSection: React.FC<InteractiveFlowSectionProps> = ({ 
                 <div className="flex items-center lg:items-start gap-4">
                   <div className={`w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center shrink-0
                     ${activeStep === i ? 'bg-blue-600 text-white shadow-lg' : (isDark ? 'bg-slate-900 text-slate-500' : 'bg-slate-100 text-slate-400')}`}>
-                    {React.cloneElement(flowIcons[i] as React.ReactElement<any>, { size: 16 })}
+                    {React.cloneElement(flowIcons[i] as React.ReactElement<any>, { size: activeStep === i ? 20 : 16 })}
                   </div>
                   <div className="flex-1">
                     <h3 className={`text-[13px] md:text-lg font-black transition-colors ${activeStep === i ? (isDark ? 'text-white' : 'text-slate-900') : 'text-slate-500'}`}>

@@ -1,9 +1,9 @@
 
+import { CheckCircleFilled, RocketFilled, StarFilled } from '@ant-design/icons';
+import { Button, Typography } from 'antd';
 import React from 'react';
-import { Typography, Badge, Button, Space } from 'antd';
-import { CheckCircleFilled, RocketFilled, ThunderboltFilled, StarFilled } from '@ant-design/icons';
-import { i18n, Language } from './i18n';
 import { Reveal } from './CommonUI';
+import { i18n, Language } from './shared/i18n';
 
 const { Text } = Typography;
 

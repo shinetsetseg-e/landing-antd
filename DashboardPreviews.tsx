@@ -1,36 +1,36 @@
 
-import React, { useState, useEffect } from 'react';
-import { 
-  BarChart3, 
-  History, 
-  Target, 
-  Gavel, 
-  ChevronRight, 
-  Zap, 
-  MessageCircle, 
-  Award,
-  TrendingUp,
-  Activity,
-  Info,
-  Type,
-  Send,
-  Braces,
-  FileText,
-  CheckCircle,
-  Download
-} from 'lucide-react';
-import { 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip as RechartsTooltip, 
-  ResponsiveContainer, 
-  BarChart,
-  Bar,
-  Cell
-} from 'recharts';
 import { Tooltip as AntdTooltip } from 'antd';
-import { i18n, Language } from './i18n';
+import {
+    Activity,
+    Award,
+    BarChart3,
+    Braces,
+    CheckCircle,
+    ChevronRight,
+    Download,
+    FileText,
+    Gavel,
+    History,
+    Info,
+    MessageCircle,
+    Send,
+    Target,
+    TrendingUp,
+    Type,
+    Zap
+} from 'lucide-react';
+import React from 'react';
+import {
+    Bar,
+    BarChart,
+    CartesianGrid,
+    Cell,
+    Tooltip as RechartsTooltip,
+    ResponsiveContainer,
+    XAxis,
+    YAxis
+} from 'recharts';
+import { i18n, Language } from './shared/i18n';
 
 interface PreviewProps {
   lang: Language;

@@ -1,24 +1,22 @@
-
-import { Language } from './types';
-
+export type Language = 'mn' | 'en' | 'ko';
 export const i18n = {
   mn: {
     nav: {
-      product: 'Систем',
+      product: 'Системийн тухай',
       solutions: 'Шийдлүүд',
-      why: 'Давуу Тал',
+      why: 'Давуу тал',
       customers: 'Харилцагчид',
-      pricing: 'Үнэ',
+      pricing: 'Үнийн санал',
       resources: 'Мэдлэг',
       faq: 'FAQ',
-      demo: 'Демо Үзэх',
+      demo: 'Худалдан авах',
       sms: 'МСЖ',
       docs: 'Бичиг баримт'
     },
     recoveryStages: {
       tag: 'LIFECYCLE MANAGEMENT',
-      title: 'Зээл төлүүлэлтийн иж бүрэн үе шат',
-      subtitle: 'Зээл олголтоос эхлээд хасалт хийх хүртэлх бүх процессыг DebtPro-оор удирд.',
+      title: 'Зээл төлүүлэлтийн иж бүрэн үе шатыг хамарна.',
+      subtitle: 'Зээл олголтоос эхлээд зээлийн амьдралын бүхий л мөчлөгийг хамруулан хаах хүртэлх процессийг DebtPro системээр удирд.',
       stages: [
         {
           id: 'onboarding',
@@ -52,16 +50,16 @@ export const i18n = {
         },
         {
           id: 'sales',
-          title: 'Write-off / Sales / Surveillance',
-          label: 'Борлуулалт, Хасалт',
-          desc: 'Барьцаа хөрөнгүүдийг зарах, Балансаас хасалт хийх, Сангийн зардлаас хаах.'
+          title: 'Write-off / Surveillance',
+          label: 'Хасалт',
+          desc: 'Балансаас хасалт хийх, Сангийн зардлаас хаах.'
         }
       ]
     },
     impactMetrics: {
       tag: 'MEASURABLE RESULTS',
-      title: 'Бодит Үр Дүн ба Статистик',
-      subtitle: 'DebtPro системийг нэвтрүүлснээр танай байгууллагад гарах эерэг өөрчлөлтүүд.',
+      title: 'Бодит Үр Өгөөж',
+      subtitle: 'Мэргэжлийн эргэн төлөлтийн программ нэвтрүүлсэн байгууллагын өөрчлөлтөөс товч дурдвал:',
       items: [
         { label: 'Ажиллагааны ил тод байдал', value: '100', suffix: '%', desc: 'Процесс бүр хяналттай' },
         { label: 'Ажлын цагийн хэмнэлт', value: '40', suffix: '%', desc: 'Автоматжуулалтын үр дүнд' },
@@ -214,11 +212,11 @@ export const i18n = {
       title: 'Өгөгдлөөс Үр дүн хүртэл',
       subtitle: 'Зээл төлүүлэлтийн бүх процессыг DebtPro хэрхэн автоматжуулдаг vэ?',
       steps: [
-        { title: 'Өгөгдөл Төвлөрүүлэх', desc: 'Polaris системээс датаг шууд импортлоно.' },
-        { title: 'Ухаалаг Хуваарилалт', desc: 'Зээлүүдийг ажилтнуудын ачаалал дээр үндэслэн хуваарилна.' },
-        { title: 'Харилцах Сувгууд', desc: 'CallPro ашиглан системээс шууд залгах, МСЖ илгээх.' },
-        { title: 'Баримт Бичгийн Автоматжуулалт', desc: 'Мэдэгдэх хуудас, Шүүхийн нэхэмжлэлийг систем автоматаар бөглөнө.' },
-        { title: 'Тайлан, Дүн Шинжилгээ', desc: 'Төлүүлсэн дүн, ажилтнуудын гүйцэтгэлийг бодит цагт хянана.' }
+        { title: 'Технологийн архитект', desc: 'Polaris болон банкны системүүдтэй шууд холбогдох найдвартай дэд бүтэц.' },
+        { title: 'Зээлийн мөчлөгийн удирдлага', desc: 'CallPro интеграц ашиглан дуудлага, МСЖ болон хуваарилалтыг автоматжуулах.' },
+        { title: 'Баримт бичгийн удирдлага', desc: 'Мэдэгдэх хуудас, нэхэмжлэх болон гэрээг түлхүүр үгээр нэг секундэд үүсгэх.' },
+        { title: 'NPE илрүүлэлт', desc: 'Зээлдэгчийн зан төлөв дээр суурилсан эрсдэлийг эрт илрүүлэх 360° хяналт.' },
+        { title: 'Аудит & Хамгаалалт', desc: 'Үйлдэл бүрийг бүртгэх лог болон Шүүх, ШШГ процессын иж бүрэн хамгаалалт.' }
       ]
     },
     workflow: {
@@ -295,7 +293,7 @@ export const i18n = {
       title: 'Түгээмэл асуултууд',
       items: [
         { q: 'Polaris системтэй хэрхэн холбогддог vэ?', a: 'DebtPro нь Polaris-аас экспортолсон файлыг шууд уншиж, зээлийн ангиллыг автоматаар боддог.' },
-        { q: 'CallPro интеграц ямар давуу талтай вэ?', a: 'Ажилтнууд системээс шууд залгах боломжтой бөгөөд ярианы түүх нь харилцагчийн картад бүртгэгддэг.' }
+        { q: 'CallPro интеграц ямар давуу талтай vэ?', a: 'Ажилтнууд системээс шууд залгах боломжтой бөгөөд ярианы түүх нь харилцагчийн картад бүртгэгддэг.' }
       ]
     },
     finalCta: {
@@ -320,7 +318,7 @@ export const i18n = {
     recoveryStages: {
       tag: 'LIFECYCLE MANAGEMENT',
       title: 'End-to-end Recovery Lifecycle',
-      subtitle: 'Manage every phase from credit onboarding to final resolution or write-off.',
+      subtitle: 'Manage the entire loan lifecycle, from origination to closing, with the DebtPro system.',
       stages: [
         {
           id: 'onboarding',
@@ -354,16 +352,16 @@ export const i18n = {
         },
         {
           id: 'sales',
-          title: 'Write-off / Sales / Surveillance',
+          title: 'Write-off / Surveillance',
           label: 'Resolution',
-          desc: 'Collateral sales, portfolio write-offs, and final risk fund clearing.'
+          desc: 'Portfolio write-offs, and final risk fund clearing.'
         }
       ]
     },
     impactMetrics: {
       tag: 'MEASURABLE RESULTS',
       title: 'Real Impact & Statistics',
-      subtitle: 'Expected positive changes in your organization after deploying DebtPro.',
+      subtitle: 'Briefly describe the changes in the organization that introduced the professional repayment program:',
       items: [
         { label: 'Operational Transparency', value: '100', suffix: '%', desc: 'Fully visible audit trails' },
         { label: 'Work Time Saving', value: '40', suffix: '%', desc: 'Via automation logic' },
@@ -516,11 +514,11 @@ export const i18n = {
       title: 'From Data to Results',
       subtitle: 'How DebtPro automates every step of the loan recovery process.',
       steps: [
-        { title: 'Centralize Information', desc: 'Import data from Polaris core.' },
-        { title: 'Intelligent Allocation', desc: 'Automatically distribute loans based on agent workload.' },
-        { title: 'Interaction Channels', desc: 'Dial CallPro or send SMS directly from the app.' },
-        { title: 'Document Automation', desc: 'Auto-fill notices and court documents based on borrower data.' },
-        { title: 'Analytics & Insights', desc: 'Monitor recovery rates and agent performance.' }
+        { title: 'Technology Architecture', desc: 'Robust infrastructure with direct links to Polaris and core banking.' },
+        { title: 'Lifecycle Management', desc: 'Automate calls, SMS, and allocation using CallPro integration.' },
+        { title: 'Document Management', desc: 'Generate notices, invoices, and contracts in seconds using keywords.' },
+        { title: 'NPE Detection', desc: '360° monitoring to identify non-performing exposures based on behavior.' },
+        { title: 'Audit & Protection', desc: 'Comprehensive audit logs and full court/legal pipeline security.' }
       ]
     },
     workflow: {
@@ -656,9 +654,9 @@ export const i18n = {
         },
         {
           id: 'sales',
-          title: 'Write-off / Sales / Surveillance',
-          label: '상각 및 매각',
-          desc: '담보 매각, 대손 처리 및 최종 리스크 펀드 정산을 완료합니다.'
+          title: 'Write-off / Surveillance',
+          label: '매각',
+          desc: '대손 처리 및 최종 리스크 펀드 정산을 완료합니다.'
         }
       ]
     },
@@ -818,11 +816,11 @@ export const i18n = {
       title: '데이터에서 결과까지',
       subtitle: 'DebtPro가 채권 회수의 모든 단계를 자동화하는 방법.',
       steps: [
-        { title: '정보 중앙화', desc: 'Polaris 코어에서 데이터를 즉시 가져옵니다.' },
-        { title: '지능형 배분', desc: '상담원의 업무량에 따라 대출 건을 자동으로 배분합니다.' },
-        { title: '상호작용 채널', desc: '앱에서 직접 CallPro로 전화를 걸거나 SMS를 보냅니다.' },
-        { title: '문서 자동화', desc: '대출자 데이터를 기반으로 법적 문서를 자동으로 생성합니다.' },
-        { title: '분석 및 인사이트', desc: '실시간 차트를 통해 회수율과 상담원 실적을 모니터링합니다.' }
+        { title: '기술 아키텍처', desc: 'Polaris 및 뱅킹 코어와의 직접적인 연결을 지원하는 견고한 인프라.' },
+        { title: '라이프사이클 관리', desc: 'CallPro 통합을 통한 자동 콜, SMS 및 채권 배분 기능.' },
+        { title: '문서 관리', desc: '키워드를 활용하여 통지서, 청구서 및 계약서를 1초 만에 생성.' },
+        { title: 'NPE 탐지', desc: '행동 기반 데이터를 활용해 부실 노출을 식별하는 360° 모니터링.' },
+        { title: '감사 및 보호', desc: '모든 작업의 상세 감사 로그 및 법적 파이프라인 보안 제공.' }
       ]
     },
     workflow: {

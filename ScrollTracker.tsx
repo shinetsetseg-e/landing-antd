@@ -1,7 +1,7 @@
 
-import React, { useState, useEffect } from 'react';
 import { Tooltip } from 'antd';
-import { i18n, Language } from './i18n';
+import React, { useEffect, useState } from 'react';
+import { i18n, Language } from './shared/i18n';
 
 interface ScrollTrackerProps {
   lang: Language;

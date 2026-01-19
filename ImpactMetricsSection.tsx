@@ -1,22 +1,19 @@
 
-import React from 'react';
 import { Typography } from 'antd';
-import { SectionProps } from './shared/types';
-import { i18n } from './i18n';
-import { Reveal, NumberTicker } from './CommonUI';
-import { 
-  Zap, 
-  BarChart3, 
-  Target, 
-  TrendingUp, 
-  TrendingDown,
-  ShieldCheck,
-  Users,
-  Activity,
+import {
   ArrowUpRight,
+  BarChart3,
   ClipboardCheck,
-  ShieldAlert
+  Cpu,
+  Search,
+  ShieldCheck,
+  TrendingDown,
+  TrendingUp
 } from 'lucide-react';
+import React from 'react';
+import { Reveal } from './CommonUI';
+import { i18n } from './shared/i18n';
+import { SectionProps } from './shared/types';
 
 const { Text } = Typography;
 
@@ -24,47 +21,84 @@ export const ImpactMetricsSection: React.FC<SectionProps> = ({ lang, theme }) =>
   const t = i18n[lang].impactMetrics;
   const isDark = theme === 'dark';
 
-  // Define Groups for 11 items
-  const productivityItems = t.items.slice(0, 4); // Transparency, Time, Staff Satis, Manual
-  const qualityItems = t.items.slice(4, 8);      // PTP, Complaints, Legal, Cust Satis
-  const financialItems = t.items.slice(8, 11);    // Op Cost, NPL, NPE
+  // Specific Hero Metrics requested by user
+  // Index 0: Transparency, Index 3: Manual, Index 9: NPL, Index 10: NPE
+  const heroIndices = [0, 3, 9, 10];
+  const heroMetrics = heroIndices.map(idx => t.items[idx]);
+  
+  // Remaining supporting metrics
+  const supportingMetrics = t.items.filter((_, idx) => !heroIndices.includes(idx));
 
-  const renderMetricCard = (item: any, index: number) => {
-    const isPositive = item.prefix === '+' || !item.prefix || item.value === '100';
+  const renderHeroCard = (item: any, index: number) => {
     const isReduction = item.prefix === '-';
-
+    // Fix: Store component references instead of elements to avoid React.cloneElement type issues with Lucide icons
+    const IconComponents = [ClipboardCheck, Cpu, BarChart3, Search];
+    const Icon = IconComponents[index];
+    
     return (
       <div key={index} className={`
-        group relative p-6 rounded-2xl border transition-all duration-500
+        group relative p-10 rounded-[3rem] border transition-all duration-700 h-full flex flex-col
         ${isDark 
-          ? 'bg-white/5 border-white/5 hover:border-blue-500/40 hover:bg-white/[0.08]' 
-          : 'bg-white border-slate-200 hover:border-blue-400 hover:shadow-xl shadow-sm'}
+          ? 'bg-blue-600/5 border-blue-500/20 hover:border-blue-500 hover:bg-blue-600/10' 
+          : 'bg-white border-blue-100 shadow-xl shadow-blue-900/5 hover:border-blue-500'}
       `}>
-        <div className="flex justify-between items-start mb-4">
-          <div className="flex items-baseline gap-1">
-            <span className={`text-3xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>
-              {item.prefix || ''}
-              <NumberTicker value={parseFloat(item.value) || 0} />
-              {item.value.includes('-') && !parseFloat(item.value) ? item.value : ''}
-            </span>
-            <span className="text-blue-500 font-black text-xs uppercase">{item.suffix}</span>
+        <div className="flex justify-between items-start mb-8">
+          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 
+            ${isDark ? 'bg-blue-600/20 text-blue-400' : 'bg-blue-600 text-white shadow-lg'}`}>
+            <Icon size={28} />
           </div>
-          <div className={`p-1.5 rounded-lg ${isReduction ? 'bg-rose-500/10 text-rose-500' : 'bg-emerald-500/10 text-emerald-500'}`}>
-            {isReduction ? <TrendingDown size={14}/> : <ArrowUpRight size={14}/>}
+          <div className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2
+            ${isReduction ? 'bg-rose-500/10 text-rose-500' : 'bg-emerald-500/10 text-emerald-500'}`}>
+            {isReduction ? <TrendingDown size={14}/> : <TrendingUp size={14}/>}
+            {isReduction ? (lang === 'mn' ? 'Бууралт' : 'Reduction') : (lang === 'mn' ? 'Өсөлт' : 'Growth')}
           </div>
         </div>
-        
-        <h4 className={`text-[11px] font-black uppercase tracking-tight mb-2 ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>
+
+        {/* <div className="flex items-baseline gap-2 mb-4">
+          {item.prefix || ''}
+          <span className={`text-6xl md:text-7xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>
+            {typeof parseFloat(item.value) === 'number' && !isNaN(parseFloat(item.value)) ? (
+              <NumberTicker value={parseFloat(item.value)} />
+            ) : item.value}
+          </span>
+        </div> */}
+
+        <span className={`text-xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
+          {item.prefix || ''}{item.value}              <span className="text-blue-500 font-black text-xl uppercase">{item.suffix}</span>
+
+        </span>
+
+        <h3 className={`text-lg md:text-xl font-black tracking-tight mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
           {item.label}
-        </h4>
+        </h3>
         
-        <p className={`text-[10px] font-medium leading-relaxed opacity-60 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+        <p className={`text-sm font-medium leading-relaxed flex-1 ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
           {item.desc}
         </p>
 
-        {/* Decorative background element */}
-        <div className="absolute -bottom-2 -right-2 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 pointer-events-none">
-          <Activity size={80} className="text-blue-500" />
+        {/* Highlight Glow for Hero items */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/5 blur-[60px] rounded-full group-hover:bg-blue-600/10 transition-colors"></div>
+      </div>
+    );
+  };
+
+  const renderSupportingCard = (item: any, index: number) => {
+    const isReduction = item.prefix === '-';
+    return (
+      <div key={index} className={`
+        p-6 rounded-2xl border flex items-center justify-between transition-all hover:-translate-y-1 h-full
+        ${isDark ? 'bg-white/5 border-white/5 hover:border-white/10' : 'bg-slate-50 border-slate-100 hover:border-blue-200'}
+      `}>
+        <div className="flex-1">
+          <h4 className={`text-[11px] font-black uppercase tracking-tight mb-1 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>{item.label}</h4>
+          <div className="flex items-baseline gap-1">
+            <span className={`text-xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
+              {item.prefix || ''}{item.value}{item.suffix}
+            </span>
+          </div>
+        </div>
+        <div className={isReduction ? 'text-rose-500' : 'text-emerald-500'}>
+          {isReduction ? <TrendingDown size={18}/> : <ArrowUpRight size={18}/>}
         </div>
       </div>
     );
@@ -72,94 +106,61 @@ export const ImpactMetricsSection: React.FC<SectionProps> = ({ lang, theme }) =>
 
   return (
     <section id="metrics" className={`py-32 md:py-48 transition-colors relative overflow-hidden ${isDark ? 'bg-[#020617]' : 'bg-[#fcfdfe]'}`}>
-      {/* Background Gradients */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className={`absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full blur-[160px] opacity-[0.07] ${isDark ? 'bg-blue-600' : 'bg-blue-400'}`}></div>
-        <div className={`absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-[0.05] ${isDark ? 'bg-emerald-600' : 'bg-emerald-400'}`}></div>
-      </div>
-
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <Reveal>
           <div className="text-center mb-24">
-            <div className={`inline-flex items-center gap-3 px-5 py-1.5 rounded-full border mb-8 ${isDark ? 'border-blue-500/20 bg-blue-500/5' : 'border-blue-200 bg-blue-50'}`}>
-              <Zap size={14} className="text-blue-500" />
-              <Text className={`text-[9px] font-black tracking-[0.4em] uppercase ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>{t.tag}</Text>
+            <div className={`inline-block px-5 py-2 rounded-full border text-[11px] font-black uppercase tracking-widest mb-6 ${isDark ? 'bg-blue-500/10 border-blue-500/20 text-blue-400' : 'bg-blue-50 border-blue-100 text-blue-600'}`}>
+              {t.tag}
             </div>
-            <h2 className={`text-4xl md:text-5xl lg:text-7xl font-black mb-8 tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>
-              Бодит <span className="text-blue-600">Үр Өгөөж</span>
+            <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tighter leading-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
+              {t.title}
             </h2>
-            <p className={`text-base md:text-xl max-w-2xl mx-auto font-medium ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{t.subtitle}</p>
+            <p className={`text-base md:text-xl max-w-3xl mx-auto font-medium ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{t.subtitle}</p>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
-          
-          {/* Column 1: Operational Efficiency */}
-          <Reveal direction="up" delay={0}>
-            <div className="space-y-6">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-600/20">
-                  <ClipboardCheck size={20} />
-                </div>
-                <div>
-                  <h3 className={`text-sm font-black uppercase tracking-widest ${isDark ? 'text-white' : 'text-slate-900'}`}>Бүтээмж</h3>
-                  <p className="text-[10px] font-bold text-blue-500 uppercase tracking-widest">Efficiency Engine</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 gap-4">
-                {productivityItems.map((item, i) => renderMetricCard(item, i))}
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Column 2: Service Quality */}
-          <Reveal direction="up" delay={100}>
-            <div className="space-y-6">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-600/20">
-                  <ShieldCheck size={20} />
-                </div>
-                <div>
-                  <h3 className={`text-sm font-black uppercase tracking-widest ${isDark ? 'text-white' : 'text-slate-900'}`}>Чанар</h3>
-                  <p className="text-[10px] font-bold text-indigo-500 uppercase tracking-widest">Process Integrity</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 gap-4">
-                {qualityItems.map((item, i) => renderMetricCard(item, i))}
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Column 3: Financial Health */}
-          <Reveal direction="up" delay={200}>
-            <div className="space-y-6">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white shadow-lg shadow-emerald-600/20">
-                  <BarChart3 size={20} />
-                </div>
-                <div>
-                  <h3 className={`text-sm font-black uppercase tracking-widest ${isDark ? 'text-white' : 'text-slate-900'}`}>Санхүү</h3>
-                  <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Portfolio Growth</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 gap-4">
-                {financialItems.map((item, i) => renderMetricCard(item, i))}
-                
-                {/* Final Accent Card */}
-                <div className={`p-8 rounded-2xl border-2 border-dashed flex flex-col items-center justify-center text-center
-                  ${isDark ? 'border-white/10 bg-blue-600/5' : 'border-blue-200 bg-blue-50/50'}
-                `}>
-                   <ShieldAlert className="text-blue-500 mb-4" size={32} />
-                   <h4 className={`text-xs font-black uppercase tracking-widest mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>Эрсдэлгүй Ирээдүй</h4>
-                   <p className="text-[9px] font-bold text-slate-500 uppercase leading-relaxed">
-                     Өгөгдөл бол DebtPro системийн зүрх юм
-                   </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
+        {/* Hero Grid: The Big 4 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20 items-stretch">
+          {heroMetrics.map((item, i) => (
+            <Reveal key={i} delay={i * 150} direction="up" className="h-full">
+              {renderHeroCard(item, i)}
+            </Reveal>
+          ))}
         </div>
+
+        {/* Supporting Metrics Grid */}
+        <Reveal delay={600}>
+          <div className="mt-12">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-500/20 to-transparent"></div>
+              <h4 className={`text-[10px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-600' : 'text-slate-400'}`}>Additional Performance Metrics</h4>
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent via-slate-500/20 to-transparent"></div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+              {supportingMetrics.map((item, i) => (
+                <div key={i} className="h-full">
+                  {renderSupportingCard(item, i)}
+                </div>
+              ))}
+              
+              {/* Trust Badge */}
+              <div className={`p-6 rounded-2xl border-2 border-dashed flex items-center justify-center gap-4 h-full
+                ${isDark ? 'border-white/5 bg-blue-500/5' : 'border-blue-100 bg-blue-50/30'}
+              `}>
+                <ShieldCheck className="text-blue-500 shrink-0" size={24} />
+                <span className={`text-[9px] font-black uppercase tracking-widest ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
+                  Verified Enterprise Results
+                </span>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+
+      {/* Background Orbs */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+        <div className={`absolute top-1/4 left-0 w-[800px] h-[800px] rounded-full blur-[180px] opacity-[0.05] ${isDark ? 'bg-blue-600' : 'bg-blue-400'}`}></div>
+        <div className={`absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full blur-[160px] opacity-[0.03] ${isDark ? 'bg-indigo-600' : 'bg-indigo-400'}`}></div>
       </div>
     </section>
   );

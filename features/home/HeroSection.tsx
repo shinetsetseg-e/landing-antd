@@ -1,43 +1,43 @@
 
-import React, { useState, useEffect, useMemo } from 'react';
-import { Typography, Input, Avatar, Badge, Space } from 'antd';
-import { 
-  ArrowRightOutlined, 
+import {
+  ArrowRightOutlined,
+  BarChartOutlined,
+  BellOutlined,
+  DatabaseOutlined,
+  HistoryOutlined,
+  MenuUnfoldOutlined,
+  MessageOutlined,
+  MoreOutlined,
   PlayCircleFilled,
-  DashboardOutlined, 
-  UserOutlined, 
-  SafetyOutlined, 
-  MessageOutlined, 
-  RiseOutlined, 
-  SearchOutlined, 
-  BellOutlined, 
-  QuestionCircleOutlined, 
-  MenuUnfoldOutlined 
+  QuestionCircleOutlined,
+  RightOutlined,
+  SearchOutlined,
+  SettingOutlined,
+  ThunderboltOutlined,
+  UploadOutlined
 } from '@ant-design/icons';
-import { SectionProps } from '../../shared/types';
-import { i18n } from '../../i18n';
-import { Reveal } from '../../components/ui/Reveal';
+import { Avatar, Badge, Input, Typography } from 'antd';
+import React, { useEffect, useMemo, useState } from 'react';
 import { GlowOrb } from '../../components/ui/GlowOrb';
-import { 
-  PreviewCommandCenter, 
-  PreviewBorrower360, 
-  PreviewLegalPipeline, 
-  PreviewSMSDashboard, 
-  PreviewPerformance 
+import {
+  PreviewBorrower360,
+  PreviewCommandCenter,
+  PreviewLegalPipeline,
+  PreviewSMSDashboard
 } from '../../DashboardPreviews';
+import { i18n } from '../../shared/i18n';
+import { SectionProps } from '../../shared/types';
 
 const { Text } = Typography;
 
 export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
   const t = i18n[lang];
-  const [activeKey, setActiveKey] = useState('dashboard');
+  const [activeKey, setActiveKey] = useState('info');
   const [scrollY, setScrollY] = useState(0);
   const isDark = theme === 'dark';
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+    const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -49,35 +49,71 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
     return Math.min(scrollY / 800, 1);
   }, [scrollY, isMobile]);
   
-  const titleScale = 1 - (scrollProgress * 0.45);
-  const titleOpacity = 1 - (scrollProgress * 2.2);
-  const titleTranslateY = scrollProgress * -140;
+  const titleScale = 1 - (scrollProgress * 0.4);
+  const titleOpacity = 1 - (scrollProgress * 2.5);
+  const titleTranslateY = scrollProgress * -150;
 
-  const mockupScale = isMobile ? 1 : 0.85 + (scrollProgress * 0.15);
-  const mockupTranslateY = isMobile ? 0 : (1 - scrollProgress) * 200;
-  const mockupOpacity = isMobile ? 1 : 0.3 + (scrollProgress * 0.7);
-  const mockupBlur = isMobile ? 0 : (1 - scrollProgress) * 12;
+  const mockupScale = isMobile ? 1 : 0.88 + (scrollProgress * 0.12);
+  const mockupTranslateY = isMobile ? 0 : (1 - scrollProgress) * 150;
+  const mockupOpacity = isMobile ? 1 : 0.4 + (scrollProgress * 0.6);
 
-  const menuItems = [
-    { key: 'dashboard', icon: <DashboardOutlined />, label: t.hero.carousel.dashboard, component: <PreviewCommandCenter lang={lang} theme={theme}/> },
-    { key: 'profile', icon: <UserOutlined />, label: t.hero.carousel.profile, component: <PreviewBorrower360 lang={lang} theme={theme}/> },
-    { key: 'legal', icon: <SafetyOutlined />, label: t.hero.carousel.legal, component: <PreviewLegalPipeline lang={lang} theme={theme}/> },
-    { key: 'sms', icon: <MessageOutlined />, label: t.hero.carousel.sms, component: <PreviewSMSDashboard lang={lang} theme={theme}/> },
-    { key: 'performance', icon: <RiseOutlined />, label: t.hero.carousel.performance, component: <PreviewPerformance lang={lang} theme={theme}/> },
+  // Exact labels from the provided system screenshots
+  const sidebarItems = [
+    { 
+      key: 'info', 
+      icon: <DatabaseOutlined />, 
+      label: lang === 'mn' ? 'Мэдээлэл' : 'Information',
+      subItems: [
+        { label: lang === 'mn' ? 'Харилцагч' : 'Borrowers' },
+        { label: lang === 'mn' ? 'Зээл' : 'Loans' },
+        { label: lang === 'mn' ? 'Ажилтан' : 'Employees' }
+      ],
+      component: <PreviewBorrower360 lang={lang} theme="light"/> 
+    },
+    { 
+      key: 'action', 
+      icon: <ThunderboltOutlined />, 
+      label: lang === 'mn' ? 'Ажиллагаа' : 'Activities',
+      component: <PreviewLegalPipeline lang={lang} theme="light"/> 
+    },
+    { 
+      key: 'files', 
+      icon: <UploadOutlined />, 
+      label: lang === 'mn' ? 'Файл оруулах' : 'File Upload',
+      component: <PreviewCommandCenter lang={lang} theme="light"/>
+    },
+    { 
+      key: 'reports', 
+      icon: <BarChartOutlined />, 
+      label: lang === 'mn' ? 'Тайлан хяналт' : 'Reporting',
+      component: <PreviewCommandCenter lang={lang} theme="light"/> 
+    },
+    { 
+      key: 'messages', 
+      icon: <MessageOutlined />, 
+      label: lang === 'mn' ? 'Мессеж' : 'Messages',
+      component: <PreviewSMSDashboard lang={lang} theme="light"/> 
+    },
   ];
 
-  const currentView = menuItems.find(m => m.key === activeKey);
+  const bottomItems = [
+    { key: 'help', icon: <QuestionCircleOutlined />, label: lang === 'mn' ? 'Тусламж' : 'Help' },
+    { key: 'audit', icon: <HistoryOutlined />, label: lang === 'mn' ? 'Аудит лог' : 'Audit Log' },
+    { key: 'settings', icon: <SettingOutlined />, label: lang === 'mn' ? 'Тохиргоо' : 'Settings' },
+  ];
+
+  const currentView = sidebarItems.find(m => m.key === activeKey) || sidebarItems[0];
 
   return (
-    <header className="relative min-h-[110dvh] md:min-h-[175vh] flex flex-col items-center">
+    <header className="relative min-h-[110dvh] md:min-h-[180vh] flex flex-col items-center">
       <div className="fixed inset-0 grid-bg-complex -z-10 pointer-events-none"></div>
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <GlowOrb color="bg-blue-600" className="top-[-10%] left-[-10%] opacity-[0.06] blur-[100px] md:blur-[220px]" size="100vw" />
-        <GlowOrb color="bg-indigo-500" className="bottom-[-10%] right-[-10%] opacity-[0.06] blur-[100px] md:blur-[240px]" size="90vw" />
+        <GlowOrb color="bg-blue-600" className="top-[-10%] left-[-10%] opacity-[0.08] blur-[120px] md:blur-[240px]" size="120vw" />
       </div>
 
+      {/* Landing Page Content (Hero Text) */}
       <div 
-        className="w-full min-h-[70dvh] md:h-screen flex flex-col items-center justify-center md:sticky top-0 z-20 pointer-events-none px-6 py-12 md:pb-32 will-change-transform"
+        className="w-full min-h-[70dvh] md:h-screen flex flex-col items-center justify-center md:sticky top-0 z-20 pointer-events-none px-6 py-12 will-change-transform"
         style={{ 
           transform: isMobile ? 'none' : `scale(${titleScale}) translateY(${titleTranslateY}px)`,
           opacity: isMobile ? 1 : Math.max(0, titleOpacity),
@@ -85,101 +121,189 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
         }}
       >
         <div className="flex flex-col items-center w-full max-w-7xl pointer-events-auto text-center">
-          <div className={`inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-1.5 md:py-2.5 rounded-full border mb-6 md:mb-12 animate-content-entrance ${isDark ? 'border-blue-500/20 bg-blue-500/10' : 'border-blue-100 bg-blue-50'}`}>
-            <div className="w-1.5 md:w-2 h-1.5 md:h-2 rounded-full bg-blue-500 animate-pulse"></div>
-            <Text className={`text-[9px] md:text-[11px] font-black tracking-[0.2em] md:tracking-[0.4em] uppercase ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>{t.hero.tag}</Text>
-          </div>
           
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[9.5rem] font-black mb-6 md:mb-12 leading-[1.1] md:leading-[0.8] tracking-tighter gradient-text-hero animate-content-entrance" style={{ animationDelay: '100ms' }}>
+          <h1 className="text-5xl sm:text-7xl md:text-[9rem] font-black mb-8 leading-[0.9] tracking-tighter gradient-text-hero animate-content-entrance" style={{ animationDelay: '100ms' }}>
             {lang === 'mn' ? (
-              <>ИРЭЭДҮЙН <br className="hidden md:block"/>ЗЭЭЛИЙН <br className="hidden md:block"/>УДИРДЛАГА</>
+              <>ЗЭЭЛИЙН <br className="hidden md:block"/>ХЯНАЛТЫН <br className="hidden md:block"/><span className="text-blue-600">ШИНЭ ЭРИН</span></>
             ) : (
-              <>FUTURE-PROOF <br className="hidden md:block"/>LOAN <br className="hidden md:block"/>RECOVERY</>
+              <>THE UNIFIED <br className="hidden md:block"/>CONTROL <br className="hidden md:block"/><span className="text-blue-600">INTERFACE</span></>
             )}
           </h1>
           
-          <p className={`text-base md:text-xl lg:text-2xl max-w-[300px] sm:max-w-md md:max-w-3xl mb-10 md:mb-16 font-medium leading-relaxed animate-content-entrance ${isDark ? 'text-slate-400' : 'text-slate-600'}`} style={{ animationDelay: '200ms' }}>
+          <p className={`text-base md:text-xl lg:text-2xl max-w-[320px] sm:max-w-lg md:max-w-3xl mb-12 font-medium leading-relaxed animate-content-entrance ${isDark ? 'text-slate-400' : 'text-slate-600'}`} style={{ animationDelay: '200ms' }}>
             {t.hero.subtitle}
           </p>
           
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6 animate-content-entrance w-full px-4" style={{ animationDelay: '300ms' }}>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-5 animate-content-entrance w-full px-4" style={{ animationDelay: '300ms' }}>
             <button 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="h-14 md:h-20 w-full sm:w-[260px] md:w-[320px] rounded-xl md:rounded-2xl bg-blue-600 text-white text-[11px] md:text-[13px] font-black uppercase tracking-[0.15em] md:tracking-[0.25em] flex items-center justify-center gap-3 md:gap-4 shadow-2xl shadow-blue-600/40 hover:bg-blue-500 transition-all duration-300 active:scale-95"
+              className="h-16 md:h-20 w-full sm:w-[280px] md:w-[320px] rounded-2xl bg-blue-600 text-white text-[12px] md:text-[13px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-4 shadow-2xl shadow-blue-600/40 hover:bg-blue-500 transition-all active:scale-95"
             >
               {t.hero.cta}
-              <ArrowRightOutlined className="text-sm md:text-xl" />
+              <ArrowRightOutlined className="text-xl" />
             </button>
             <button 
-              className={`h-14 md:h-20 w-full sm:w-[260px] md:w-[320px] rounded-xl md:rounded-2xl text-[11px] md:text-[13px] font-black uppercase tracking-[0.15em] md:tracking-[0.25em] border flex items-center justify-center gap-3 md:gap-4 transition-all duration-300 active:scale-95 ${isDark ? 'bg-white/5 border-white/10 text-white hover:bg-white/10' : 'bg-slate-100 border-slate-200 text-slate-900 hover:bg-slate-200'}`}
+              className={`h-16 md:h-20 w-full sm:w-[280px] md:w-[320px] rounded-2xl text-[12px] md:text-[13px] font-black uppercase tracking-[0.2em] border flex items-center justify-center gap-4 transition-all active:scale-95 ${isDark ? 'bg-white/5 border-white/10 text-white hover:bg-white/10' : 'bg-slate-50 border-slate-200 text-slate-900 hover:bg-slate-100'}`}
             >
-              <PlayCircleFilled className="text-blue-500 text-2xl md:text-3xl" />
+              <PlayCircleFilled className="text-blue-500 text-3xl" />
               {t.hero.secondary}
             </button>
           </div>
         </div>
       </div>
 
+      {/* Realistic System Mockup - Mimicking screenshots 1-5 */}
       <div 
-        className="w-full max-w-[98vw] xl:max-w-[1400px] mx-auto px-2 md:px-6 mt-12 md:mt-[65vh] pb-24 md:pb-48 relative z-10 transition-all duration-300 ease-out will-change-transform"
+        className="w-full max-w-[90vw] xl:max-w-[1420px] mx-auto px-2 md:px-6 mt-16 md:mt-[60vh] pb-32 relative z-10 transition-all duration-300 ease-out will-change-transform"
         style={{ 
           transform: isMobile ? 'none' : `scale(${mockupScale}) translateY(${mockupTranslateY}px)`,
           opacity: isMobile ? 1 : Math.max(0, mockupOpacity),
-          filter: isMobile ? 'none' : `blur(${mockupBlur}px)`
         }}
       >
-        <div className="relative">
-          <div className={`relative z-10 glass-card-pro rounded-[1.5rem] md:rounded-[4.5rem] overflow-hidden border flex flex-col md:flex-row h-auto md:h-[820px] ${isDark ? 'border-white/5' : 'border-slate-200'}`}>
-             <aside className={`w-full md:w-20 lg:w-64 flex flex-row md:flex-col border-b md:border-b-0 md:border-r transition-colors p-3 md:p-0 overflow-x-auto no-scrollbar ${isDark ? 'bg-slate-950/60 border-white/5' : 'bg-slate-50 border-slate-100'}`}>
-                <div className="p-4 lg:p-10 hidden md:flex items-center gap-5">
-                   <div className="w-8 h-8 lg:w-10 lg:h-10 bg-blue-600 rounded-lg lg:rounded-xl flex items-center justify-center font-black text-white shrink-0">D</div>
-                   <span className={`hidden lg:block text-[11px] font-black tracking-[0.25em] ${isDark ? 'text-white' : 'text-slate-900'}`}>DEBTPRO_OS</span>
+        <div className="relative group">
+          {/* Main Container mimicking Screenshot layout */}
+          <div className={`relative z-10 glass-card-pro rounded-[2rem] md:rounded-[4rem] overflow-hidden border flex flex-col md:flex-row h-auto md:h-[920px] shadow-[0_50px_100px_rgba(0,0,0,0.2)] ${isDark ? 'border-white/5 bg-[#0b0f1a]/95' : 'border-slate-200 bg-white'}`}>
+             
+             {/* Sidebar - Perfectly matching screenshots 1 & 2 */}
+             <aside className={`w-full md:w-64 flex flex-row md:flex-col border-b md:border-b-0 md:border-r transition-colors p-4 md:p-0 overflow-x-auto no-scrollbar ${isDark ? 'bg-[#0b0f1a] border-white/5' : 'bg-[#fcfdfe] border-slate-100'}`}>
+                <div className="p-6 lg:p-10 hidden md:flex items-center gap-4 border-b border-white/5 md:mb-4">
+                   <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white shadow-lg text-xl">D</div>
+                   <div className="flex flex-col">
+                      <span className={`text-[13px] font-black tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>DebtPro</span>
+                      <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">KCH_CRM_V1</span>
+                   </div>
                 </div>
                 
-                <nav className="flex flex-row md:flex-col flex-1 px-1 md:px-5 space-x-2 md:space-x-0 md:space-y-3 md:mt-4">
-                  {menuItems.map((item) => (
+                <nav className="flex flex-row md:flex-col flex-1 px-2 md:px-4 space-x-2 md:space-x-0 md:space-y-1">
+                  {sidebarItems.map((item) => (
+                    <div key={item.key} className="flex flex-col w-full">
+                      <button
+                        onClick={() => setActiveKey(item.key)}
+                        className={`flex items-center justify-between px-4 py-3.5 rounded-xl transition-all duration-300 group shrink-0 w-full
+                          ${activeKey === item.key 
+                            ? 'bg-blue-600/10 text-blue-500 border border-blue-500/20 shadow-sm' 
+                            : `text-slate-500 hover:bg-slate-500/5`}`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className={`text-lg ${activeKey === item.key ? 'text-blue-500' : ''}`}>{item.icon}</span>
+                          <span className={`text-[12px] font-bold tracking-tight ${activeKey === item.key ? 'text-blue-600' : ''}`}>
+                            {item.label}
+                          </span>
+                        </div>
+                        {item.subItems && <RightOutlined className={`text-[9px] transition-transform ${activeKey === item.key ? 'rotate-90' : ''}`} />}
+                      </button>
+                      
+                      {/* Sub-menu logic mimicking Screenshot 1 expanded state */}
+                      {activeKey === item.key && item.subItems && (
+                        <div className="hidden md:flex flex-col pl-10 pr-4 mt-1 space-y-1 animate-slide-up">
+                          {item.subItems.map((sub, si) => (
+                            <button key={si} className="text-left py-2.5 px-3 rounded-lg text-[11px] font-bold text-blue-500/70 hover:text-blue-500 hover:bg-blue-500/5 transition-colors">
+                              {sub.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                  
+                  <div className="hidden md:block py-4 border-t border-slate-500/10 mt-6 opacity-30"></div>
+                  
+                  {bottomItems.map((item) => (
                     <button
                       key={item.key}
-                      onClick={() => setActiveKey(item.key)}
-                      className={`flex items-center justify-center lg:justify-start gap-4 px-3 md:px-5 py-2.5 md:py-4 rounded-xl lg:rounded-[2rem] transition-all duration-300 group shrink-0
-                        ${activeKey === item.key 
-                          ? (isDark ? 'bg-blue-600/20 text-blue-400 border border-blue-500/20' : 'bg-blue-600 text-white shadow-lg') 
-                          : (isDark ? 'text-slate-500 hover:bg-white/5' : 'text-slate-400 hover:bg-slate-200/50')}`}
+                      className="hidden md:flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 hover:text-blue-500 transition-colors w-full"
                     >
-                      <span className={`text-lg md:text-xl transition-transform group-hover:scale-110`}>{item.icon}</span>
-                      <span className={`hidden lg:block text-[10px] font-black uppercase tracking-[0.2em]`}>
-                        {item.label}
-                      </span>
+                      <span className="text-base">{item.icon}</span>
+                      <span className="text-[11px] font-bold">{item.label}</span>
                     </button>
                   ))}
                 </nav>
+
+                <div className="p-6 mt-auto hidden md:block">
+                   <div className={`flex items-center gap-3 p-3 rounded-2xl ${isDark ? 'bg-white/5 border border-white/5' : 'bg-white border border-slate-100 shadow-sm'}`}>
+                      <Avatar size="small" className="bg-blue-600" src="https://api.dicebear.com/7.x/avataaars/svg?seed=A" />
+                      <div className="flex-1 overflow-hidden">
+                         <div className={`text-[10px] font-black truncate ${isDark ? 'text-white' : 'text-slate-900'}`}>A.Admin</div>
+                         <div className="text-[8px] font-bold text-emerald-500 uppercase tracking-widest">Active_Session</div>
+                      </div>
+                      <MoreOutlined className="text-slate-400" />
+                   </div>
+                </div>
              </aside>
 
-             <main className="flex-1 flex flex-col overflow-hidden min-h-[400px] md:min-h-0">
-                <header className={`h-14 md:h-24 border-b flex items-center justify-between px-4 md:px-12 transition-colors ${isDark ? 'bg-slate-950/20 border-white/5' : 'bg-white/40 border-slate-100'}`}>
-                   <div className="flex items-center gap-3 md:gap-10 flex-1">
-                      <MenuUnfoldOutlined className="text-slate-500 cursor-pointer hover:text-blue-500 text-lg md:text-2xl" />
-                      <div className="hidden sm:flex items-center gap-3 text-[9px] md:text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">
-                         <span>Network</span>
-                         <span className="text-slate-800">/</span>
-                         <span className={isDark ? 'text-white' : 'text-slate-900'}>{currentView?.label}</span>
+             {/* Main Content Area - mimicking Breadcrumbs and Header of Screenshot 1, 3, 4, 5 */}
+             <main className={`flex-1 flex flex-col overflow-hidden ${isDark ? 'bg-[#080b12]' : 'bg-[#f0f2f5]'}`}>
+                {/* System Header */}
+                <header className={`h-16 md:h-20 border-b flex items-center justify-between px-6 md:px-10 ${isDark ? 'bg-[#0b0f1a] border-white/5' : 'bg-white border-slate-200'}`}>
+                   <div className="flex items-center gap-8 flex-1">
+                      <MenuUnfoldOutlined className="text-slate-400 cursor-pointer hover:text-blue-500 text-xl" />
+                      <div className="hidden md:flex items-center gap-2 text-[11px] font-medium text-slate-400">
+                         <span className="hover:text-blue-500 cursor-pointer">Мэдээлэл</span>
+                         <span className="text-slate-300">/</span>
+                         <span className="text-blue-500 font-bold">{currentView?.label}</span>
                       </div>
                    </div>
-                   <div className="flex items-center gap-4">
-                      <Avatar shape="square" size="small" className="bg-blue-600 rounded-lg md:hidden">A</Avatar>
-                      <Avatar shape="square" size="large" className="bg-blue-600 rounded-xl hidden md:flex">A</Avatar>
+                   <div className="flex items-center gap-6">
+                      <Input 
+                         prefix={<SearchOutlined className="text-slate-300" />} 
+                         placeholder="Түргэн хайлт..." 
+                         className={`hidden lg:flex w-72 h-10 rounded-xl border text-[11px] font-medium ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-50 border-slate-100'}`}
+                      />
+                      <Badge dot color="#ef4444">
+                        <BellOutlined className="text-xl text-slate-400 hover:text-blue-500 cursor-pointer transition-colors" />
+                      </Badge>
+                      <div className="w-px h-6 bg-slate-300/30 mx-2"></div>
+                      <Avatar shape="square" size="default" className="bg-blue-600 rounded-lg shadow-lg">A</Avatar>
                    </div>
                 </header>
 
-                <div className={`flex-1 overflow-y-auto p-4 md:p-12 no-scrollbar ${isDark ? 'bg-slate-900/20' : 'bg-slate-50/20'}`}>
-                   <div className="animate-content-entrance w-full h-full">
-                      {currentView?.component}
+                {/* Dashboard Canvas Area - Using white base to ensure screenshots pop */}
+                <div className="flex-1 overflow-y-auto p-4 md:p-8 no-scrollbar relative">                   
+                   <div key={activeKey} className="animate-content-entrance w-full h-full min-h-[600px] rounded-2xl overflow-hidden border border-slate-200/50 bg-[#ffffff]">
+                      {/* Actual Component / UI Simulation rendered on neutral white for clarity */}
+                      <div className="p-2 h-full">
+                        {currentView.component}
+                      </div>
                    </div>
+
+                   {/* Subtle shadow overlay to blend interface */}
+                   <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.03)]"></div>
                 </div>
              </main>
           </div>
+          
+          {/* Decorative Glows */}
+          <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-600/20 blur-[120px] rounded-full -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+          <div className="absolute -top-20 -right-20 w-80 h-80 bg-indigo-600/20 blur-[120px] rounded-full -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
         </div>
       </div>
+
+      <style>{`
+        .gradient-text-hero {
+          background: linear-gradient(to bottom, #fff 40%, #94a3b8 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        .light .gradient-text-hero {
+          background: linear-gradient(to bottom, #0f172a 40%, #64748b 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        @keyframes content-entrance {
+          from { opacity: 0; transform: translateY(40px) scale(0.98); filter: blur(20px); }
+          to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+        .animate-content-entrance {
+          animation: content-entrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes slide-up {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up {
+          animation: slide-up 0.4s ease-out forwards;
+        }
+      `}</style>
     </header>
   );
 };

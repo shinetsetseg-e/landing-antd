@@ -1,8 +1,8 @@
 
+import { ArrowRight, Zap } from 'lucide-react';
 import React from 'react';
-import { Shield, Cpu, ArrowRight, Zap } from 'lucide-react';
-import { i18n, Language } from './i18n';
 import { Reveal } from './CommonUI';
+import { i18n, Language } from './shared/i18n';
 
 interface FooterProps {
   lang: Language;

@@ -1,15 +1,15 @@
 
-import React, { useState, useEffect } from 'react';
-import { Button, Segmented, Space, Typography, Dropdown, Tooltip } from 'antd';
-import { 
-  DownOutlined,
-  ThunderboltOutlined,
-  BarChartOutlined,
-  SafetyCertificateOutlined,
-  SunOutlined,
-  MoonOutlined
+import {
+    BarChartOutlined,
+    DownOutlined,
+    MoonOutlined,
+    SafetyCertificateOutlined,
+    SunOutlined,
+    ThunderboltOutlined
 } from '@ant-design/icons';
-import { i18n, Language } from './i18n';
+import { Button, Dropdown, Segmented, Space, Tooltip, Typography } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { i18n, Language } from './shared/i18n';
 
 const { Text } = Typography;
 

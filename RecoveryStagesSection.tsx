@@ -1,9 +1,9 @@
 
-import React from 'react';
 import { Typography } from 'antd';
-import { SectionProps } from './shared/types';
-import { i18n } from './i18n';
+import React from 'react';
 import { Reveal } from './CommonUI';
+import { i18n } from './shared/i18n';
+import { SectionProps } from './shared/types';
 
 const { Text } = Typography;
 

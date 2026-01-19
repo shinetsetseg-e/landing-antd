@@ -1,20 +1,20 @@
 
-import React from 'react';
-import { Typography, Rate, Avatar } from 'antd';
-import { UserOutlined, CheckCircleFilled } from '@ant-design/icons';
-import { 
-  Quote, 
-  Shield, 
-  CircleDollarSign, 
-  Cpu, 
-  Zap, 
-  Activity, 
-  Globe, 
-  Building2, 
-  Landmark 
+import { CheckCircleFilled, UserOutlined } from '@ant-design/icons';
+import { Avatar, Rate, Typography } from 'antd';
+import {
+    Activity,
+    Building2,
+    CircleDollarSign,
+    Cpu,
+    Globe,
+    Landmark,
+    Quote,
+    Shield,
+    Zap
 } from 'lucide-react';
-import { i18n, Language } from './i18n';
+import React from 'react';
 import { Reveal } from './CommonUI';
+import { i18n, Language } from './shared/i18n';
 
 const { Text } = Typography;
 

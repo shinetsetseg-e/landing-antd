@@ -1,8 +1,8 @@
 
+import { CheckCircle2, ShieldCheck, ShieldPlus } from 'lucide-react';
 import React from 'react';
-import { ShieldCheck, Zap, Globe, AlertTriangle, CheckCircle2, XCircle, Layout, Building2, Landmark, ArrowRight } from 'lucide-react';
-import { i18n, Language } from './i18n';
 import { Reveal } from './CommonUI';
+import { i18n, Language } from './shared/i18n';
 
 interface WhyDebtProSectionProps {
   lang: Language;
@@ -35,8 +35,8 @@ export const WhyDebtProSection: React.FC<WhyDebtProSectionProps> = ({ lang, them
           <Reveal direction="right">
             <div className={`h-full p-8 md:p-10 rounded-[2.5rem] border flex flex-col ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-white border-slate-200 shadow-xl shadow-slate-200/50'}`}>
               <div className="flex items-center gap-5 mb-8">
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${isDark ? 'bg-red-500/10 text-red-500' : 'bg-red-50 text-red-600'}`}>
-                  <AlertTriangle size={24} />
+                <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-blue-600/20">
+                  <ShieldPlus size={24} />
                 </div>
                 <h3 className={`text-xl md:text-2xl font-black tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
                   {t.whyDebtPro.legacy.title}
@@ -45,7 +45,7 @@ export const WhyDebtProSection: React.FC<WhyDebtProSectionProps> = ({ lang, them
               <ul className="space-y-4 md:space-y-5 flex-1">
                 {t.whyDebtPro.legacy.items.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-4">
-                    <XCircle size={18} className="text-red-500 mt-1 shrink-0" />
+                    <CheckCircle2 size={18} className="text-blue-500 mt-1 shrink-0" />
                     <span className={`text-sm md:text-base font-medium ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{item}</span>
                   </li>
                 ))}
@@ -55,12 +55,12 @@ export const WhyDebtProSection: React.FC<WhyDebtProSectionProps> = ({ lang, them
 
           {/* Advantage Card */}
           <Reveal direction="left">
-            <div className={`h-full p-8 md:p-10 rounded-[2.5rem] border flex flex-col relative overflow-hidden ${isDark ? 'bg-blue-600/5 border-blue-500/20' : 'bg-blue-50/30 border-blue-200 shadow-xl'}`}>
+            <div className={`h-full p-8 md:p-10 rounded-[2.5rem] border flex flex-col relative overflow-hidden ${isDark ? 'bg-emerald-600/5 border-emerald-500/20' : 'bg-emerald-50/30 border-emerald-200 shadow-xl'}`}>
               <div className="absolute top-0 right-0 p-8 opacity-5">
-                <ShieldCheck size={100} className="text-blue-500" />
+                <ShieldCheck size={100} className="text-emerald-500" />
               </div>
               <div className="flex items-center gap-5 mb-8 relative z-10">
-                <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-blue-600/20">
+                <div className="w-12 h-12 bg-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-emerald-600/20">
                   <ShieldCheck size={24} />
                 </div>
                 <h3 className={`text-xl md:text-2xl font-black tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>

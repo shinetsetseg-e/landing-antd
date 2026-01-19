@@ -1,12 +1,14 @@
 
-import React, { useState, useEffect } from 'react';
-import { Button, Segmented, Space, Typography, Dropdown, Tooltip } from 'antd';
-import { 
-  DownOutlined, SunOutlined, MoonOutlined, 
-  ThunderboltOutlined, BarChartOutlined, MessageOutlined, FileTextOutlined 
+import {
+  BarChartOutlined,
+  MoonOutlined,
+  SunOutlined,
+  ThunderboltOutlined
 } from '@ant-design/icons';
-import { Language, ThemeMode } from '../../shared/types';
+import { Button, Segmented, Space, Typography } from 'antd';
+import React, { useEffect, useState } from 'react';
 import { i18n } from '../../shared/i18n';
+import { Language, ThemeMode } from '../../shared/types';
 
 const { Text } = Typography;
 
@@ -56,6 +58,14 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
     }
   ];
 
+  // User-defined mapping for navigation
+  const navItems = [
+    { key: 'product', label: t.nav.product, target: 'lifecycle' },
+    { key: 'why', label: t.nav.why, target: 'metrics' },
+    { key: 'solutions', label: t.nav.solutions, target: 'product' },
+    { key: 'pricing', label: t.nav.pricing, target: 'pricing' },
+  ];
+
   return (
     <div className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-4 md:px-6 ${scrolled ? 'pt-2 md:pt-4' : 'pt-4 md:pt-10'}`}>
       <nav className={`max-w-7xl mx-auto flex justify-between items-center transition-all duration-500 h-16 md:h-20 px-4 md:px-10 rounded-2xl md:rounded-[24px] backdrop-blur-xl border 
@@ -68,16 +78,23 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
         </div>
 
         <div className="hidden xl:flex items-center gap-8">
-          <Dropdown menu={{ items: productMenuItems }} placement="bottomCenter">
-            <Button type="text" className={`uppercase text-[10px] font-black tracking-[0.2em] ${isDark ? 'text-slate-300' : 'text-slate-50'}`}>
-              {t.nav.product} <DownOutlined style={{ fontSize: 9 }} />
-            </Button>
-          </Dropdown>
-          {['solutions', 'why', 'pricing', 'customers'].map((key) => (
-            <Button key={key} type="text" onClick={() => scrollTo(key)} className={`uppercase text-[10px] font-black tracking-[0.2em] ${isDark ? 'text-slate-300' : 'text-slate-50'}`}>
-              {(t.nav as any)[key]}
+          {navItems.map((item) => (
+            <Button 
+              key={item.key} 
+              type="text" 
+              onClick={() => scrollTo(item.target)} 
+              className={`uppercase text-[10px] font-black tracking-[0.2em] ${isDark ? 'text-slate-300 hover:text-white' : 'text-slate-500 hover:text-blue-600'}`}
+            >
+              {item.label}
             </Button>
           ))}
+          <Button 
+            type="text" 
+            onClick={() => scrollTo('customers')} 
+            className={`uppercase text-[10px] font-black tracking-[0.2em] ${isDark ? 'text-slate-300 hover:text-white' : 'text-slate-500 hover:text-blue-600'}`}
+          >
+            {t.nav.customers}
+          </Button>
         </div>
 
         <div className="flex items-center gap-2 md:gap-6">
@@ -101,7 +118,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
             type="primary" 
             size={window.innerWidth < 768 ? "small" : "middle"}
             className="h-8 md:h-12 px-4 md:px-8 text-[9px] md:text-[11px] font-black uppercase tracking-wider"
-            onClick={() => scrollTo('contact')}
+            onClick={() => scrollTo('pricing')}
           >
             {t.nav.demo}
           </Button>

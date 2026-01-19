@@ -1,20 +1,16 @@
 
-import React, { useState, useEffect } from 'react';
-import { 
-  Users, 
-  Send,
-  Check,
-  MoreHorizontal,
-  Car,
-  Home,
-  Link,
-  PhoneCall,
-  Activity,
-  Cpu,
-  Zap
+import {
+    Car,
+    Check,
+    Home,
+    Link,
+    PhoneCall,
+    Send,
+    Users
 } from 'lucide-react';
-import { i18n, Language } from './i18n';
+import React, { useEffect, useState } from 'react';
 import { Reveal } from './CommonUI';
+import { i18n, Language } from './shared/i18n';
 
 interface ShowcaseSectionProps {
   lang: Language;

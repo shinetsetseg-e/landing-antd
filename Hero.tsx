@@ -1,28 +1,28 @@
 
-import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { Typography, Input, Avatar, Badge, Space } from 'antd';
-import { 
-  ArrowRightOutlined, 
-  PlayCircleFilled,
-  DashboardOutlined, 
-  UserOutlined, 
-  SafetyOutlined, 
-  MessageOutlined, 
-  RiseOutlined, 
-  SearchOutlined, 
-  BellOutlined, 
-  QuestionCircleOutlined, 
-  MenuUnfoldOutlined 
+import {
+    ArrowRightOutlined,
+    BellOutlined,
+    DashboardOutlined,
+    MenuUnfoldOutlined,
+    MessageOutlined,
+    PlayCircleFilled,
+    QuestionCircleOutlined,
+    RiseOutlined,
+    SafetyOutlined,
+    SearchOutlined,
+    UserOutlined
 } from '@ant-design/icons';
-import { i18n, Language } from './i18n';
-import { Reveal, GlowOrb } from './CommonUI';
-import { 
-  PreviewCommandCenter, 
-  PreviewBorrower360, 
-  PreviewLegalPipeline, 
-  PreviewSMSDashboard, 
-  PreviewPerformance 
+import { Avatar, Badge, Input, Space, Typography } from 'antd';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { GlowOrb } from './CommonUI';
+import {
+    PreviewBorrower360,
+    PreviewCommandCenter,
+    PreviewLegalPipeline,
+    PreviewPerformance,
+    PreviewSMSDashboard
 } from './DashboardPreviews';
+import { i18n, Language } from './shared/i18n';
 
 const { Text } = Typography;
 

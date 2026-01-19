@@ -1,8 +1,8 @@
 
-import React from 'react';
 import { Collapse, Typography } from 'antd';
-import { i18n, Language } from './i18n';
+import React from 'react';
 import { Reveal } from './CommonUI';
+import { i18n, Language } from './shared/i18n';
 
 const { Text } = Typography;
 

@@ -1,17 +1,17 @@
 
-import React from 'react';
-import { Steps, Typography, Card, Badge } from 'antd';
-import { 
-  PhoneOutlined, 
-  MessageOutlined, 
-  EnvironmentOutlined, 
-  SafetyOutlined, 
-  FileDoneOutlined,
+import {
   CheckCircleOutlined,
-  DollarCircleOutlined
+  DollarCircleOutlined,
+  EnvironmentOutlined,
+  FileDoneOutlined,
+  MessageOutlined,
+  PhoneOutlined,
+  SafetyOutlined
 } from '@ant-design/icons';
-import { i18n, Language } from './i18n';
+import { Badge, Card, Steps, Typography } from 'antd';
+import React from 'react';
 import { Reveal } from './CommonUI';
+import { i18n, Language } from './shared/i18n';
 
 const { Title, Paragraph } = Typography;
 

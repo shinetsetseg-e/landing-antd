@@ -1,18 +1,18 @@
 
-import React, { useState, useRef, useEffect } from 'react';
-import { Button, Input, List, Avatar, Card, Space, Typography, Tooltip, Badge } from 'antd';
-import { 
-  SendOutlined, 
-  RobotOutlined, 
-  UserOutlined, 
-  CloseOutlined, 
+import {
+  CloseOutlined,
+  LoadingOutlined,
   MessageFilled,
   MinusOutlined,
+  RobotOutlined,
+  SendOutlined,
   ThunderboltFilled,
-  LoadingOutlined
+  UserOutlined
 } from '@ant-design/icons';
 import { GoogleGenAI } from "@google/genai";
-import { i18n, Language } from './i18n';
+import { Avatar, Badge, Button, Card, Input, Space, Typography } from 'antd';
+import React, { useEffect, useRef, useState } from 'react';
+import { Language } from './shared/i18n';
 
 const { Text } = Typography;
 

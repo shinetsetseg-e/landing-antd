@@ -1,14 +1,14 @@
 
-import React from 'react';
-import { Card, Table, Typography, Row, Col, Badge, Space } from 'antd';
-import { 
-  CloseCircleOutlined, 
-  CheckCircleOutlined, 
-  RocketOutlined, 
-  FileExcelOutlined 
+import {
+    CheckCircleOutlined,
+    CloseCircleOutlined,
+    FileExcelOutlined,
+    RocketOutlined
 } from '@ant-design/icons';
-import { i18n, Language } from './i18n';
-import { Reveal, ExcelChaosAnimation, DebtProOrderAnimation } from './CommonUI';
+import { Col, Row, Typography } from 'antd';
+import React from 'react';
+import { DebtProOrderAnimation, ExcelChaosAnimation, Reveal } from './CommonUI';
+import { i18n, Language } from './shared/i18n';
 
 const { Title, Text, Paragraph } = Typography;
 
