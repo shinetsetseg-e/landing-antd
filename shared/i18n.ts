@@ -5,7 +5,6 @@ export const i18n = {
       product: 'Системийн тухай',
       solutions: 'Шийдлүүд',
       why: 'Давуу тал',
-      customers: 'Харилцагчид',
       pricing: 'Үнийн санал',
       resources: 'Мэдлэг',
       faq: 'FAQ',

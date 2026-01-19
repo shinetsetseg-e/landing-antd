@@ -1,6 +1,5 @@
 
 import {
-  ArrowRightOutlined,
   BarChartOutlined,
   BellOutlined,
   DatabaseOutlined,
@@ -8,7 +7,6 @@ import {
   MenuUnfoldOutlined,
   MessageOutlined,
   MoreOutlined,
-  PlayCircleFilled,
   QuestionCircleOutlined,
   RightOutlined,
   SearchOutlined,
@@ -108,7 +106,7 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
 
       {/* Landing Page Content (Hero Text) */}
       <div 
-        className="w-full min-h-[70dvh] md:h-screen flex flex-col items-center justify-center md:sticky top-0 z-20 pointer-events-none px-6 py-12 will-change-transform"
+        className="w-full min-h-[70dvh] md:h-screen flex flex-col items-center justify-center md:sticky top-10 z-20 pointer-events-none px-6 py-12 will-change-transform"
         style={{ 
           transform: isMobile ? 'none' : `scale(${titleScale}) translateY(${titleTranslateY}px)`,
           opacity: isMobile ? 1 : Math.max(0, titleOpacity),
@@ -116,11 +114,6 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
         }}
       >
         <div className="flex flex-col items-center w-full max-w-7xl pointer-events-auto text-center">
-          <div className={`inline-flex items-center gap-2 md:gap-3 px-5 py-2 rounded-full border mb-8 animate-content-entrance ${isDark ? 'border-blue-500/20 bg-blue-500/10' : 'border-blue-100 bg-blue-50'}`}>
-            <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
-            <Text className={`text-[10px] md:text-[11px] font-black tracking-[0.3em] uppercase ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>THE NEXT-GEN RECOVERY COCKPIT</Text>
-          </div>
-          
           <h1 className="text-5xl sm:text-7xl md:text-[9rem] font-black mb-8 leading-[0.9] tracking-tighter gradient-text-hero animate-content-entrance" style={{ animationDelay: '100ms' }}>
             {lang === 'mn' ? (
               <>ЗЭЭЛИЙН <br className="hidden md:block"/>ХЯНАЛТЫН <br className="hidden md:block"/><span className="text-blue-600">ШИНЭ ЭРИН</span></>
@@ -132,22 +125,6 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
           <p className={`text-base md:text-xl lg:text-2xl max-w-[320px] sm:max-w-lg md:max-w-3xl mb-12 font-medium leading-relaxed animate-content-entrance ${isDark ? 'text-slate-400' : 'text-slate-600'}`} style={{ animationDelay: '200ms' }}>
             {t.hero.subtitle}
           </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-5 animate-content-entrance w-full px-4" style={{ animationDelay: '300ms' }}>
-            <button 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="h-16 md:h-20 w-full sm:w-[280px] md:w-[320px] rounded-2xl bg-blue-600 text-white text-[12px] md:text-[13px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-4 shadow-2xl shadow-blue-600/40 hover:bg-blue-500 transition-all active:scale-95"
-            >
-              {t.hero.cta}
-              <ArrowRightOutlined className="text-xl" />
-            </button>
-            <button 
-              className={`h-16 md:h-20 w-full sm:w-[280px] md:w-[320px] rounded-2xl text-[12px] md:text-[13px] font-black uppercase tracking-[0.2em] border flex items-center justify-center gap-4 transition-all active:scale-95 ${isDark ? 'bg-white/5 border-white/10 text-white hover:bg-white/10' : 'bg-slate-50 border-slate-200 text-slate-900 hover:bg-slate-100'}`}
-            >
-              <PlayCircleFilled className="text-blue-500 text-3xl" />
-              {t.hero.secondary}
-            </button>
-          </div>
         </div>
       </div>
 

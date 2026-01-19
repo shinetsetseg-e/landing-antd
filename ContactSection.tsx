@@ -1,12 +1,12 @@
 
 import {
-    BankOutlined,
-    CheckCircleFilled,
-    EnvironmentOutlined,
-    MailOutlined,
-    PhoneOutlined,
-    SendOutlined,
-    UserOutlined
+  BankOutlined,
+  CheckCircleFilled,
+  EnvironmentOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  SendOutlined,
+  UserOutlined
 } from '@ant-design/icons';
 import { App, Button, Col, Form, Input, Row, Typography } from 'antd';
 import React from 'react';
@@ -98,7 +98,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
 
           <Col xs={24} lg={13}>
             <Reveal direction="left">
-               <div className={`glass-card-pro rounded-[3rem] p-8 md:p-12 shadow-[0_60px_120px_rgba(0,0,0,0.6)] border ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
+               <div className={`glass-card-pro rounded-[3rem] p-8 md:p-12 shadow-[0_60px_120px_rgba(0,0,0,0.1)] border ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
                  {submitted ? (
                    <div className="py-16 text-center animate-slide-up">
                      <CheckCircleFilled className="text-emerald-500 text-[80px] mb-10 opacity-80" />
