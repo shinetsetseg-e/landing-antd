@@ -10,8 +10,10 @@ import {
 } from '@ant-design/icons';
 import { App, Button, Col, Form, Input, Row, Typography } from 'antd';
 import React from 'react';
+// Fixed: Import Language from shared/types instead of shared/i18n as it is not exported from there
 import { Reveal } from './CommonUI';
-import { i18n, Language } from './shared/i18n';
+import { i18n } from './shared/i18n';
+import { Language } from './shared/types';
 
 const { Text } = Typography;
 
@@ -31,11 +33,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
 
   const onFinish = (values: any) => {
     setLoading(true);
+    
+    // Create mailto link with form details
+    const subject = encodeURIComponent(`DebtPro Хамтран ажиллах хүсэлт: ${values.organization}`);
+    const body = encodeURIComponent(
+      `Нэр: ${values.name}\n` +
+      `Байгууллага: ${values.organization}\n` +
+      `Утас: ${values.phone}\n` +
+      `И-мэйл: ${values.email}\n`
+    );
+    
+    // Simulate API delay then open mail client
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
+      window.location.href = `mailto:info@kchsolution.mn?subject=${subject}&body=${body}`;
       message.success(ct.success);
-    }, 1500);
+    }, 1000);
   };
   
   return (
@@ -55,7 +69,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
               </p>
               
               <div className="space-y-6">
-                {/* Company Block */}
                 <div className={`p-8 rounded-[2.5rem] border ${isDark ? 'bg-white/5 border-white/5' : 'bg-slate-50 border-slate-100'} shadow-sm`}>
                    <h3 className={`text-xl font-black mb-6 uppercase tracking-widest ${isDark ? 'text-white' : 'text-slate-900'}`}>{ct.companyInfo.name}</h3>
                    
@@ -98,7 +111,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
 
           <Col xs={24} lg={13}>
             <Reveal direction="left">
-               <div className={`glass-card-pro rounded-[3rem] p-8 md:p-12 shadow-[0_60px_120px_rgba(0,0,0,0.1)] border ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
+               <div className={`glass-card-pro rounded-[3rem] p-8 md:p-12 shadow-[0_60px_120px_rgba(0,0,0,0.6)] border ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
                  {submitted ? (
                    <div className="py-16 text-center animate-slide-up">
                      <CheckCircleFilled className="text-emerald-500 text-[80px] mb-10 opacity-80" />
@@ -121,7 +134,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
                      <Form.Item 
                         label={<Text className={`text-[9px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{ct.name}</Text>}
                         name="name" 
-                        rules={[{ required: true, message: 'Required' }]}
+                        rules={[{ required: true, message: 'Хоосон байж болохгүй' }]}
                       >
                         <Input 
                           prefix={<UserOutlined className="opacity-50" />} 
@@ -133,7 +146,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
                       <Form.Item 
                         label={<Text className={`text-[9px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{ct.org}</Text>}
                         name="organization" 
-                        rules={[{ required: true, message: 'Required' }]}
+                        rules={[{ required: true, message: 'Хоосон байж болохгүй' }]}
                       >
                         <Input 
                           prefix={<BankOutlined className="opacity-50" />} 
@@ -142,23 +155,22 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
                         />
                       </Form.Item>
 
-                                            
                       <Form.Item 
-                        label={<Text className={`text-[9px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>Phone number</Text>}
+                        label={<Text className={`text-[9px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{lang === 'mn' ? 'ХОЛБОГДОХ УТАС' : 'PHONE NUMBER'}</Text>}
                         name="phone" 
-                        rules={[{ required: true }]}
+                        rules={[{ required: true, message: 'Хоосон байж болохгүй' }]}
                       >
                         <Input 
                           prefix={<PhoneOutlined className="opacity-50" />} 
-                          placeholder={ct.placeholders.phone}
+                          placeholder={lang === 'mn' ? 'Утасны дугаар' : 'Phone Number'}
                           className={`h-12 ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'}`}
                         />
                       </Form.Item>
                       
                       <Form.Item 
-                        label={<Text className={`text-[9px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>Contact Details</Text>}
+                        label={<Text className={`text-[9px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>И-мэйл хаяг</Text>}
                         name="email" 
-                        rules={[{ required: true, type: 'email' }]}
+                        rules={[{ required: true, type: 'email', message: 'Зөв имэйл хаяг оруулна уу' }]}
                       >
                         <Input 
                           prefix={<MailOutlined className="opacity-50" />} 
