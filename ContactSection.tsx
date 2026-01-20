@@ -1,7 +1,6 @@
 
 import {
   BankOutlined,
-  CheckCircleFilled,
   EnvironmentOutlined,
   MailOutlined,
   PhoneOutlined,
@@ -112,18 +111,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
           <Col xs={24} lg={13}>
             <Reveal direction="left">
                <div className={`glass-card-pro rounded-[3rem] p-8 md:p-12 shadow-[0_60px_120px_rgba(0,0,0,0.6)] border ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
-                 {submitted ? (
-                   <div className="py-16 text-center animate-slide-up">
-                     <CheckCircleFilled className="text-emerald-500 text-[80px] mb-10 opacity-80" />
-                     <h3 className={`text-2xl font-black tracking-tighter mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>{ct.success}</h3>
-                     <button 
-                        onClick={() => setSubmitted(false)}
-                        className="text-[9px] font-black uppercase tracking-[0.3em] text-blue-500 hover:text-blue-400 transition-colors"
-                     >
-                       OPEN_NEW_REQUEST_SESSION
-                     </button>
-                   </div>
-                 ) : (
                    <Form 
                     form={form} 
                     layout="vertical" 
@@ -190,7 +177,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
                         {ct.submit}
                       </Button>
                    </Form>
-                 )}
                </div>
             </Reveal>
           </Col>
