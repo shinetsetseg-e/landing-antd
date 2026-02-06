@@ -1,20 +1,17 @@
 
 import {
   BarChartOutlined,
-  BellOutlined,
   DatabaseOutlined,
   HistoryOutlined,
-  MenuUnfoldOutlined,
   MessageOutlined,
   MoreOutlined,
   QuestionCircleOutlined,
   RightOutlined,
-  SearchOutlined,
   SettingOutlined,
   ThunderboltOutlined,
   UploadOutlined
 } from '@ant-design/icons';
-import { Avatar, Badge, Input, Typography } from 'antd';
+import { Avatar, Typography } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
 import { GlowOrb } from '../../components/ui/GlowOrb';
 import { i18n } from '../../shared/i18n';
@@ -210,28 +207,6 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
 
              {/* Main Content Area */}
              <main className={`flex-1 flex flex-col overflow-hidden ${isDark ? 'bg-[#080b12]' : 'bg-[#f0f2f5]'}`}>
-                {/* System Header */}
-                <header className={`h-16 md:h-20 border-b flex items-center justify-between px-6 md:px-10 ${isDark ? 'bg-[#0b0f1a] border-white/5' : 'bg-white border-slate-200'}`}>
-                   <div className="flex items-center gap-8 flex-1">
-                      <MenuUnfoldOutlined className="text-slate-400 cursor-pointer hover:text-blue-500 text-xl" />
-                      <div className="hidden md:flex items-center gap-2 text-[11px] font-medium text-slate-400">
-                         <span className="text-blue-500 font-bold">{currentView?.label}</span>
-                      </div>
-                   </div>
-                   <div className="flex items-center gap-6">
-                      <Input 
-                         prefix={<SearchOutlined className="text-slate-300" />} 
-                         placeholder="Түргэн хайлт..." 
-                         className={`hidden lg:flex w-72 h-10 rounded-xl border text-[11px] font-medium ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-50 border-slate-100'}`}
-                      />
-                      <Badge dot color="#ef4444">
-                        <BellOutlined className="text-xl text-slate-400 hover:text-blue-500 cursor-pointer transition-colors" />
-                      </Badge>
-                      <div className="w-px h-6 bg-slate-300/30 mx-2"></div>
-                      <Avatar shape="square" size="default" className="bg-blue-600 rounded-lg shadow-lg">A</Avatar>
-                   </div>
-                </header>
-
                 {/* Dashboard Canvas Area */}
                 <div className="flex-1 overflow-y-auto p-4 md:p-8 no-scrollbar relative flex items-center justify-center">
                    
