@@ -78,7 +78,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, theme }) => {
                 <span className={`text-xl md:text-2xl font-black uppercase tracking-[0.1em] ${isDark ? 'text-white' : 'text-slate-900'}`}>DEBTPRO</span>
               </div>
               <p className="text-sm font-bold leading-relaxed max-w-[280px] text-slate-500">
-                Advanced operating system for credit recovery automation and NPL lifecycle management.
+                {t.hero.subtitle}
               </p>
             </div>
             
