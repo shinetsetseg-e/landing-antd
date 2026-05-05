@@ -1,8 +1,7 @@
-
 import { BankFilled, CheckCircleFilled, CloudFilled, SafetyCertificateFilled, ThunderboltFilled } from '@ant-design/icons';
 import { Typography } from 'antd';
 import React from 'react';
-import { Reveal } from './CommonUI';
+import { Reveal } from './components/ui/Reveal';
 import { i18n, Language } from './shared/i18n';
 
 const { Text } = Typography;
@@ -22,126 +21,101 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ lang, theme }) =
   };
 
   return (
-    <section id="pricing" className={`py-32 md:py-48 transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
+    <section id="pricing" className={`py-24 md:py-32 transition-colors duration-500 ${isDark ? 'bg-[#0f1115]' : 'bg-[#ffffff]'}`}>
       <div className="max-w-7xl mx-auto px-6 w-full">
         <Reveal>
-          <div className="text-center mb-24 md:mb-32">
-             <div className={`inline-flex items-center gap-3 px-6 py-2 rounded-full border mb-8 ${isDark ? 'border-blue-500/20 bg-blue-500/5' : 'border-blue-200 bg-blue-50'}`}>
-                <Text className={`text-[10px] font-black tracking-[0.4em] uppercase ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>{t.pricing.tag}</Text>
-             </div>
-            <h2 className={`text-4xl md:text-5xl lg:text-7xl font-black mb-10 tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-3 mb-7 tag-pill">
+              <Text className="!m-0 !text-inherit font-mono">{t.pricing.tag}</Text>
+            </div>
+            <h2 className={`text-4xl md:text-6xl font-heading font-bold mb-7 ${isDark ? 'text-white' : 'text-[#0f172a]'}`}>
               {t.pricing.title}
             </h2>
-            <p className={`text-base md:text-xl max-w-3xl mx-auto font-medium leading-relaxed ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
+            <p className={`text-base md:text-lg max-w-3xl mx-auto ${isDark ? 'text-slate-400' : 'text-[#475569]'}`}>
               {t.pricing.subtitle}
             </p>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 max-w-6xl mx-auto items-stretch">
-          {/* StarterPro Plan - Redesigned to be equally premium */}
-          <Reveal direction="up" delay={200} className="h-full">
-            <div className={`
-              group relative p-10 md:p-14 rounded-[4rem] h-full flex flex-col transition-all duration-700 border
-              ${isDark 
-                ? 'bg-slate-900/40 border-white/10 hover:border-blue-500/50 hover:bg-slate-900/60 shadow-2xl' 
-                : 'bg-white border-slate-200 hover:border-blue-400 hover:shadow-2xl shadow-blue-900/5'}
-            `}>
-              {/* Decorative Corner Icon */}
-              <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity">
-                <CloudFilled style={{ fontSize: '120px' }} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto items-stretch">
+          <Reveal direction="up" delay={180} className="h-full">
+            <div className={`group relative p-9 md:p-11 rounded-2xl h-full flex flex-col border brand-outline brand-outline-hover transition-all duration-300 ${isDark ? 'bg-[#030304]' : 'bg-white'}`}>
+              <div className="absolute top-0 right-0 p-10 opacity-[0.07] group-hover:opacity-[0.15] transition-opacity">
+                <CloudFilled style={{ fontSize: '110px' }} />
               </div>
 
-              <div className="mb-12 relative z-10">
-                <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-500/10 text-blue-500 text-[10px] font-black tracking-widest uppercase mb-8 border border-blue-500/20">
+              <div className="mb-10 relative z-10">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1677ff]/10 text-[#1677ff] text-[10px] font-mono tracking-widest uppercase mb-6 border border-[#1677ff]/30">
                   <ThunderboltFilled /> {t.pricing.starter.period}
                 </div>
-                <Text className={`text-[12px] font-black uppercase tracking-[0.5em] block mb-6 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{t.pricing.starter.name}</Text>
-                
-                <div className="flex flex-col mb-6">
-                  <div className="flex items-baseline gap-3">
-                    <span className={`text-6xl md:text-7xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.pricing.starter.price}</span>
-                  </div>
-                  <span className="text-blue-500 font-black text-xl uppercase tracking-widest mt-1">
-                    {t.pricing.starter.subPrice}
-                  </span>
+                <Text className={`font-mono text-[11px] uppercase tracking-[0.35em] block mb-5 ${isDark ? 'text-slate-500' : 'text-[#64748b]'}`}>{t.pricing.starter.name}</Text>
+                <div className="flex flex-col">
+                  <span className={`text-5xl md:text-6xl font-heading font-bold tracking-tight ${isDark ? 'text-white' : 'text-[#0f172a]'}`}>{t.pricing.starter.price}</span>
+                  <span className="text-[#1677ff] font-mono text-sm uppercase tracking-[0.2em] mt-1">{t.pricing.starter.subPrice}</span>
                 </div>
               </div>
 
-              <div className="space-y-6 mb-16 flex-1 relative z-10">
+              <div className="space-y-4 mb-12 flex-1 relative z-10">
                 {t.pricing.starter.features.map((feature, i) => (
-                  <div key={i} className="flex items-start gap-4 group/item">
-                    <div className={`mt-1 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center border transition-colors ${isDark ? 'border-blue-500/30 text-blue-400' : 'border-blue-200 text-blue-500'}`}>
-                      <CheckCircleFilled style={{ fontSize: '12px' }} />
+                  <div key={i} className="flex items-start gap-3">
+                    <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center border border-[#1677ff]/35 text-[#1677ff]">
+                      <CheckCircleFilled style={{ fontSize: '11px' }} />
                     </div>
-                    <Text className={`${isDark ? 'text-slate-300' : 'text-slate-700'} text-sm md:text-base font-bold tracking-tight leading-snug group-hover/item:text-blue-500 transition-colors`}>{feature}</Text>
+                    <Text className={`${isDark ? 'text-slate-300' : 'text-[#334155]'} text-sm leading-snug`}>{feature}</Text>
                   </div>
                 ))}
               </div>
 
-              <button 
-                className={`h-20 w-full rounded-2xl border font-black uppercase tracking-[0.3em] text-[12px] transition-all duration-300 active:scale-95 shadow-xl ${isDark ? 'bg-blue-600 text-white border-blue-500 hover:bg-blue-500 shadow-blue-900/40' : 'bg-blue-600 text-white border-blue-500 hover:bg-blue-500 shadow-blue-600/20'}`}
-                onClick={() => scrollTo('contact')}
-              >
+              <button className="h-14 w-full rounded-full font-mono text-xs uppercase tracking-[0.25em] brand-button active:scale-95" onClick={() => scrollTo('contact')}>
                 {t.pricing.starter.cta}
               </button>
             </div>
           </Reveal>
 
-          {/* EnterprisePro Plan - Balanced with StarterPro */}
-          <Reveal direction="up" delay={400} className="h-full">
-            <div className={`
-              group relative p-10 md:p-14 rounded-[4rem] h-full flex flex-col transition-all duration-700 border
-              ${isDark 
-                ? 'bg-slate-900/40 border-white/10 hover:border-emerald-500/50 hover:bg-slate-900/60 shadow-2xl' 
-                : 'bg-white border-slate-200 hover:border-emerald-400 hover:shadow-2xl shadow-blue-900/5'}
-            `}>
-              {/* Decorative Corner Icon */}
-              <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity">
-                <BankFilled style={{ fontSize: '120px' }} />
+          <Reveal direction="up" delay={350} className="h-full">
+            <div className={`group relative p-9 md:p-11 rounded-2xl h-full flex flex-col border transition-all duration-300 lg:scale-105 shadow-[0_0_40px_-10px_rgba(22,119,255,0.2)] ${isDark ? 'bg-[#030304] border-[#1677ff]/55' : 'bg-white border-[#0958d9]/45'}`}>
+              <div className="absolute top-0 right-0 p-10 opacity-[0.07] group-hover:opacity-[0.15] transition-opacity">
+                <BankFilled style={{ fontSize: '110px' }} />
               </div>
 
-              <div className="mb-12 relative z-10">
-                <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-emerald-500/10 text-emerald-500 text-[10px] font-black tracking-widest uppercase mb-8 border border-emerald-500/20">
+              <div className="mb-10 relative z-10">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#69b1ff]/12 text-[#69b1ff] text-[10px] font-mono tracking-widest uppercase mb-6 border border-[#69b1ff]/35">
                   <SafetyCertificateFilled /> {t.pricing.enterprise.period}
                 </div>
-                <Text className={`text-[12px] font-black uppercase tracking-[0.5em] block mb-6 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{t.pricing.enterprise.name}</Text>
-                
-                <div className="flex flex-col mb-6">
-                  <span className={`text-6xl md:text-7xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.pricing.enterprise.price}</span>
-                  <span className="text-emerald-500 font-black text-xl uppercase tracking-widest mt-1">
-                    Custom License
-                  </span>
+                <Text className={`font-mono text-[11px] uppercase tracking-[0.35em] block mb-5 ${isDark ? 'text-slate-500' : 'text-[#64748b]'}`}>{t.pricing.enterprise.name}</Text>
+                <div className="flex flex-col">
+                  <span className={`text-5xl md:text-6xl font-heading font-bold tracking-tight ${isDark ? 'text-white' : 'text-[#0f172a]'}`}>{t.pricing.enterprise.price}</span>
+                  <span className="text-[#69b1ff] font-mono text-sm uppercase tracking-[0.2em] mt-1">Custom License</span>
                 </div>
               </div>
 
-              <div className="space-y-6 mb-16 flex-1 relative z-10">
+              <div className="space-y-4 mb-12 flex-1 relative z-10">
                 {t.pricing.enterprise.features.slice(0, 7).map((feature, i) => (
-                  <div key={i} className="flex items-start gap-4 group/item">
-                    <div className={`mt-1 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center border transition-colors ${isDark ? 'border-emerald-500/30 text-emerald-400' : 'border-emerald-200 text-emerald-500'}`}>
-                      <CheckCircleFilled style={{ fontSize: '12px' }} />
+                  <div key={i} className="flex items-start gap-3">
+                    <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center border border-[#69b1ff]/35 text-[#69b1ff]">
+                      <CheckCircleFilled style={{ fontSize: '11px' }} />
                     </div>
-                    <Text className={`${isDark ? 'text-slate-300' : 'text-slate-700'} text-sm md:text-base font-bold tracking-tight leading-snug group-hover/item:text-emerald-500 transition-colors`}>{feature}</Text>
+                    <Text className={`${isDark ? 'text-slate-200' : 'text-[#334155]'} text-sm leading-snug`}>{feature}</Text>
                   </div>
                 ))}
                 {t.pricing.enterprise.features.length > 7 && (
-                  <div className={`text-[10px] font-black uppercase tracking-widest pt-2 ${isDark ? 'text-slate-600' : 'text-slate-400'}`}>
-                    + {t.pricing.enterprise.features.length - 7} more enterprise capabilities
+                  <div className={`text-[10px] font-mono uppercase tracking-wider pt-1 ${isDark ? 'text-slate-500' : 'text-[#64748b]'}`}>
+                    + {t.pricing.enterprise.features.length - 7} more capabilities
                   </div>
                 )}
               </div>
 
-              <button 
-                className={`h-20 w-full rounded-2xl border font-black uppercase tracking-[0.3em] text-[12px] transition-all duration-300 active:scale-95 shadow-xl ${isDark ? 'bg-emerald-600 text-white border-emerald-500 hover:bg-emerald-500 shadow-emerald-900/40' : 'bg-emerald-600 text-white border-emerald-500 hover:bg-emerald-500 shadow-emerald-600/20'}`}
-                onClick={() => scrollTo('contact')}
-              >
+              <button className="h-14 w-full rounded-full font-mono text-xs uppercase tracking-[0.25em] brand-button active:scale-95" onClick={() => scrollTo('contact')}>
                 {t.pricing.enterprise.cta}
               </button>
             </div>
           </Reveal>
         </div>
-
       </div>
     </section>
   );
 };
+
+
+
+

@@ -1,4 +1,3 @@
-
 import {
   BankOutlined,
   EnvironmentOutlined,
@@ -9,8 +8,7 @@ import {
 } from '@ant-design/icons';
 import { App, Button, Col, Form, Input, Row, Typography } from 'antd';
 import React from 'react';
-// Fixed: Import Language from shared/types instead of shared/i18n as it is not exported from there
-import { Reveal } from './CommonUI';
+import { Reveal } from './components/ui/Reveal';
 import { i18n } from './shared/i18n';
 import { Language } from './shared/types';
 
@@ -26,83 +24,67 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
   const ct = t.contactSection;
   const { message } = App.useApp();
   const [form] = Form.useForm();
-  const [submitted, setSubmitted] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const isDark = theme === 'dark';
 
   const onFinish = (values: any) => {
     setLoading(true);
-    
-    // Create mailto link with form details
-    const subject = encodeURIComponent(`DebtPro Хамтран ажиллах хүсэлт: ${values.organization}`);
+    const subject = encodeURIComponent(`DebtPro Partnership Request: ${values.organization}`);
     const body = encodeURIComponent(
-      `Нэр: ${values.name}\n` +
-      `Байгууллага: ${values.organization}\n` +
-      `Утас: ${values.phone}\n` +
-      `И-мэйл: ${values.email}\n`
+      `Name: ${values.name}\n` +
+      `Organization: ${values.organization}\n` +
+      `Phone: ${values.phone}\n` +
+      `Email: ${values.email}\n`
     );
-    
-    // Simulate API delay then open mail client
+
     setTimeout(() => {
       setLoading(false);
-      setSubmitted(true);
       window.location.href = `mailto:info@kchsolution.mn?subject=${subject}&body=${body}`;
       message.success(ct.success);
     }, 1000);
   };
-  
+
   return (
-    <section id="contact" className={`section-fullscreen transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
+    <section id="contact" className={`py-24 md:py-32 transition-colors duration-500 ${isDark ? 'bg-[#0f1115]' : 'bg-[#ffffff]'}`}>
       <div className="max-w-7xl mx-auto px-6 w-full">
-        <Row gutter={[60, 60]} align="top">
+        <Row gutter={[48, 48]} align="top">
           <Col xs={24} lg={11}>
             <Reveal direction="right">
-              <div className={`inline-flex items-center gap-3 px-6 py-2 rounded-full border mb-8 ${isDark ? 'border-blue-500/20 bg-blue-500/5' : 'border-blue-100 bg-blue-50'}`}>
-                 <Text className={`text-[10px] font-black tracking-[0.4em] uppercase ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>CONTACT_CHANNELS</Text>
+              <div className="inline-flex items-center gap-3 tag-pill mb-7">
+                <Text className="!m-0 !text-inherit font-mono">CONTACT_CHANNELS</Text>
               </div>
-              <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tighter leading-[0.95] ${isDark ? 'text-white' : 'text-slate-900'}`}>
+              <h2 className={`text-4xl md:text-6xl font-heading font-bold mb-7 leading-tight ${isDark ? 'text-white' : 'text-[#0f172a]'}`}>
                 {ct.title}
               </h2>
-              <p className={`text-lg mb-12 font-medium leading-relaxed max-w-xl ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
+              <p className={`text-base md:text-lg mb-10 leading-relaxed max-w-xl ${isDark ? 'text-slate-400' : 'text-[#475569]'}`}>
                 {ct.subtitle}
               </p>
-              
-              <div className="space-y-6">
-                <div className={`p-8 rounded-[2.5rem] border ${isDark ? 'bg-white/5 border-white/5' : 'bg-slate-50 border-slate-100'} shadow-sm`}>
-                   <h3 className={`text-xl font-black mb-6 uppercase tracking-widest ${isDark ? 'text-white' : 'text-slate-900'}`}>{ct.companyInfo.name}</h3>
-                   
-                   <div className="space-y-4">
-                      <div className="flex items-center gap-4 group">
-                        <div className="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                          <PhoneOutlined />
-                        </div>
-                        <span className={`text-lg font-black tracking-tight ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>{ct.companyInfo.phone}</span>
-                      </div>
 
-                      <div className="flex items-center gap-4 group">
-                        <div className="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                          <MailOutlined />
-                        </div>
-                        <span className={`text-lg font-black tracking-tight ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>{ct.companyInfo.email}</span>
-                      </div>
-
-                      <div className="flex items-center gap-4 group">
-                        <div className="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                          <EnvironmentOutlined />
-                        </div>
-                        <div className="flex flex-col">
-                           <span className={`text-sm font-bold tracking-tight ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{ct.companyInfo.address}</span>
-                           <a 
-                            href="https://share.google/kwC3NBy0lnHErvoJ2" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="text-[10px] font-black uppercase text-blue-500 hover:text-blue-400 tracking-widest mt-1"
-                           >
-                              {ct.companyInfo.map}
-                           </a>
-                        </div>
-                      </div>
-                   </div>
+              <div className={`p-8 rounded-2xl border ${isDark ? 'bg-[#030304] border-white/10' : 'bg-white border-[#0958d9]/15'} shadow-[0_0_40px_-15px_rgba(22,119,255,0.2)]`}>
+                <h3 className={`text-xl font-heading font-semibold mb-6 ${isDark ? 'text-white' : 'text-[#0f172a]'}`}>{ct.companyInfo.name}</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#0958d9]/15 border border-[#1677ff]/35 flex items-center justify-center text-[#1677ff]"><PhoneOutlined /></div>
+                    <span className={`text-base font-semibold ${isDark ? 'text-slate-300' : 'text-[#334155]'}`}>{ct.companyInfo.phone}</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#0958d9]/15 border border-[#1677ff]/35 flex items-center justify-center text-[#1677ff]"><MailOutlined /></div>
+                    <span className={`text-base font-semibold ${isDark ? 'text-slate-300' : 'text-[#334155]'}`}>{ct.companyInfo.email}</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#0958d9]/15 border border-[#1677ff]/35 flex items-center justify-center text-[#1677ff]"><EnvironmentOutlined /></div>
+                    <div className="flex flex-col">
+                      <span className={`text-sm ${isDark ? 'text-slate-400' : 'text-[#475569]'}`}>{ct.companyInfo.address}</span>
+                      <a
+                        href="https://share.google/kwC3NBy0lnHErvoJ2"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[10px] font-mono uppercase tracking-widest mt-1 text-[#1677ff] hover:text-[#69b1ff]"
+                      >
+                        {ct.companyInfo.map}
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -110,74 +92,45 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
 
           <Col xs={24} lg={13}>
             <Reveal direction="left">
-               <div className={`glass-card-pro rounded-[3rem] p-8 md:p-12 shadow-[0_60px_120px_rgba(0,0,0,0.6)] border ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
-                   <Form 
-                    form={form} 
-                    layout="vertical" 
-                    onFinish={onFinish} 
-                    size="large"
-                    className="space-y-4"
-                   >
-                     <Form.Item 
-                        label={<Text className={`text-[9px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{ct.name}</Text>}
-                        name="name" 
-                        rules={[{ required: true, message: 'Хоосон байж болохгүй' }]}
-                      >
-                        <Input 
-                          prefix={<UserOutlined className="opacity-50" />} 
-                          placeholder={ct.placeholders.name}
-                          className={`h-12 ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'}`}
-                        />
-                      </Form.Item>
-                      
-                      <Form.Item 
-                        label={<Text className={`text-[9px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{ct.org}</Text>}
-                        name="organization" 
-                        rules={[{ required: true, message: 'Хоосон байж болохгүй' }]}
-                      >
-                        <Input 
-                          prefix={<BankOutlined className="opacity-50" />} 
-                          placeholder={ct.placeholders.org}
-                          className={`h-12 ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'}`}
-                        />
-                      </Form.Item>
+              <div className={`glass-card-pro rounded-2xl p-8 md:p-10 border ${isDark ? 'border-white/10 bg-[#030304]/55' : 'border-[#0958d9]/20 bg-white/80'} shadow-[0_0_50px_-15px_rgba(22,119,255,0.2)]`}>
+                <Form form={form} layout="vertical" onFinish={onFinish} size="large" className="space-y-3">
+                  <Form.Item
+                    label={<Text className={`text-[10px] font-mono uppercase tracking-[0.24em] ${isDark ? 'text-slate-500' : 'text-[#64748b]'}`}>{ct.name}</Text>}
+                    name="name"
+                    rules={[{ required: true, message: lang === 'mn' ? 'Хоосон байж болохгүй' : 'Required field' }]}
+                  >
+                    <Input prefix={<UserOutlined className="opacity-60" />} placeholder={ct.placeholders.name} className={`h-12 input-brand ${isDark ? 'text-white' : 'text-[#0f172a]'}`} />
+                  </Form.Item>
 
-                      <Form.Item 
-                        label={<Text className={`text-[9px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{lang === 'mn' ? 'ХОЛБОГДОХ УТАС' : 'PHONE NUMBER'}</Text>}
-                        name="phone" 
-                        rules={[{ required: true, message: 'Хоосон байж болохгүй' }]}
-                      >
-                        <Input 
-                          prefix={<PhoneOutlined className="opacity-50" />} 
-                          placeholder={lang === 'mn' ? 'Утасны дугаар' : 'Phone Number'}
-                          className={`h-12 ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'}`}
-                        />
-                      </Form.Item>
-                      
-                      <Form.Item 
-                        label={<Text className={`text-[9px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>И-мэйл хаяг</Text>}
-                        name="email" 
-                        rules={[{ required: true, type: 'email', message: 'Зөв имэйл хаяг оруулна уу' }]}
-                      >
-                        <Input 
-                          prefix={<MailOutlined className="opacity-50" />} 
-                          placeholder={ct.placeholders.email}
-                          className={`h-12 ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'}`}
-                        />
-                      </Form.Item>
+                  <Form.Item
+                    label={<Text className={`text-[10px] font-mono uppercase tracking-[0.24em] ${isDark ? 'text-slate-500' : 'text-[#64748b]'}`}>{ct.org}</Text>}
+                    name="organization"
+                    rules={[{ required: true, message: lang === 'mn' ? 'Хоосон байж болохгүй' : 'Required field' }]}
+                  >
+                    <Input prefix={<BankOutlined className="opacity-60" />} placeholder={ct.placeholders.org} className={`h-12 input-brand ${isDark ? 'text-white' : 'text-[#0f172a]'}`} />
+                  </Form.Item>
 
-                      <Button 
-                        type="primary" 
-                        htmlType="submit" 
-                        loading={loading}
-                        block 
-                        icon={<SendOutlined />}
-                        className="mt-6 shadow-xl h-14"
-                      >
-                        {ct.submit}
-                      </Button>
-                   </Form>
-               </div>
+                  <Form.Item
+                    label={<Text className={`text-[10px] font-mono uppercase tracking-[0.24em] ${isDark ? 'text-slate-500' : 'text-[#64748b]'}`}>{lang === 'mn' ? 'ХОЛБОГДОХ УТАС' : 'PHONE NUMBER'}</Text>}
+                    name="phone"
+                    rules={[{ required: true, message: lang === 'mn' ? 'Хоосон байж болохгүй' : 'Required field' }]}
+                  >
+                    <Input prefix={<PhoneOutlined className="opacity-60" />} placeholder={lang === 'mn' ? 'Утасны дугаар' : 'Phone Number'} className={`h-12 input-brand ${isDark ? 'text-white' : 'text-[#0f172a]'}`} />
+                  </Form.Item>
+
+                  <Form.Item
+                    label={<Text className={`text-[10px] font-mono uppercase tracking-[0.24em] ${isDark ? 'text-slate-500' : 'text-[#64748b]'}`}>EMAIL</Text>}
+                    name="email"
+                    rules={[{ required: true, type: 'email', message: lang === 'mn' ? 'Зөв имэйл оруулна уу' : 'Provide valid email' }]}
+                  >
+                    <Input prefix={<MailOutlined className="opacity-60" />} placeholder={ct.placeholders.email} className={`h-12 input-brand ${isDark ? 'text-white' : 'text-[#0f172a]'}`} />
+                  </Form.Item>
+
+                  <Button type="primary" htmlType="submit" loading={loading} block icon={<SendOutlined />} className="mt-6 h-12 brand-button border-0 font-mono uppercase tracking-[0.18em]">
+                    {ct.submit}
+                  </Button>
+                </Form>
+              </div>
             </Reveal>
           </Col>
         </Row>
@@ -185,3 +138,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang, theme }) =
     </section>
   );
 };
+
+
+
+

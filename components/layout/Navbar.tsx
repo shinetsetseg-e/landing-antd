@@ -1,16 +1,12 @@
 
 import {
-  BarChartOutlined,
   MoonOutlined,
   SunOutlined,
-  ThunderboltOutlined
 } from '@ant-design/icons';
-import { Button, Segmented, Space, Typography } from 'antd';
+import { Button, Segmented } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { i18n } from '../../shared/i18n';
 import { Language, ThemeMode } from '../../shared/types';
-
-const { Text } = Typography;
 
 interface NavbarProps {
   lang: Language;
@@ -35,30 +31,6 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const productMenuItems = [
-    {
-      key: 'automation',
-      label: (
-        <Space direction="vertical" size={0} className="p-1 md:p-2">
-          <Text strong className={`uppercase text-[9px] md:text-[10px] tracking-[0.1em] ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.megaMenu.automation.title}</Text>
-          <Text type="secondary" className="text-[10px] md:text-[11px] font-medium">{t.megaMenu.automation.desc}</Text>
-        </Space>
-      ),
-      icon: <ThunderboltOutlined className="text-blue-500" />
-    },
-    {
-      key: 'analytics',
-      label: (
-        <Space direction="vertical" size={0} className="p-1 md:p-2">
-          <Text strong className={`uppercase text-[9px] md:text-[10px] tracking-[0.1em] ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.megaMenu.analytics.title}</Text>
-          <Text type="secondary" className="text-[10px] md:text-[11px] font-medium">{t.megaMenu.analytics.desc}</Text>
-        </Space>
-      ),
-      icon: <BarChartOutlined className="text-blue-500" />
-    }
-  ];
-
-  // User-defined mapping for navigation
   const navItems = [
     { key: 'product', label: t.nav.product, target: 'lifecycle' },
     { key: 'why', label: t.nav.why, target: 'metrics' },
@@ -69,12 +41,12 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
   return (
     <div className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-4 md:px-6 ${scrolled ? 'pt-2 md:pt-4' : 'pt-4 md:pt-10'}`}>
       <nav className={`max-w-7xl mx-auto flex justify-between items-center transition-all duration-500 h-16 md:h-20 px-4 md:px-10 rounded-2xl md:rounded-[24px] backdrop-blur-xl border 
-        ${scrolled ? 'shadow-2xl scale-[0.99] md:scale-[0.98]' : 'scale-100'} 
-        ${isDark ? 'bg-slate-950/40 border-white/5' : 'bg-white/70 border-blue-500/10'}`}>
+        ${scrolled ? 'shadow-[0_0_50px_-10px_rgba(22,119,255,0.25)] scale-[0.99] md:scale-[0.98]' : 'scale-100'} 
+        ${isDark ? 'bg-[#030304]/55 border-white/10' : 'bg-[#f5f9ff]/78 border-[#0958d9]/20'}`}>
         
         <div className="flex items-center gap-3 md:gap-4 cursor-pointer group" onClick={() => scrollTo('home')}>
-          <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-600 rounded-lg md:rounded-xl flex items-center justify-center font-black text-white shadow-lg shrink-0">D</div>
-          <span className={`text-lg md:text-xl font-black tracking-tighter uppercase shrink-0 ${isDark ? 'text-white' : 'text-slate-900'}`}>DEBTPRO</span>
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center font-black text-white shadow-[0_0_22px_-6px_rgba(22,119,255,0.7)] shrink-0 brand-grad">D</div>
+          <span className={`text-lg md:text-xl font-heading font-bold tracking-tight uppercase shrink-0 ${isDark ? 'text-white' : 'text-[#0f172a]'}`}>DEBTPRO</span>
         </div>
 
         <div className="hidden xl:flex items-center gap-8">
@@ -83,17 +55,17 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
               key={item.key} 
               type="text" 
               onClick={() => scrollTo(item.target)} 
-              className={`uppercase text-[10px] font-black tracking-[0.2em] ${isDark ? 'text-slate-300 hover:text-white' : 'text-slate-500 hover:text-blue-600'}`}
+              className={`uppercase font-mono text-[10px] font-bold tracking-[0.2em] ${isDark ? 'text-slate-300 hover:!text-[#1677ff]' : 'text-[#475569] hover:!text-[#0958d9]'}`}
             >
               {item.label}
             </Button>
           ))}
           <Button 
             type="text" 
-            onClick={() => scrollTo('customers')} 
-            className={`uppercase text-[10px] font-black tracking-[0.2em] ${isDark ? 'text-slate-300 hover:text-white' : 'text-slate-500 hover:text-blue-600'}`}
+            onClick={() => scrollTo('contact')} 
+            className={`uppercase font-mono text-[10px] font-bold tracking-[0.2em] ${isDark ? 'text-slate-300 hover:!text-[#1677ff]' : 'text-[#475569] hover:!text-[#0958d9]'}`}
           >
-            {t.nav.customers}
+            {t.nav.resources}
           </Button>
         </div>
 
@@ -104,20 +76,20 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
               size="small"
               icon={isDark ? <SunOutlined /> : <MoonOutlined />} 
               onClick={() => setTheme(isDark ? 'light' : 'dark')} 
-              className="md:scale-100"
+              className={`md:scale-100 !border ${isDark ? '!border-white/15 !text-[#69b1ff] !bg-white/5 hover:!bg-white/10' : '!border-[#0958d9]/30 !text-[#0958d9] !bg-[#eff6ff]'}`}
             />
             <Segmented
               size="small"
               options={['MN', 'EN', 'KO']}
               value={lang.toUpperCase()}
               onChange={(val) => setLang(val.toString().toLowerCase() as Language)}
-              className="font-black text-[8px] md:text-[9px] hidden sm:block"
+              className="font-mono font-bold text-[8px] md:text-[9px] hidden sm:block"
             />
           </div>
           <Button 
             type="primary" 
             size={window.innerWidth < 768 ? "small" : "middle"}
-            className="h-8 md:h-12 px-4 md:px-8 text-[9px] md:text-[11px] font-black uppercase tracking-wider"
+            className="h-8 md:h-12 px-4 md:px-8 text-[9px] md:text-[11px] font-black uppercase tracking-wider brand-button border-0"
             onClick={() => scrollTo('pricing')}
           >
             {t.nav.demo}
@@ -127,3 +99,6 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
     </div>
   );
 };
+
+
+

@@ -98,7 +98,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
   if (!isOpen) {
     return (
       <div className="fixed bottom-8 right-8 z-[1000] animate-bounce-slow">
-        <Badge dot color="#2563eb" offset={[-5, 5]}>
+        <Badge dot color="#1677ff" offset={[-5, 5]}>
           <Button 
             type="primary" 
             shape="circle" 
@@ -122,9 +122,9 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
         styles={{ body: { padding: 0, height: '100%', display: 'flex', flexDirection: 'column' } }}
       >
         {/* Header */}
-        <div className={`p-4 flex items-center justify-between border-b ${isDark ? 'bg-slate-800/50 border-slate-700' : 'bg-blue-600 border-blue-500'}`}>
+        <div className={`p-4 flex items-center justify-between border-b ${isDark ? 'bg-[#0f1115] border-white/10' : 'bg-[#0958d9] border-[#1677ff]'}`}>
           <div className="flex items-center gap-3">
-            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isDark ? 'bg-blue-500/20 text-blue-400' : 'bg-white/20 text-white'}`}>
+            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isDark ? 'bg-[#1677ff]/20 text-[#1677ff]' : 'bg-white/20 text-white'}`}>
               <RobotOutlined />
             </div>
             <div>
@@ -166,11 +166,11 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
                     <Avatar 
                       size="small" 
                       icon={msg.role === 'user' ? <UserOutlined /> : <RobotOutlined />} 
-                      className={msg.role === 'user' ? 'bg-blue-600' : 'bg-slate-500'}
+                      className={msg.role === 'user' ? 'brand-grad' : 'bg-slate-500'}
                     />
                     <div className={`p-3 rounded-2xl text-xs font-medium leading-relaxed shadow-sm
                       ${msg.role === 'user' 
-                        ? 'bg-blue-600 text-white rounded-tr-none' 
+                        ? 'bg-gradient-to-r from-[#0958d9] to-[#1677ff] text-white rounded-tr-none' 
                         : (isDark ? 'bg-slate-800 text-slate-200 rounded-tl-none border border-slate-700' : 'bg-white text-slate-800 rounded-tl-none border border-slate-100')
                       }`}
                     >
@@ -221,3 +221,6 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
     </div>
   );
 };
+
+
+

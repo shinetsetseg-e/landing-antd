@@ -7,15 +7,26 @@
     <title>TND DebtPro - Advanced Loan Recovery Cockpit</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       :root {
-        --primary: #2563eb;
-        --base-dark: #020617;
-        --base-light: #fdfdfe;
+        --void: #030304;
+        --surface: #0f1115;
+        --surface-soft: rgba(15, 17, 21, 0.72);
+        --foreground: #ffffff;
+        --muted: #94a3b8;
+        --border-dim: #1e293b;
+        --brand-primary: #1677ff;
+        --brand-primary-strong: #0958d9;
+        --brand-primary-soft: #69b1ff;
+        --light-bg: #f5f9ff;
+        --light-surface: #ffffff;
+        --light-text: #0f172a;
+        --light-muted: #475569;
+        --light-border: rgba(22, 119, 255, 0.22);
       }
-      
+
       html {
         scroll-behavior: smooth;
         scroll-snap-type: none;
@@ -38,68 +49,317 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         font-size: 16px;
+        font-family: 'Inter', sans-serif;
       }
 
       body.dark {
-        background-color: var(--base-dark);
-        color: #fff;
+        background-color: var(--void);
+        color: var(--foreground);
       }
 
       body.light {
-        background-color: var(--base-light);
-        color: #0f172a;
+        background-color: var(--light-bg);
+        color: var(--light-text);
       }
 
-      .font-sans {
-        letter-spacing: -0.015em;
-        line-height: 1.5;
+      .font-heading {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+
+      .font-body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      :root {
+        --fs-h1: 2rem;
+        --fs-h2: 1.5rem;
+        --fs-h3: 1.25rem;
+        --fs-h4: 1.125rem;
+        --fs-body: 0.9375rem;
+        --fs-body-lg: 1rem;
+        --fs-small: 0.8125rem;
+      }
+
+      @media (min-width: 1024px) {
+        :root {
+          --fs-h1: 2.125rem;
+          --fs-h2: 1.625rem;
+          --fs-h3: 1.3125rem;
+          --fs-h4: 1.125rem;
+          --fs-body: 1rem;
+          --fs-body-lg: 1rem;
+          --fs-small: 0.8125rem;
+        }
+      }
+
+      h1,
+      .text-7xl,
+      .text-6xl,
+      .text-5xl,
+      .text-4xl,
+      [class*="text-[9rem]"] {
+        font-size: var(--fs-h1) !important;
+        line-height: 1.25 !important;
+        letter-spacing: 0.2px;
+        font-weight: 600 !important;
+      }
+
+      h2,
+      .text-3xl {
+        font-size: var(--fs-h2) !important;
+        line-height: 1.3 !important;
+        letter-spacing: 0.2px;
+        font-weight: 600 !important;
+      }
+
+      h3,
+      .text-2xl,
+      .text-xl {
+        font-size: var(--fs-h3) !important;
+        line-height: 1.35 !important;
+        font-weight: 500 !important;
+      }
+
+      h4,
+      .text-lg {
+        font-size: var(--fs-h4) !important;
+        line-height: 1.4 !important;
+        font-weight: 500 !important;
+      }
+
+      p,
+      .text-base {
+        font-size: var(--fs-body) !important;
+        line-height: 1.62 !important;
+        letter-spacing: 0.2px;
+      }
+
+      .text-sm,
+      [class*="text-[8px]"],
+      [class*="text-[9px]"],
+      [class*="text-[10px]"],
+      [class*="text-[11px]"],
+      [class*="text-[12px]"],
+      [class*="text-[13px]"] {
+        font-size: var(--fs-small) !important;
+        line-height: 1.5 !important;
+      }
+
+      p + p {
+        margin-top: 0.625rem;
+      }
+
+      @media (min-width: 768px) {
+        .md\:text-7xl,
+        .md\:text-6xl,
+        .md\:text-5xl,
+        .md\:text-4xl,
+        [class*="md:text-[9rem]"] {
+          font-size: var(--fs-h1) !important;
+          line-height: 1.25 !important;
+          font-weight: 600 !important;
+        }
+
+        .md\:text-3xl {
+          font-size: var(--fs-h2) !important;
+          line-height: 1.3 !important;
+          font-weight: 600 !important;
+        }
+
+        .md\:text-2xl,
+        .md\:text-xl {
+          font-size: var(--fs-h3) !important;
+          line-height: 1.35 !important;
+          font-weight: 500 !important;
+        }
+
+        .md\:text-lg {
+          font-size: var(--fs-h4) !important;
+          line-height: 1.4 !important;
+          font-weight: 500 !important;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .lg\:text-7xl,
+        .lg\:text-6xl,
+        .lg\:text-5xl,
+        .lg\:text-4xl {
+          font-size: var(--fs-h1) !important;
+          line-height: 1.25 !important;
+          font-weight: 600 !important;
+        }
+
+        .lg\:text-3xl {
+          font-size: var(--fs-h2) !important;
+          line-height: 1.3 !important;
+          font-weight: 600 !important;
+        }
+
+        .lg\:text-2xl,
+        .lg\:text-xl {
+          font-size: var(--fs-h3) !important;
+          line-height: 1.35 !important;
+          font-weight: 500 !important;
+        }
       }
 
       .gradient-text-hero {
-        background: linear-gradient(to bottom, #ffffff 20%, #94a3b8 100%);
+        background: linear-gradient(to right, #1677ff, #69b1ff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       
       .light .gradient-text-hero {
-        background: linear-gradient(to bottom, #0f172a 20%, #64748b 100%);
+        background: linear-gradient(to right, #0958d9, #1677ff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
       .glass-card-pro {
-        backdrop-filter: blur(24px) !important;
+        backdrop-filter: blur(20px) !important;
         transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 0 50px -12px rgba(22, 119, 255, 0.12);
       }
 
       .dark .glass-card-pro {
-        background: rgba(255, 255, 255, 0.03) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        background: rgba(0, 0, 0, 0.42) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
       }
 
       .light .glass-card-pro {
-        background: rgba(255, 255, 255, 0.8) !important;
-        border: 1px solid rgba(37, 99, 235, 0.1) !important;
+        background: rgba(255, 255, 255, 0.96) !important;
+        border: 1px solid rgba(15, 23, 42, 0.1) !important;
       }
 
       .grid-bg-complex {
-        background-size: 40px 40px;
-        mask-image: radial-gradient(ellipse at center, black 10%, transparent 90%);
+        background-size: 50px 50px;
+        mask-image: radial-gradient(ellipse at center, black 35%, transparent 100%);
       }
       @media (min-width: 768px) {
-        .grid-bg-complex { background-size: 80px 80px; }
+        .grid-bg-complex { background-size: 64px 64px; }
       }
 
       .dark .grid-bg-complex {
         background-image: 
-          linear-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+          linear-gradient(rgba(30, 41, 59, 0.5) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(30, 41, 59, 0.5) 1px, transparent 1px);
       }
 
       .light .grid-bg-complex {
         background-image: 
-          linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+          linear-gradient(rgba(22, 119, 255, 0.12) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(22, 119, 255, 0.12) 1px, transparent 1px);
+      }
+
+      .brand-grad {
+        background: linear-gradient(to right, #0958d9, #1677ff);
+      }
+
+      .brand-grad-soft {
+        background: linear-gradient(to right, #1677ff, #69b1ff);
+      }
+
+      .tag-pill {
+        border-radius: 999px;
+        padding: 0.5rem 1.25rem;
+        border: 1px solid;
+        font-size: 10px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+
+      .dark .tag-pill {
+        border-color: rgba(22, 119, 255, 0.35);
+        background: rgba(22, 119, 255, 0.08);
+        color: #1677ff;
+      }
+
+      .light .tag-pill {
+        border-color: rgba(22, 119, 255, 0.28);
+        background: rgba(22, 119, 255, 0.12);
+        color: #0958d9;
+      }
+
+      .brand-outline {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .dark .brand-outline-hover:hover {
+        border-color: rgba(22, 119, 255, 0.55);
+        box-shadow: 0 0 30px -10px rgba(22, 119, 255, 0.32);
+      }
+
+      .light .brand-outline {
+        border-color: rgba(15, 23, 42, 0.12);
+      }
+
+      .light .brand-outline-hover:hover {
+        border-color: rgba(22, 119, 255, 0.38);
+        box-shadow: 0 0 24px -10px rgba(22, 119, 255, 0.2);
+      }
+
+      .brand-button {
+        background: linear-gradient(to right, #0958d9, #1677ff);
+        color: #fff;
+        border: 1px solid rgba(22, 119, 255, 0.6);
+        box-shadow: 0 0 20px -5px rgba(22, 119, 255, 0.5);
+        transition: all 0.3s ease;
+      }
+
+      .brand-button:hover {
+        transform: translateY(-1px) scale(1.03);
+        box-shadow: 0 0 30px -5px rgba(22, 119, 255, 0.6);
+      }
+
+      .light .brand-button:hover {
+        background: linear-gradient(to right, #3c89ff, #1668dc);
+      }
+
+      .ant-input.input-brand {
+        border-radius: 0 !important;
+        border: 0 !important;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
+        background: rgba(0, 0, 0, 0.45) !important;
+      }
+
+      .light .ant-input.input-brand {
+        border-bottom-color: rgba(22, 119, 255, 0.28) !important;
+        background: rgba(239, 246, 255, 0.9) !important;
+      }
+
+      .ant-input.input-brand:focus,
+      .ant-input.input-brand-focused {
+        border-bottom-color: #1677ff !important;
+        box-shadow: 0 10px 20px -10px rgba(22, 119, 255, 0.35) !important;
+      }
+
+      .hero-title-scale {
+        font-size: clamp(2.25rem, 8.5vw, 4.75rem) !important;
+        line-height: 1.12 !important;
+        letter-spacing: 0.3px !important;
+        font-weight: 700 !important;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+      }
+
+      .animate-float {
+        animation: float 8s ease-in-out infinite;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation: none !important;
+          transition: none !important;
+        }
       }
 
       .section-fullscreen {
@@ -139,7 +399,7 @@
         inset: 0;
         border-radius: inherit;
         padding: 1px;
-        background: linear-gradient(135deg, rgba(37,99,235,0.3), transparent 40%, transparent 60%, rgba(16,185,129,0.3));
+        background: linear-gradient(135deg, rgba(22,119,255,0.35), transparent 40%, transparent 60%, rgba(22,119,255,0.3));
         mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
         -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
         mask-composite: exclude;
@@ -170,8 +430,11 @@
 }
 </script>
 </head>
-  <body class="antialiased font-sans dark">
+  <body class="antialiased font-body dark">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>
+
+
+

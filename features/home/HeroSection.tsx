@@ -98,7 +98,7 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
     <header className="relative min-h-[110dvh] md:min-h-[180vh] flex flex-col items-center">
       <div className="fixed inset-0 grid-bg-complex -z-10 pointer-events-none"></div>
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <GlowOrb color="bg-blue-600" className="top-[-10%] left-[-10%] opacity-[0.08] blur-[120px] md:blur-[240px]" size="120vw" />
+        <GlowOrb color="bg-[#0958d9]" className="top-[-10%] left-[-10%] opacity-[0.08] blur-[120px] md:blur-[240px]" size="120vw" />
       </div>
 
       {/* Landing Page Content (Hero Text) */}
@@ -111,15 +111,15 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
         }}
       >
         <div className="flex flex-col items-center w-full max-w-7xl pointer-events-auto text-center">
-          <h1 className="text-5xl sm:text-7xl md:text-[9rem] font-black mb-8 leading-[0.9] tracking-tighter gradient-text-hero animate-content-entrance" style={{ animationDelay: '100ms' }}>
+          <h1 className="hero-title-scale text-5xl sm:text-7xl md:text-[9rem] font-heading font-bold mb-8 leading-[0.9] tracking-tighter gradient-text-hero animate-content-entrance" style={{ animationDelay: '100ms' }}>
             {lang === 'mn' ? (
-              <>ЗЭЭЛИЙН <br className="hidden md:block"/>ХЯНАЛТЫН <br className="hidden md:block"/><span className="text-blue-600">ШИНЭ ЭРИН</span></>
+              <>ЗЭЭЛЭЭ УХААЛГААР УДИРДАЖ <br className="hidden md:block"/><span className="gradient-text-hero">ЭРГЭН ТӨЛӨЛТӨӨ ХЯЛБАРЧИЛ</span></>
             ) : (
-              <>THE UNIFIED <br className="hidden md:block"/>CONTROL <br className="hidden md:block"/><span className="text-blue-600">INTERFACE</span></>
+              <>THE UNIFIED <br className="hidden md:block"/>CONTROL <br className="hidden md:block"/><span className="gradient-text-hero">INTERFACE</span></>
             )}
           </h1>
           
-          <p className={`text-base md:text-xl lg:text-2xl max-w-[320px] sm:max-w-lg md:max-w-3xl mb-12 font-medium leading-relaxed animate-content-entrance ${isDark ? 'text-slate-400' : 'text-slate-600'}`} style={{ animationDelay: '200ms' }}>
+          <p className={`text-base md:text-xl lg:text-2xl max-w-[320px] sm:max-w-lg md:max-w-3xl mb-12 font-medium leading-relaxed animate-content-entrance ${isDark ? 'text-slate-300' : 'text-[#475569]'}`} style={{ animationDelay: '200ms' }}>
             {t.hero.subtitle}
           </p>
         </div>
@@ -135,12 +135,12 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
       >
         <div className="relative group">
           {/* Main Container */}
-          <div className={`relative z-10 glass-card-pro rounded-[2rem] md:rounded-[4rem] overflow-hidden border flex flex-col md:flex-row h-auto md:h-[920px] shadow-[0_50px_100px_rgba(0,0,0,0.2)] ${isDark ? 'border-white/5 bg-[#0b0f1a]/95' : 'border-slate-200 bg-white'}`}>
+          <div className={`relative z-10 glass-card-pro rounded-[2rem] md:rounded-[4rem] overflow-hidden border flex flex-col md:flex-row h-auto md:h-[920px] shadow-[0_0_80px_-10px_rgba(22,119,255,0.2)] ${isDark ? 'border-white/10 bg-[#0b0f1a]/95' : 'border-[#0958d9]/20 bg-[#ffffff]'}`}>
              
              {/* Sidebar - Mimicking screenshots */}
-             <aside className={`w-full md:w-64 flex flex-row md:flex-col border-b md:border-b-0 md:border-r transition-colors p-4 md:p-0 overflow-x-auto no-scrollbar ${isDark ? 'bg-[#0b0f1a] border-white/5' : 'bg-[#fcfdfe] border-slate-100'}`}>
+             <aside className={`w-full md:w-64 flex flex-row md:flex-col border-b md:border-b-0 md:border-r transition-colors p-4 md:p-0 overflow-x-auto no-scrollbar ${isDark ? 'bg-[#0b0f1a] border-white/10' : 'bg-[#f5f9ff] border-[#0958d9]/20'}`}>
                 <div className="p-6 lg:p-10 hidden md:flex items-center gap-4 border-b border-white/5 md:mb-4">
-                   <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white shadow-lg text-xl">D</div>
+                   <div className="w-10 h-10 brand-grad rounded-xl flex items-center justify-center font-black text-white shadow-[0_0_20px_-5px_rgba(22,119,255,0.7)] text-xl">D</div>
                    <div className="flex flex-col">
                       <span className={`text-[13px] font-black tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>DebtPro</span>
                       <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">KCH_CRM_V1</span>
@@ -154,12 +154,12 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
                         onClick={() => setActiveKey(item.key)}
                         className={`flex items-center justify-between px-4 py-3.5 rounded-xl transition-all duration-300 group shrink-0 w-full
                           ${activeKey === item.key 
-                            ? 'bg-blue-600/10 text-blue-500 border border-blue-500/20 shadow-sm' 
-                            : `text-slate-500 hover:bg-slate-500/5`}`}
+                            ? 'bg-[#1677ff]/10 text-[#1677ff] border border-[#1677ff]/30 shadow-[0_0_24px_-10px_rgba(22,119,255,0.5)]' 
+                            : `${isDark ? 'text-slate-400 hover:bg-white/5' : 'text-[#475569] hover:bg-[#1677ff]/10'}`}`}
                       >
                         <div className="flex items-center gap-3">
-                          <span className={`text-lg ${activeKey === item.key ? 'text-blue-500' : ''}`}>{item.icon}</span>
-                          <span className={`text-[12px] font-bold tracking-tight ${activeKey === item.key ? 'text-blue-600' : ''}`}>
+                          <span className={`text-lg ${activeKey === item.key ? 'text-[#1677ff]' : ''}`}>{item.icon}</span>
+                          <span className={`text-[12px] font-bold tracking-tight ${activeKey === item.key ? 'text-[#0958d9]' : ''}`}>
                             {item.label}
                           </span>
                         </div>
@@ -169,7 +169,7 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
                       {activeKey === item.key && item.subItems && (
                         <div className="hidden md:flex flex-col pl-10 pr-4 mt-1 space-y-1 animate-slide-up">
                           {item.subItems.map((sub, si) => (
-                            <button key={si} className="text-left py-2.5 px-3 rounded-lg text-[11px] font-bold text-blue-500/70 hover:text-blue-500 hover:bg-blue-500/5 transition-colors">
+                            <button key={si} className="text-left py-2.5 px-3 rounded-lg text-[11px] font-bold text-[#1677ff]/70 hover:text-[#1677ff] hover:bg-[#1677ff]/10 transition-colors">
                               {sub.label}
                             </button>
                           ))}
@@ -185,7 +185,7 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
                       key={item.key}
                       onClick={() => setActiveKey(item.key)}
                       className={`hidden md:flex items-center gap-4 px-4 py-3 rounded-xl transition-colors w-full
-                        ${activeKey === item.key ? 'bg-blue-600/10 text-blue-500' : 'text-slate-500 hover:text-blue-500'}`}
+                        ${activeKey === item.key ? 'bg-[#1677ff]/10 text-[#1677ff]' : `${isDark ? 'text-slate-500 hover:text-[#1677ff]' : 'text-[#475569] hover:text-[#0958d9]'}`}`}
                     >
                       <span className="text-base">{item.icon}</span>
                       <span className="text-[11px] font-bold">{item.label}</span>
@@ -194,8 +194,8 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
                 </nav>
 
                 <div className="p-6 mt-auto hidden md:block">
-                   <div className={`flex items-center gap-3 p-3 rounded-2xl ${isDark ? 'bg-white/5 border border-white/5' : 'bg-white border border-slate-100 shadow-sm'}`}>
-                      <Avatar size="small" className="bg-blue-600" src="https://api.dicebear.com/7.x/avataaars/svg?seed=A" />
+                   <div className={`flex items-center gap-3 p-3 rounded-2xl ${isDark ? 'bg-white/5 border border-white/10' : 'bg-white border border-[#0958d9]/15 shadow-sm'}`}>
+                      <Avatar size="small" className="brand-grad" src="https://api.dicebear.com/7.x/avataaars/svg?seed=A" />
                       <div className="flex-1 overflow-hidden">
                          <div className={`text-[10px] font-black truncate ${isDark ? 'text-white' : 'text-slate-900'}`}>A.Admin</div>
                          <div className="text-[8px] font-bold text-emerald-500 uppercase tracking-widest">Active_Session</div>
@@ -206,7 +206,7 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
              </aside>
 
              {/* Main Content Area */}
-             <main className={`flex-1 flex flex-col overflow-hidden ${isDark ? 'bg-[#080b12]' : 'bg-[#f0f2f5]'}`}>
+             <main className={`flex-1 flex flex-col overflow-hidden ${isDark ? 'bg-[#08090d]' : 'bg-[#eff6ff]'}`}>
                 {/* Dashboard Canvas Area */}
                 <div className="flex-1 overflow-y-auto p-4 md:p-8 no-scrollbar relative flex items-center justify-center">
                    
@@ -230,19 +230,19 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
           </div>
           
           {/* Decorative Glows */}
-          <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-600/20 blur-[120px] rounded-full -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-          <div className="absolute -top-20 -right-20 w-80 h-80 bg-indigo-600/20 blur-[120px] rounded-full -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+          <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-[#0958d9]/20 blur-[120px] rounded-full -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+          <div className="absolute -top-20 -right-20 w-80 h-80 bg-[#69b1ff]/20 blur-[120px] rounded-full -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
         </div>
       </div>
 
       <style>{`
         .gradient-text-hero {
-          background: linear-gradient(to bottom, #fff 40%, #94a3b8 100%);
+          background: linear-gradient(to right, #1677ff, #69b1ff);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
         .light .gradient-text-hero {
-          background: linear-gradient(to bottom, #0f172a 40%, #64748b 100%);
+          background: linear-gradient(to right, #0958d9, #1677ff);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -264,3 +264,7 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
     </header>
   );
 };
+
+
+
+

@@ -43,7 +43,7 @@ export const PreviewSMSTemplate: React.FC<PreviewProps> = ({ lang, theme }) => {
     <div className="w-full h-full flex flex-col gap-6">
        <div className={`p-6 rounded-3xl border ${isDark ? 'bg-slate-900 border-white/10' : 'bg-white border-slate-200'} shadow-xl`}>
           <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
-             <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white"><Type size={14}/></div>
+             <div className="w-8 h-8 rounded-lg bg-[#0958d9] flex items-center justify-center text-white"><Type size={14}/></div>
              <h4 className="text-[10px] font-black uppercase tracking-widest">Template_Studio_V1</h4>
           </div>
           <div className={`p-4 rounded-xl font-mono text-[11px] leading-relaxed mb-6 ${isDark ? 'bg-black/40 text-blue-400' : 'bg-slate-50 text-blue-600'}`}>
@@ -52,7 +52,7 @@ export const PreviewSMSTemplate: React.FC<PreviewProps> = ({ lang, theme }) => {
             Яаралтай холбогдоно уу: 77012277
           </div>
           <div className="flex gap-2">
-             <button className="flex-1 h-9 bg-blue-600 text-white text-[9px] font-black uppercase rounded-lg flex items-center justify-center gap-2">
+             <button className="flex-1 h-9 bg-[#0958d9] text-white text-[9px] font-black uppercase rounded-lg flex items-center justify-center gap-2">
                 <Send size={12}/> Mass_Send
              </button>
              <button className={`flex-1 h-9 border text-[9px] font-black uppercase rounded-lg flex items-center justify-center gap-2 ${isDark ? 'border-white/10 text-slate-400' : 'border-slate-200 text-slate-500'}`}>
@@ -121,7 +121,7 @@ export const PreviewDocAutomation: React.FC<PreviewProps> = ({ lang, theme }) =>
                 <div className="h-3 w-full bg-slate-500/10 rounded"></div>
              </div>
              <div className="absolute bottom-8 right-8 flex gap-3">
-                <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-xl cursor-pointer hover:scale-110 transition-transform"><Download size={18}/></div>
+                <div className="w-10 h-10 rounded-full bg-[#0958d9] flex items-center justify-center text-white shadow-xl cursor-pointer hover:scale-110 transition-transform"><Download size={18}/></div>
                 <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white shadow-xl cursor-pointer hover:scale-110 transition-transform"><CheckCircle size={18}/></div>
              </div>
           </div>
@@ -157,7 +157,7 @@ export const PreviewCommandCenter: React.FC<PreviewProps> = ({ lang, theme }) =>
         {[
           { label: t.stats.npl, value: 124, suffix: 'M', prefix: '$', color: 'text-red-500', icon: <Target size={14}/> },
           { label: t.stats.today, value: 1.2, suffix: 'M', prefix: '$', color: 'text-emerald-500', icon: <TrendingUp size={14}/> },
-          { label: t.stats.rate, value: 42, suffix: '%', color: 'text-blue-500', icon: <Activity size={14}/> },
+          { label: t.stats.rate, value: 42, suffix: '%', color: 'text-[#1677ff]', icon: <Activity size={14}/> },
           { label: t.stats.risk, value: 8.2, suffix: 'M', prefix: '$', color: 'text-white', icon: <Zap size={14}/> },
         ].map((stat, i) => (
           <AntdTooltip key={i} title={statTooltips[stat.label]} placement="top">
@@ -182,7 +182,7 @@ export const PreviewCommandCenter: React.FC<PreviewProps> = ({ lang, theme }) =>
           <div className="flex items-center justify-between mb-8">
             <AntdTooltip title={lang === 'mn' ? 'Зээлийн ангиллын шилжилт' : 'Tracking how loans migrate between risk categories over time.'}>
               <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] flex items-center gap-3 text-slate-400 cursor-help">
-                <BarChart3 size={16} className="text-blue-500"/> PORTFOLIO_MIGRATION_V4 <Info size={12} className="opacity-40" />
+                <BarChart3 size={16} className="text-[#1677ff]"/> PORTFOLIO_MIGRATION_V4 <Info size={12} className="opacity-40" />
               </h4>
             </AntdTooltip>
             <div className="flex gap-2">
@@ -202,7 +202,7 @@ export const PreviewCommandCenter: React.FC<PreviewProps> = ({ lang, theme }) =>
                 />
                 <Bar dataKey="value" radius={[10, 10, 0, 0]}>
                    {chartData.map((entry, index) => (
-                      <Cell key={index} fill={index === 0 ? '#10b981' : index > 2 ? '#ef4444' : '#3b82f6'} fillOpacity={0.8} />
+                      <Cell key={index} fill={index === 0 ? '#69b1ff' : index > 2 ? '#0958d9' : '#1677ff'} fillOpacity={0.8} />
                    ))}
                 </Bar>
               </BarChart>
@@ -245,9 +245,9 @@ export const PreviewBorrower360: React.FC<PreviewProps> = ({ lang }) => {
   return (
     <div className="flex flex-col gap-6 w-full p-2">
       <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-8 relative overflow-hidden group">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/5 blur-[60px] group-hover:bg-blue-600/10 transition-colors"></div>
+        <div className="absolute top-0 right-0 w-32 h-32 bg-[#0958d9]/5 blur-[60px] group-hover:bg-[#0958d9]/10 transition-colors"></div>
         <div className="flex items-center gap-6">
-           <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl flex items-center justify-center font-black text-3xl text-white shadow-2xl shadow-blue-600/40 relative">
+           <div className="w-20 h-20 bg-gradient-to-br from-[#0958d9] to-[#1677ff] rounded-3xl flex items-center justify-center font-black text-3xl text-white shadow-2xl shadow-blue-600/40 relative">
               B
               <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full border-4 border-slate-900 flex items-center justify-center">
                  <div className="w-2 h-2 bg-white rounded-full"></div>
@@ -268,7 +268,7 @@ export const PreviewBorrower360: React.FC<PreviewProps> = ({ lang }) => {
             <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] mb-8 flex items-center gap-3 text-slate-400"><History size={16}/> AUDIT_TRACE_LOG</h4>
             <div className="space-y-6">
                {[
-                 { act: 'Outbound_Call', res: 'CONN_04:22s', time: '2h_ago', c: 'text-blue-500' },
+                 { act: 'Outbound_Call', res: 'CONN_04:22s', time: '2h_ago', c: 'text-[#1677ff]' },
                  { act: 'SMS_Trigger', res: 'DELIVERED', time: '1d_ago', c: 'text-emerald-500' },
                  { act: 'Asset_Sync', res: 'ASSET_8022_UBA', time: '3d_ago', c: 'text-white' }
                ].map((log, i) => (
@@ -306,15 +306,15 @@ export const PreviewLegalPipeline: React.FC<PreviewProps> = ({ lang }) => {
   return (
     <div className="w-full h-full p-2">
       <div className="flex items-center justify-between mb-12">
-         <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] flex items-center gap-3 text-slate-400"><Gavel size={18} className="text-blue-500"/> LEGAL_ENGINE_V1</h4>
-         <button className="h-10 px-6 bg-white/5 border border-white/10 text-blue-500 text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-blue-600 hover:text-white transition-all flex items-center gap-3">
+         <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] flex items-center gap-3 text-slate-400"><Gavel size={18} className="text-[#1677ff]"/> LEGAL_ENGINE_V1</h4>
+         <button className="h-10 px-6 bg-white/5 border border-white/10 text-[#1677ff] text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-[#0958d9] hover:text-white transition-all flex items-center gap-3">
             QUEUE_BATCH <ChevronRight size={14}/>
          </button>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
          {[
            { stage: 'Notices', count: 124, color: 'bg-blue-400', desc: lang === 'mn' ? 'Илгээсэн мэдэгдэх хуудас' : 'Sent repayment reminders.' },
-           { stage: 'Invoices', count: 82, color: 'bg-blue-600', desc: lang === 'mn' ? 'Үүсгэсэн нэхэмжлэхүүд' : 'Generated billing documents.' },
+           { stage: 'Invoices', count: 82, color: 'bg-[#0958d9]', desc: lang === 'mn' ? 'Үүсгэсэн нэхэмжлэхүүд' : 'Generated billing documents.' },
            { stage: 'Filings', count: 45, color: 'bg-red-500', desc: lang === 'mn' ? 'Шүүхэд шилжсэн хэргүүд' : 'Active court submissions.' },
            { stage: 'Closed', count: 312, color: 'bg-emerald-500', desc: lang === 'mn' ? 'Шийдвэрлэгдсэн' : 'Successfully settled cases.' }
          ].map((s, i) => (
@@ -340,7 +340,7 @@ export const PreviewSMSDashboard: React.FC<PreviewProps> = ({ lang }) => {
             <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 relative group cursor-help">
                <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] mb-8 text-slate-400">CARRIER_NODE</h4>
                <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 bg-blue-600/10 text-blue-500 rounded-3xl flex items-center justify-center border border-blue-500/20">
+                  <div className="w-16 h-16 bg-[#0958d9]/10 text-[#1677ff] rounded-3xl flex items-center justify-center border border-[#1677ff]/30">
                      <Zap size={28} className="animate-pulse" />
                   </div>
                   <div>
@@ -352,14 +352,14 @@ export const PreviewSMSDashboard: React.FC<PreviewProps> = ({ lang }) => {
           </AntdTooltip>
        </div>
        <div className="lg:col-span-8 p-8 rounded-[2.5rem] bg-white/5 border border-white/10 relative overflow-hidden group">
-          <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] mb-8 flex items-center gap-3 text-slate-400"><MessageCircle size={18} className="text-blue-500"/> QUEUE_V2</h4>
+          <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] mb-8 flex items-center gap-3 text-slate-400"><MessageCircle size={18} className="text-[#1677ff]"/> QUEUE_V2</h4>
           <div className="space-y-6">
              {[
                { ch: 'Voice', to: 'Batch_A', msg: 'Collection_Notice_01...', stat: 'SENT' },
                { ch: 'SMS', to: 'Batch_B', msg: 'Urgency_Trigger_Batch...', stat: 'PENDING' }
              ].map((log, i) => (
                 <div key={i} className="flex gap-6 border-b border-white/5 pb-6 last:border-0 last:pb-0">
-                   <div className="font-mono text-[10px] font-black px-4 py-1.5 bg-blue-500/10 text-blue-500 rounded-xl h-fit border border-blue-500/20">{log.ch}</div>
+                   <div className="font-mono text-[10px] font-black px-4 py-1.5 bg-[#1677ff]/10 text-[#1677ff] rounded-xl h-fit border border-[#1677ff]/30">{log.ch}</div>
                    <div className="flex-1">
                       <div className="font-mono text-xs font-bold text-slate-300">{log.to}</div>
                       <p className="text-[11px] font-medium text-slate-600 italic mt-2">"{log.msg}"</p>
@@ -383,7 +383,7 @@ export const PreviewPerformance: React.FC<PreviewProps> = ({ lang }) => {
   return (
     <div className="w-full h-full p-2">
       <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 relative overflow-hidden group">
-         <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] mb-12 flex items-center gap-3 text-slate-400"><Award size={18} className="text-blue-500"/> KPI_ENGINE_ACTIVE</h4>
+         <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] mb-12 flex items-center gap-3 text-slate-400"><Award size={18} className="text-[#1677ff]"/> KPI_ENGINE_ACTIVE</h4>
          <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
                <BarChart data={data} layout="vertical" margin={{ left: 0 }}>
@@ -403,3 +403,7 @@ export const PreviewPerformance: React.FC<PreviewProps> = ({ lang }) => {
     </div>
   );
 };
+
+
+
+

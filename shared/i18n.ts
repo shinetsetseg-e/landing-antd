@@ -7,7 +7,7 @@ export const i18n = {
       solutions: 'Шийдлүүд',
       why: 'Давуу тал',
       pricing: 'Үнийн санал',
-      resources: 'Мэдлэг',
+      resources: 'Холбогдох',
       faq: 'FAQ',
       demo: 'Худалдан авах',
       sms: 'МСЖ',
@@ -910,3 +910,4 @@ export const i18n = {
     }
   }
 };
+

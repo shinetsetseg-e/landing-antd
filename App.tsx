@@ -33,7 +33,7 @@ const App: React.FC = () => {
   return (
     <ConfigProvider theme={themeConfig}>
       <AntdApp>
-        <Layout className={`min-h-screen transition-colors duration-700 ${themeMode === 'dark' ? 'bg-slate-950' : 'bg-[#fdfdfe]'}`}>
+        <Layout className={`min-h-screen transition-colors duration-700 font-body ${themeMode === 'dark' ? 'bg-[#030304]' : 'bg-[#f5f9ff]'}`}>
           <Navbar 
             lang={lang} 
             setLang={setLang} 
@@ -52,8 +52,8 @@ const App: React.FC = () => {
             <div id="showcase"><ShowcaseSection lang={lang} theme={themeMode} /></div>
             <div id="pricing"><PricingSection lang={lang} theme={themeMode} /></div>
             {/* <div id="customers"><ReviewsSection lang={lang} theme={themeMode} /></div> */}
-            <div id="contact"><ContactSection lang={lang} theme={themeMode} /></div>
             <div id="faq"><FAQSection lang={lang} theme={themeMode} /></div>
+            <div id="contact"><ContactSection lang={lang} theme={themeMode} /></div>
           </Content>
 
           <Footer lang={lang} theme={themeMode} />
@@ -65,3 +65,6 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
+
