@@ -34,7 +34,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
   const [isMinimized, setIsMinimized] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', text: lang === 'mn' ? 'Сайн байна уу! DebtPro системийн талаар асуух зүйл байна уу?' : 'Hello! How can I help you with TND DebtPro today?' }
+    { role: 'model', text: lang === 'mn' ? 'Сайн байна уу! DebtPro системийн талаар асуух зүйл байна уу?' : 'Hello! How can I help you with DebtPro today?' }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -57,9 +57,9 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
     try {
       // Initialize GoogleGenAI using the apiKey named parameter from process.env.API_KEY
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const systemInstruction = `You are the TND DebtPro AI Assistant. Use the following context about the system to answer user queries professionally.
+      const systemInstruction = `You are the DebtPro AI Assistant. Use the following context about the system to answer user queries professionally.
       
-      Context from TND DebtPro Requirements:
+      Context from DebtPro Requirements:
       - Purpose: Simplified loan recovery and NPL management CRM for Banks and NBFIs.
       - Core Features: Data import from Polaris (core banking), CallPro integration (automated calls/SMS), smart loan allocation, and legal workflow automation.
       - User Roles:
@@ -68,7 +68,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
         3. Auditor/Legal: View-only access for monitoring.
       - Allocation Rules: Loans are split between "Recovery Specialists" (<60 days overdue) and "Special Asset Specialists" (60+ days overdue). System balances by count, balance, and product type (Auto, Online, Consumer, etc.).
       - Borrower 360: Includes detailed profile, family links, payment schedules, bank statements, and collateral info (cars, houses).
-      - Timeline: CRM V2 launch June 2025; DebtPro TND V1 launch Nov 2025.
+      - Timeline: CRM V2 launch June 2025; DebtPro V1 launch Nov 2025.
       - Language: Respond in the language the user is speaking (${lang}). Be concise and helpful.`;
 
       // Call generateContent with the model name and contents including history
