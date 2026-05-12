@@ -19,6 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
   const t = i18n[lang];
   const [scrolled, setScrolled] = useState(false);
   const isDark = theme === 'dark';
+  const purchaseUrl = 'https://debtpro.kchsolution.mn/';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -45,8 +46,11 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
         ${isDark ? 'bg-[#030304]/55 border-white/10' : 'bg-[#f5f9ff]/78 border-[#0958d9]/20'}`}>
         
         <div className="flex items-center gap-3 md:gap-4 cursor-pointer group" onClick={() => scrollTo('home')}>
-          <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center font-black text-white shadow-[0_0_22px_-6px_rgba(22,119,255,0.7)] shrink-0 brand-grad">D</div>
-          <span className={`text-lg md:text-xl font-heading font-bold tracking-tight uppercase shrink-0 ${isDark ? 'text-white' : 'text-[#0f172a]'}`}>DEBTPRO</span>
+          <img
+            src="/images/debtpro_kch_logo.svg"
+            alt="DebtPro"
+            className="h-8 md:h-10 w-auto shrink-0"
+          />
         </div>
 
         <div className="hidden xl:flex items-center gap-8">
@@ -90,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
             type="primary" 
             size={window.innerWidth < 768 ? "small" : "middle"}
             className="h-8 md:h-12 px-4 md:px-8 text-[9px] md:text-[11px] font-black uppercase tracking-wider brand-button border-0"
-            onClick={() => scrollTo('pricing')}
+            onClick={() => { window.location.href = purchaseUrl; }}
           >
             {t.nav.demo}
           </Button>

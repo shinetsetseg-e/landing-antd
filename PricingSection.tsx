@@ -14,6 +14,7 @@ interface PricingSectionProps {
 export const PricingSection: React.FC<PricingSectionProps> = ({ lang, theme }) => {
   const t = i18n[lang];
   const isDark = theme === 'dark';
+  const purchaseUrl = 'https://debtpro.kchsolution.mn/';
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -66,7 +67,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ lang, theme }) =
                 ))}
               </div>
 
-              <button className="h-14 w-full rounded-full font-mono text-xs uppercase tracking-[0.25em] brand-button active:scale-95" onClick={() => scrollTo('contact')}>
+              <button className="h-14 w-full rounded-full font-mono text-xs uppercase tracking-[0.25em] brand-button active:scale-95" onClick={() => { window.location.href = purchaseUrl; }}>
                 {t.pricing.starter.cta}
               </button>
             </div>
@@ -105,7 +106,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ lang, theme }) =
                 )}
               </div>
 
-              <button className="h-14 w-full rounded-full font-mono text-xs uppercase tracking-[0.25em] brand-button active:scale-95" onClick={() => scrollTo('contact')}>
+              <button className="h-14 w-full rounded-full font-mono text-xs uppercase tracking-[0.25em] brand-button active:scale-95" onClick={() => { window.location.href = purchaseUrl; }}>
                 {t.pricing.enterprise.cta}
               </button>
             </div>

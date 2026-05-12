@@ -140,11 +140,12 @@ export const HeroSection: React.FC<SectionProps> = ({ lang, theme }) => {
              {/* Sidebar - Mimicking screenshots */}
              <aside className={`w-full md:w-64 flex flex-row md:flex-col border-b md:border-b-0 md:border-r transition-colors p-4 md:p-0 overflow-x-auto no-scrollbar ${isDark ? 'bg-[#0b0f1a] border-white/10' : 'bg-[#f5f9ff] border-[#0958d9]/20'}`}>
                 <div className="p-6 lg:p-10 hidden md:flex items-center gap-4 border-b border-white/5 md:mb-4">
-                   <div className="w-10 h-10 brand-grad rounded-xl flex items-center justify-center font-black text-white shadow-[0_0_20px_-5px_rgba(22,119,255,0.7)] text-xl">D</div>
-                   <div className="flex flex-col">
-                      <span className={`text-[13px] font-black tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>DebtPro</span>
-                      <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">KCH_CRM_V1</span>
-                   </div>
+                   <img
+                     src="/images/debtpro_kch_logo.svg"
+                     alt="DebtPro"
+                     className="h-10 w-auto shrink-0"
+                   />
+                   <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">KCH_CRM_V1</span>
                 </div>
                 
                 <nav className="flex flex-row md:flex-col flex-1 px-2 md:px-4 space-x-2 md:space-x-0 md:space-y-1">

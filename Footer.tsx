@@ -11,6 +11,7 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ lang, theme }) => {
   const t = i18n[lang];
   const isDark = theme === 'dark';
+  const purchaseUrl = 'https://debtpro.kchsolution.mn/';
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -48,7 +49,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, theme }) => {
 
                 <div className="w-full flex items-center justify-center">
                   <button
-                    onClick={() => scrollTo('contact')}
+                    onClick={() => { window.location.href = purchaseUrl; }}
                     className="group h-14 px-10 brand-button font-mono rounded-full text-xs uppercase tracking-[0.25em] flex items-center justify-center gap-3"
                   >
                     {t.finalCta.cta}
@@ -73,8 +74,11 @@ export const Footer: React.FC<FooterProps> = ({ lang, theme }) => {
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 mb-12">
             <div className="flex flex-col gap-5">
               <div className="flex items-center gap-4 cursor-pointer" onClick={() => scrollTo('home')}>
-                <div className="w-11 h-11 brand-grad rounded-xl flex items-center justify-center font-black text-white text-lg shadow-[0_0_20px_-5px_rgba(22,119,255,0.7)]">D</div>
-                <span className={`text-xl font-heading font-bold uppercase tracking-[0.1em] ${isDark ? 'text-white' : 'text-[#0f172a]'}`}>DEBTPRO</span>
+                <img
+                  src="/images/debtpro_kch_logo.svg"
+                  alt="DebtPro"
+                  className="h-11 w-auto shrink-0"
+                />
               </div>
               <p className={`text-sm max-w-[320px] ${isDark ? 'text-slate-400' : 'text-[#475569]'}`}>
                 {t.hero.subtitle}
@@ -103,7 +107,5 @@ export const Footer: React.FC<FooterProps> = ({ lang, theme }) => {
     </>
   );
 };
-
-
 
 

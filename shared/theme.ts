@@ -20,7 +20,7 @@ export const getThemeConfig = (mode: ThemeMode) => ({
     fontSizeHeading4: 18,
     borderRadius: 16,
     borderRadiusLG: 20,
-    fontFamily: 'Inter, sans-serif',
+    fontFamily: "'Noto Sans', 'Noto Sans KR', sans-serif",
     colorBgContainer: mode === 'dark' ? '#0F1115' : '#FFFFFF',
     colorText: mode === 'dark' ? '#FFFFFF' : '#0F172A',
     colorBgLayout: mode === 'dark' ? '#030304' : '#F5F9FF',
